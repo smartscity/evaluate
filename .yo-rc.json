@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.smartscity.evaluate",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.0.0-beta.0",
+    "applicationType": "monolith",
+    "baseName": "evaluate",
+    "packageName": "com.smartscity.evaluate",
+    "packageFolder": "com/smartscity/evaluate",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "YzZlNzdmMzM5ZDc3MjZiNWI5YjQ1MTQ5NTVjMGY2NmY2ZGM1NzQwZjkxM2Y2OWZhNDZkMTgwZWY3Y2ZiZjkzMjQyM2ZmNjU3NTdmZTFkNjVlZmEwYjYzNWFjYjkzYWUzYTVmMGRkNjAzMzhmYjM5ZDBiZThhZTA2Mjk5ZjA4OTU=",
+    "clientFramework": "angularX",
+    "clientTheme": "minty",
+    "clientThemeVariant": "primary",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": ["gatling"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "zh-cn"]
+  }
+}

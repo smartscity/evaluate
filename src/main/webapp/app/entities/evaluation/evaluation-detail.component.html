@@ -1,0 +1,115 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="evaluation">
+            <h2><span jhiTranslate="evaluateApp.evaluation.detail.title">Evaluation</span> {{evaluation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="evaluateApp.evaluation.speakerId">Speaker Id</span></dt>
+                <dd>
+                    <span>{{evaluation.speakerId}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.title">Title</span></dt>
+                <dd>
+                    <span>{{evaluation.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.orgName" [ngbTooltip]="'evaluateApp.evaluation.help.orgName' | translate">Org Name</span></dt>
+                <dd>
+                    <span>{{evaluation.orgName}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.actor" [ngbTooltip]="'evaluateApp.evaluation.help.actor' | translate">Actor</span></dt>
+                <dd>
+                    <span>{{evaluation.actor}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.speaker" [ngbTooltip]="'evaluateApp.evaluation.help.speaker' | translate">Speaker</span></dt>
+                <dd>
+                    <span>{{evaluation.speaker}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.level" [ngbTooltip]="'evaluateApp.evaluation.help.level' | translate">Level</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'evaluateApp.Level.' + evaluation.level}}">{{evaluation.level}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.taskSource" [ngbTooltip]="'evaluateApp.evaluation.help.taskSource' | translate">Task Source</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'evaluateApp.TaskSource.' + evaluation.taskSource}}">{{evaluation.taskSource}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.taskSourceScore">Task Source Score</span></dt>
+                <dd>
+                    <span>{{evaluation.taskSourceScore}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.discoveryAndInnovation" [ngbTooltip]="'evaluateApp.evaluation.help.discoveryAndInnovation' | translate">Discovery And Innovation</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'evaluateApp.DiscoveryAndInnovation.' + evaluation.discoveryAndInnovation}}">{{evaluation.discoveryAndInnovation}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.discoveryAndInnovationScore">Discovery And Innovation Score</span></dt>
+                <dd>
+                    <span>{{evaluation.discoveryAndInnovationScore}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.advancedLevel" [ngbTooltip]="'evaluateApp.evaluation.help.advancedLevel' | translate">Advanced Level</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'evaluateApp.AdvancedLevel.' + evaluation.advancedLevel}}">{{evaluation.advancedLevel}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.advancedLevelScore">Advanced Level Score</span></dt>
+                <dd>
+                    <span>{{evaluation.advancedLevelScore}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.applicationAndPromotion" [ngbTooltip]="'evaluateApp.evaluation.help.applicationAndPromotion' | translate">Application And Promotion</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'evaluateApp.ApplicationAndPromotion.' + evaluation.applicationAndPromotion}}">{{evaluation.applicationAndPromotion}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.applicationAndPromotionScore">Application And Promotion Score</span></dt>
+                <dd>
+                    <span>{{evaluation.applicationAndPromotionScore}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.paperScore" [ngbTooltip]="'evaluateApp.evaluation.help.paperScore' | translate">Paper Score</span></dt>
+                <dd>
+                    <span>{{evaluation.paperScore}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.replyScore" [ngbTooltip]="'evaluateApp.evaluation.help.replyScore' | translate">Reply Score</span></dt>
+                <dd>
+                    <span>{{evaluation.replyScore}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.totalScore">Total Score</span></dt>
+                <dd>
+                    <span>{{evaluation.totalScore}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.avgScore">Avg Score</span></dt>
+                <dd>
+                    <span>{{evaluation.avgScore}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.createTime">Create Time</span></dt>
+                <dd>
+                    <span>{{evaluation.createTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.updateTime">Update Time</span></dt>
+                <dd>
+                    <span>{{evaluation.updateTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.userId">User Id</span></dt>
+                <dd>
+                    <span>{{evaluation.userId}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.evaluator" [ngbTooltip]="'evaluateApp.evaluation.help.evaluator' | translate">Evaluator</span></dt>
+                <dd>
+                    <span>{{evaluation.evaluator}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.remark">Remark</span></dt>
+                <dd>
+                    <span>{{evaluation.remark}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/evaluation', evaluation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

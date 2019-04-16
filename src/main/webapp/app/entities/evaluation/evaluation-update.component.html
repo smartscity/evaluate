@@ -1,0 +1,162 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-evaluation-heading" jhiTranslate="evaluateApp.evaluation.home.createOrEditLabel">Create or edit a Evaluation</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!evaluation.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.speakerId" for="field_speakerId">Speaker Id</label>
+                    <input type="number" class="form-control" name="speakerId" id="field_speakerId"
+                           formControlName="speakerId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.title" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                           formControlName="title"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.orgName" for="field_orgName" [ngbTooltip]="'evaluateApp.evaluation.help.orgName' | translate">Org Name</label>
+                    <input type="text" class="form-control" name="orgName" id="field_orgName"
+                           formControlName="orgName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.actor" for="field_actor" [ngbTooltip]="'evaluateApp.evaluation.help.actor' | translate">Actor</label>
+                    <input type="text" class="form-control" name="actor" id="field_actor"
+                           formControlName="actor"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.speaker" for="field_speaker" [ngbTooltip]="'evaluateApp.evaluation.help.speaker' | translate">Speaker</label>
+                    <input type="text" class="form-control" name="speaker" id="field_speaker"
+                           formControlName="speaker"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.level" for="field_level" [ngbTooltip]="'evaluateApp.evaluation.help.level' | translate">Level</label>
+                    <select class="form-control" name="level" formControlName="level" id="field_level">
+                        <option value="FIRST">{{'evaluateApp.Level.FIRST' | translate}}</option>
+                        <option value="SECOND">{{'evaluateApp.Level.SECOND' | translate}}</option>
+                        <option value="THIRD">{{'evaluateApp.Level.THIRD' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.taskSource" for="field_taskSource" [ngbTooltip]="'evaluateApp.evaluation.help.taskSource' | translate">Task Source</label>
+                    <select class="form-control" name="taskSource" formControlName="taskSource" id="field_taskSource">
+                        <option value="NATIONAL_PLAN">{{'evaluateApp.TaskSource.NATIONAL_PLAN' | translate}}</option>
+                        <option value="BUWEI_PLAN">{{'evaluateApp.TaskSource.BUWEI_PLAN' | translate}}</option>
+                        <option value="SHENGSHI_PLAN">{{'evaluateApp.TaskSource.SHENGSHI_PLAN' | translate}}</option>
+                        <option value="JUNWEI_PLAN">{{'evaluateApp.TaskSource.JUNWEI_PLAN' | translate}}</option>
+                        <option value="FUND_SUPPORT">{{'evaluateApp.TaskSource.FUND_SUPPORT' | translate}}</option>
+                        <option value="GLOBAL_COOPERATION">{{'evaluateApp.TaskSource.GLOBAL_COOPERATION' | translate}}</option>
+                        <option value="OTHER_ORG">{{'evaluateApp.TaskSource.OTHER_ORG' | translate}}</option>
+                        <option value="OPTIONAL">{{'evaluateApp.TaskSource.OPTIONAL' | translate}}</option>
+                        <option value="OTHER">{{'evaluateApp.TaskSource.OTHER' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.taskSourceScore" for="field_taskSourceScore">Task Source Score</label>
+                    <input type="number" class="form-control" name="taskSourceScore" id="field_taskSourceScore"
+                           formControlName="taskSourceScore"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.discoveryAndInnovation" for="field_discoveryAndInnovation" [ngbTooltip]="'evaluateApp.evaluation.help.discoveryAndInnovation' | translate">Discovery And Innovation</label>
+                    <select class="form-control" name="discoveryAndInnovation" formControlName="discoveryAndInnovation" id="field_discoveryAndInnovation">
+                        <option value="HIGH">{{'evaluateApp.DiscoveryAndInnovation.HIGH' | translate}}</option>
+                        <option value="MIDDLE">{{'evaluateApp.DiscoveryAndInnovation.MIDDLE' | translate}}</option>
+                        <option value="GENERAL">{{'evaluateApp.DiscoveryAndInnovation.GENERAL' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.discoveryAndInnovationScore" for="field_discoveryAndInnovationScore">Discovery And Innovation Score</label>
+                    <input type="number" class="form-control" name="discoveryAndInnovationScore" id="field_discoveryAndInnovationScore"
+                           formControlName="discoveryAndInnovationScore"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.advancedLevel" for="field_advancedLevel" [ngbTooltip]="'evaluateApp.evaluation.help.advancedLevel' | translate">Advanced Level</label>
+                    <select class="form-control" name="advancedLevel" formControlName="advancedLevel" id="field_advancedLevel">
+                        <option value="LEADING">{{'evaluateApp.AdvancedLevel.LEADING' | translate}}</option>
+                        <option value="ADVANCED">{{'evaluateApp.AdvancedLevel.ADVANCED' | translate}}</option>
+                        <option value="GENERAL">{{'evaluateApp.AdvancedLevel.GENERAL' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.advancedLevelScore" for="field_advancedLevelScore">Advanced Level Score</label>
+                    <input type="number" class="form-control" name="advancedLevelScore" id="field_advancedLevelScore"
+                           formControlName="advancedLevelScore"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.applicationAndPromotion" for="field_applicationAndPromotion" [ngbTooltip]="'evaluateApp.evaluation.help.applicationAndPromotion' | translate">Application And Promotion</label>
+                    <select class="form-control" name="applicationAndPromotion" formControlName="applicationAndPromotion" id="field_applicationAndPromotion">
+                        <option value="EXCELLENCE">{{'evaluateApp.ApplicationAndPromotion.EXCELLENCE' | translate}}</option>
+                        <option value="OBVIOUS">{{'evaluateApp.ApplicationAndPromotion.OBVIOUS' | translate}}</option>
+                        <option value="GENERAL">{{'evaluateApp.ApplicationAndPromotion.GENERAL' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.applicationAndPromotionScore" for="field_applicationAndPromotionScore">Application And Promotion Score</label>
+                    <input type="number" class="form-control" name="applicationAndPromotionScore" id="field_applicationAndPromotionScore"
+                           formControlName="applicationAndPromotionScore"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.paperScore" for="field_paperScore" [ngbTooltip]="'evaluateApp.evaluation.help.paperScore' | translate">Paper Score</label>
+                    <input type="number" class="form-control" name="paperScore" id="field_paperScore"
+                           formControlName="paperScore"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.replyScore" for="field_replyScore" [ngbTooltip]="'evaluateApp.evaluation.help.replyScore' | translate">Reply Score</label>
+                    <input type="number" class="form-control" name="replyScore" id="field_replyScore"
+                           formControlName="replyScore"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.totalScore" for="field_totalScore">Total Score</label>
+                    <input type="number" class="form-control" name="totalScore" id="field_totalScore"
+                           formControlName="totalScore"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.avgScore" for="field_avgScore">Avg Score</label>
+                    <input type="number" class="form-control" name="avgScore" id="field_avgScore"
+                           formControlName="avgScore"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.createTime" for="field_createTime">Create Time</label>
+                    <div class="d-flex">
+                        <input id="field_createTime" type="datetime-local" class="form-control" name="createTime" formControlName="createTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.updateTime" for="field_updateTime">Update Time</label>
+                    <div class="d-flex">
+                        <input id="field_updateTime" type="datetime-local" class="form-control" name="updateTime" formControlName="updateTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.userId" for="field_userId">User Id</label>
+                    <input type="text" class="form-control" name="userId" id="field_userId"
+                           formControlName="userId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.evaluator" for="field_evaluator" [ngbTooltip]="'evaluateApp.evaluation.help.evaluator' | translate">Evaluator</label>
+                    <input type="text" class="form-control" name="evaluator" id="field_evaluator"
+                           formControlName="evaluator"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.remark" for="field_remark">Remark</label>
+                    <input type="text" class="form-control" name="remark" id="field_remark"
+                           formControlName="remark"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

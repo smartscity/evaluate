@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-speaker-heading" jhiTranslate="evaluateApp.speaker.home.createOrEditLabel">Create or edit a Speaker</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!speaker.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.speaker.title" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                           formControlName="title"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.speaker.orgName" for="field_orgName" [ngbTooltip]="'evaluateApp.speaker.help.orgName' | translate">Org Name</label>
+                    <input type="text" class="form-control" name="orgName" id="field_orgName"
+                           formControlName="orgName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.speaker.actor" for="field_actor" [ngbTooltip]="'evaluateApp.speaker.help.actor' | translate">Actor</label>
+                    <input type="text" class="form-control" name="actor" id="field_actor"
+                           formControlName="actor"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.speaker.speaker" for="field_speaker" [ngbTooltip]="'evaluateApp.speaker.help.speaker' | translate">Speaker</label>
+                    <input type="text" class="form-control" name="speaker" id="field_speaker"
+                           formControlName="speaker"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.speaker.level" for="field_level">Level</label>
+                    <select class="form-control" name="level" formControlName="level" id="field_level">
+                        <option value="FIRST">{{'evaluateApp.Level.FIRST' | translate}}</option>
+                        <option value="SECOND">{{'evaluateApp.Level.SECOND' | translate}}</option>
+                        <option value="THIRD">{{'evaluateApp.Level.THIRD' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.speaker.pdf" for="field_pdf">Pdf</label>
+                    <input type="text" class="form-control" name="pdf" id="field_pdf"
+                           formControlName="pdf"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
