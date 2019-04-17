@@ -4,6 +4,7 @@ import com.smartscity.evaluate.domain.Evaluation;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 
 /**
  * Spring Data  repository for the Evaluation entity.
@@ -11,5 +12,8 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface EvaluationRepository extends JpaRepository<Evaluation, Long> {
+
+    @Query("select evaluation from Evaluation evaluation where evaluation.user.login = ?#{principal.username}")
+    List<Evaluation> findByUserIsCurrentUser();
 
 }

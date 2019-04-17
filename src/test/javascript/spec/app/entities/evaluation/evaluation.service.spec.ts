@@ -58,7 +58,6 @@ describe('Service Tests', () => {
         currentDate,
         currentDate,
         'AAAAAAA',
-        'AAAAAAA',
         'AAAAAAA'
       );
     });
@@ -130,7 +129,6 @@ describe('Service Tests', () => {
             avgScore: 1,
             createTime: currentDate.format(DATE_TIME_FORMAT),
             updateTime: currentDate.format(DATE_TIME_FORMAT),
-            userId: 'BBBBBB',
             evaluator: 'BBBBBB',
             remark: 'BBBBBB'
           },
@@ -176,7 +174,6 @@ describe('Service Tests', () => {
             avgScore: 1,
             createTime: currentDate.format(DATE_TIME_FORMAT),
             updateTime: currentDate.format(DATE_TIME_FORMAT),
-            userId: 'BBBBBB',
             evaluator: 'BBBBBB',
             remark: 'BBBBBB'
           },

@@ -1,6 +1,7 @@
 package com.smartscity.evaluate.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
@@ -137,9 +138,6 @@ public class Evaluation implements Serializable {
     @Column(name = "update_time")
     private Instant updateTime;
 
-    @Column(name = "user_id")
-    private String userId;
-
     /**
      * 评价者
      */
@@ -149,6 +147,10 @@ public class Evaluation implements Serializable {
 
     @Column(name = "remark")
     private String remark;
+
+    @ManyToOne
+    @JsonIgnoreProperties("evaluations")
+    private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -419,19 +421,6 @@ public class Evaluation implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public Evaluation userId(String userId) {
-        this.userId = userId;
-        return this;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     public String getEvaluator() {
         return evaluator;
     }
@@ -456,6 +445,19 @@ public class Evaluation implements Serializable {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Evaluation user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -499,7 +501,6 @@ public class Evaluation implements Serializable {
             ", avgScore=" + getAvgScore() +
             ", createTime='" + getCreateTime() + "'" +
             ", updateTime='" + getUpdateTime() + "'" +
-            ", userId='" + getUserId() + "'" +
             ", evaluator='" + getEvaluator() + "'" +
             ", remark='" + getRemark() + "'" +
             "}";

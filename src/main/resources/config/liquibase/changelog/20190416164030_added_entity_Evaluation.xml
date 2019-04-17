@@ -102,15 +102,15 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="user_id" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="evaluator" type="varchar(255)" remarks="评价者">
                 <constraints nullable="true" />
             </column>
 
             <column name="remark" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="user_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
@@ -156,7 +156,6 @@
             <column name="avg_score" type="numeric"/>
             <column name="create_time" type="date"/>
             <column name="update_time" type="date"/>
-            <column name="user_id" type="string"/>
             <column name="evaluator" type="string"/>
             <column name="remark" type="string"/>
         </loadData>

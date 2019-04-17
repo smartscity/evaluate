@@ -35,9 +35,9 @@
       "avgScore": "Avg Score",
       "createTime": "Create Time",
       "updateTime": "Update Time",
-      "userId": "User Id",
       "evaluator": "Evaluator",
       "remark": "Remark",
+      "user": "User",
       "help": {
         "orgName": "主要完成单位",
         "actor": "主要完成人",

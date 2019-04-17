@@ -35,9 +35,9 @@
             <th><span jhiTranslate="evaluateApp.evaluation.avgScore">Avg Score</span></th>
             <th><span jhiTranslate="evaluateApp.evaluation.createTime">Create Time</span></th>
             <th><span jhiTranslate="evaluateApp.evaluation.updateTime">Update Time</span></th>
-            <th><span jhiTranslate="evaluateApp.evaluation.userId">User Id</span></th>
             <th><span jhiTranslate="evaluateApp.evaluation.evaluator">Evaluator</span></th>
             <th><span jhiTranslate="evaluateApp.evaluation.remark">Remark</span></th>
+            <th><span jhiTranslate="evaluateApp.evaluation.user">User</span></th>
             <th></th>
             </tr>
             </thead>
@@ -64,9 +64,11 @@
                 <td>{{evaluation.avgScore}}</td>
                 <td>{{evaluation.createTime | date:'medium'}}</td>
                 <td>{{evaluation.updateTime | date:'medium'}}</td>
-                <td>{{evaluation.userId}}</td>
                 <td>{{evaluation.evaluator}}</td>
                 <td>{{evaluation.remark}}</td>
+                <td>
+                    {{evaluation.user?.login}}
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

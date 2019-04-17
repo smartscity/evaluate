@@ -133,11 +133,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.userId" for="field_userId">User Id</label>
-                    <input type="text" class="form-control" name="userId" id="field_userId"
-                           formControlName="userId"/>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.evaluator" for="field_evaluator" [ngbTooltip]="'evaluateApp.evaluation.help.evaluator' | translate">Evaluator</label>
                     <input type="text" class="form-control" name="evaluator" id="field_evaluator"
                            formControlName="evaluator"/>
@@ -148,6 +143,13 @@
                            formControlName="remark"/>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === editForm.get('user').value?.id ? editForm.get('user').value : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

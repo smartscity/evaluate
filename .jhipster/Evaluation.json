@@ -97,10 +97,6 @@
             "fieldType": "Instant"
         },
         {
-            "fieldName": "userId",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "evaluator",
             "javadoc": "评价者",
             "fieldType": "String"
@@ -110,7 +106,15 @@
             "fieldType": "String"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "evaluation",
+            "relationshipName": "user",
+            "otherEntityField": "login"
+        }
+    ],
     "changelogDate": "20190416164030",
     "entityTableName": "evaluation",
     "dto": "no",

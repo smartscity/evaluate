@@ -85,10 +85,6 @@
                 <dd>
                     <span>{{evaluation.updateTime}}</span>
                 </dd>
-                <dt><span jhiTranslate="evaluateApp.evaluation.userId">User Id</span></dt>
-                <dd>
-                    <span>{{evaluation.userId}}</span>
-                </dd>
                 <dt><span jhiTranslate="evaluateApp.evaluation.evaluator" [ngbTooltip]="'evaluateApp.evaluation.help.evaluator' | translate">Evaluator</span></dt>
                 <dd>
                     <span>{{evaluation.evaluator}}</span>
@@ -96,6 +92,10 @@
                 <dt><span jhiTranslate="evaluateApp.evaluation.remark">Remark</span></dt>
                 <dd>
                     <span>{{evaluation.remark}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.user">User</span></dt>
+                <dd>
+                    {{evaluation.user?.login}}
                 </dd>
             </dl>
 

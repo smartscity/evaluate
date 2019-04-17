@@ -70,7 +70,6 @@ entity Evaluation {
     avgScore Double
     createTime Instant
     updateTime Instant
-    userId String
     /**
     * 评价者
     */
@@ -99,6 +98,9 @@ enum ApplicationAndPromotion {
     EXCELLENCE, OBVIOUS, GENERAL
 }
 
+relationship ManyToOne {
+    Evaluation{user(login)} to User,
+}
 
 // Set pagination options
 // paginate JobHistory, Employee with infinite-scroll

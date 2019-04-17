@@ -106,9 +106,6 @@ public class EvaluationResourceIT {
     private static final Instant DEFAULT_UPDATE_TIME = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_UPDATE_TIME = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_USER_ID = "AAAAAAAAAA";
-    private static final String UPDATED_USER_ID = "BBBBBBBBBB";
-
     private static final String DEFAULT_EVALUATOR = "AAAAAAAAAA";
     private static final String UPDATED_EVALUATOR = "BBBBBBBBBB";
 
@@ -180,7 +177,6 @@ public class EvaluationResourceIT {
             .avgScore(DEFAULT_AVG_SCORE)
             .createTime(DEFAULT_CREATE_TIME)
             .updateTime(DEFAULT_UPDATE_TIME)
-            .userId(DEFAULT_USER_ID)
             .evaluator(DEFAULT_EVALUATOR)
             .remark(DEFAULT_REMARK);
         return evaluation;
@@ -226,7 +222,6 @@ public class EvaluationResourceIT {
         assertThat(testEvaluation.getAvgScore()).isEqualTo(DEFAULT_AVG_SCORE);
         assertThat(testEvaluation.getCreateTime()).isEqualTo(DEFAULT_CREATE_TIME);
         assertThat(testEvaluation.getUpdateTime()).isEqualTo(DEFAULT_UPDATE_TIME);
-        assertThat(testEvaluation.getUserId()).isEqualTo(DEFAULT_USER_ID);
         assertThat(testEvaluation.getEvaluator()).isEqualTo(DEFAULT_EVALUATOR);
         assertThat(testEvaluation.getRemark()).isEqualTo(DEFAULT_REMARK);
     }
@@ -282,7 +277,6 @@ public class EvaluationResourceIT {
             .andExpect(jsonPath("$.[*].avgScore").value(hasItem(DEFAULT_AVG_SCORE.doubleValue())))
             .andExpect(jsonPath("$.[*].createTime").value(hasItem(DEFAULT_CREATE_TIME.toString())))
             .andExpect(jsonPath("$.[*].updateTime").value(hasItem(DEFAULT_UPDATE_TIME.toString())))
-            .andExpect(jsonPath("$.[*].userId").value(hasItem(DEFAULT_USER_ID.toString())))
             .andExpect(jsonPath("$.[*].evaluator").value(hasItem(DEFAULT_EVALUATOR.toString())))
             .andExpect(jsonPath("$.[*].remark").value(hasItem(DEFAULT_REMARK.toString())));
     }
@@ -318,7 +312,6 @@ public class EvaluationResourceIT {
             .andExpect(jsonPath("$.avgScore").value(DEFAULT_AVG_SCORE.doubleValue()))
             .andExpect(jsonPath("$.createTime").value(DEFAULT_CREATE_TIME.toString()))
             .andExpect(jsonPath("$.updateTime").value(DEFAULT_UPDATE_TIME.toString()))
-            .andExpect(jsonPath("$.userId").value(DEFAULT_USER_ID.toString()))
             .andExpect(jsonPath("$.evaluator").value(DEFAULT_EVALUATOR.toString()))
             .andExpect(jsonPath("$.remark").value(DEFAULT_REMARK.toString()));
     }
@@ -364,7 +357,6 @@ public class EvaluationResourceIT {
             .avgScore(UPDATED_AVG_SCORE)
             .createTime(UPDATED_CREATE_TIME)
             .updateTime(UPDATED_UPDATE_TIME)
-            .userId(UPDATED_USER_ID)
             .evaluator(UPDATED_EVALUATOR)
             .remark(UPDATED_REMARK);
 
@@ -397,7 +389,6 @@ public class EvaluationResourceIT {
         assertThat(testEvaluation.getAvgScore()).isEqualTo(UPDATED_AVG_SCORE);
         assertThat(testEvaluation.getCreateTime()).isEqualTo(UPDATED_CREATE_TIME);
         assertThat(testEvaluation.getUpdateTime()).isEqualTo(UPDATED_UPDATE_TIME);
-        assertThat(testEvaluation.getUserId()).isEqualTo(UPDATED_USER_ID);
         assertThat(testEvaluation.getEvaluator()).isEqualTo(UPDATED_EVALUATOR);
         assertThat(testEvaluation.getRemark()).isEqualTo(UPDATED_REMARK);
     }

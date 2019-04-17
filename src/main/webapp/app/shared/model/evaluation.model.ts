@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IUser } from 'app/core/user/user.model';
 
 export const enum Level {
   FIRST = 'FIRST',
@@ -58,9 +59,9 @@ export interface IEvaluation {
   avgScore?: number;
   createTime?: Moment;
   updateTime?: Moment;
-  userId?: string;
   evaluator?: string;
   remark?: string;
+  user?: IUser;
 }
 
 export class Evaluation implements IEvaluation {
@@ -86,8 +87,8 @@ export class Evaluation implements IEvaluation {
     public avgScore?: number,
     public createTime?: Moment,
     public updateTime?: Moment,
-    public userId?: string,
     public evaluator?: string,
-    public remark?: string
+    public remark?: string,
+    public user?: IUser
   ) {}
 }

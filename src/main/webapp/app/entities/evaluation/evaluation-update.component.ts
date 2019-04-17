@@ -3,10 +3,13 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
+import { JhiAlertService } from 'ng-jhipster';
 import { IEvaluation, Evaluation } from 'app/shared/model/evaluation.model';
 import { EvaluationService } from './evaluation.service';
+import { IUser, UserService } from 'app/core';
 
 @Component({
   selector: 'jhi-evaluation-update',
@@ -15,6 +18,8 @@ import { EvaluationService } from './evaluation.service';
 export class EvaluationUpdateComponent implements OnInit {
   evaluation: IEvaluation;
   isSaving: boolean;
+
+  users: IUser[];
 
   editForm = this.fb.group({
     id: [],
@@ -38,12 +43,18 @@ export class EvaluationUpdateComponent implements OnInit {
     avgScore: [],
     createTime: [],
     updateTime: [],
-    userId: [],
     evaluator: [],
-    remark: []
+    remark: [],
+    user: []
   });
 
-  constructor(protected evaluationService: EvaluationService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected jhiAlertService: JhiAlertService,
+    protected evaluationService: EvaluationService,
+    protected userService: UserService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
     this.isSaving = false;
@@ -51,6 +62,13 @@ export class EvaluationUpdateComponent implements OnInit {
       this.updateForm(evaluation);
       this.evaluation = evaluation;
     });
+    this.userService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<IUser[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IUser[]>) => response.body)
+      )
+      .subscribe((res: IUser[]) => (this.users = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(evaluation: IEvaluation) {
@@ -76,9 +94,9 @@ export class EvaluationUpdateComponent implements OnInit {
       avgScore: evaluation.avgScore,
       createTime: evaluation.createTime != null ? evaluation.createTime.format(DATE_TIME_FORMAT) : null,
       updateTime: evaluation.updateTime != null ? evaluation.updateTime.format(DATE_TIME_FORMAT) : null,
-      userId: evaluation.userId,
       evaluator: evaluation.evaluator,
-      remark: evaluation.remark
+      remark: evaluation.remark,
+      user: evaluation.user
     });
   }
 
@@ -122,9 +140,9 @@ export class EvaluationUpdateComponent implements OnInit {
         this.editForm.get(['createTime']).value != null ? moment(this.editForm.get(['createTime']).value, DATE_TIME_FORMAT) : undefined,
       updateTime:
         this.editForm.get(['updateTime']).value != null ? moment(this.editForm.get(['updateTime']).value, DATE_TIME_FORMAT) : undefined,
-      userId: this.editForm.get(['userId']).value,
       evaluator: this.editForm.get(['evaluator']).value,
-      remark: this.editForm.get(['remark']).value
+      remark: this.editForm.get(['remark']).value,
+      user: this.editForm.get(['user']).value
     };
     return entity;
   }
@@ -140,5 +158,12 @@ export class EvaluationUpdateComponent implements OnInit {
 
   protected onSaveError() {
     this.isSaving = false;
+  }
+  protected onError(errorMessage: string) {
+    this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  trackUserById(index: number, item: IUser) {
+    return item.id;
   }
 }

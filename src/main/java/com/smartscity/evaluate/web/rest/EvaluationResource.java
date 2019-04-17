@@ -1,6 +1,7 @@
 package com.smartscity.evaluate.web.rest;
 
 import com.smartscity.evaluate.domain.Evaluation;
+import com.smartscity.evaluate.security.SecurityUtils;
 import com.smartscity.evaluate.service.EvaluationService;
 import com.smartscity.evaluate.web.rest.errors.BadRequestAlertException;
 
@@ -9,6 +10,7 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,10 +48,13 @@ public class EvaluationResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/evaluations")
-    public ResponseEntity<Evaluation> createEvaluation(@RequestBody Evaluation evaluation) throws URISyntaxException {
+    public ResponseEntity<?> createEvaluation(@RequestBody Evaluation evaluation) throws URISyntaxException {
         log.debug("REST request to save Evaluation : {}", evaluation);
         if (evaluation.getId() != null) {
             throw new BadRequestAlertException("A new evaluation cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        if(!evaluation.getUser().getLogin().equals(SecurityUtils.getCurrentUserLogin().orElse(""))){
+            return new ResponseEntity<>("error.http.403", HttpStatus.FORBIDDEN);
         }
         Evaluation result = evaluationService.save(evaluation);
         return ResponseEntity.created(new URI("/api/evaluations/" + result.getId()))

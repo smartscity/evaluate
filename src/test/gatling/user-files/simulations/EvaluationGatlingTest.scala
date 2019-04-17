@@ -92,7 +92,6 @@ class EvaluationGatlingTest extends Simulation {
                 , "avgScore":null
                 , "createTime":"2020-01-01T00:00:00.000Z"
                 , "updateTime":"2020-01-01T00:00:00.000Z"
-                , "userId":"SAMPLE_TEXT"
                 , "evaluator":"SAMPLE_TEXT"
                 , "remark":"SAMPLE_TEXT"
                 }""")).asJson

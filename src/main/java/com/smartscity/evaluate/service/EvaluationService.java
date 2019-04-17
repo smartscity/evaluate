@@ -2,9 +2,12 @@ package com.smartscity.evaluate.service;
 
 import com.smartscity.evaluate.domain.Evaluation;
 import com.smartscity.evaluate.repository.EvaluationRepository;
+import com.smartscity.evaluate.repository.UserRepository;
+import com.smartscity.evaluate.security.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +23,9 @@ public class EvaluationService {
 
     private final Logger log = LoggerFactory.getLogger(EvaluationService.class);
 
+    @Autowired
+    UserRepository userRepository;
+
     private final EvaluationRepository evaluationRepository;
 
     public EvaluationService(EvaluationRepository evaluationRepository) {
@@ -34,6 +40,7 @@ public class EvaluationService {
      */
     public Evaluation save(Evaluation evaluation) {
         log.debug("Request to save Evaluation : {}", evaluation);
+        evaluation.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get());
         return evaluationRepository.save(evaluation);
     }
 
@@ -45,7 +52,11 @@ public class EvaluationService {
     @Transactional(readOnly = true)
     public List<Evaluation> findAll() {
         log.debug("Request to get all Evaluations");
-        return evaluationRepository.findAll();
+        if (SecurityUtils.getCurrentUserLogin().get().equals("admin")) {
+            return evaluationRepository.findAll();
+        }else {
+            return evaluationRepository.findByUserIsCurrentUser();
+        }
     }
 
 
