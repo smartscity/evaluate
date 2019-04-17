@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 import { ISpeaker, Speaker } from 'app/shared/model/speaker.model';
 import { SpeakerService } from './speaker.service';
 
@@ -21,10 +22,20 @@ export class SpeakerUpdateComponent implements OnInit {
     actor: [],
     speaker: [],
     level: [],
-    pdf: []
+    icon: [],
+    iconContentType: [],
+    pdf: [],
+    pdfContentType: []
   });
 
-  constructor(protected speakerService: SpeakerService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected dataUtils: JhiDataUtils,
+    protected jhiAlertService: JhiAlertService,
+    protected speakerService: SpeakerService,
+    protected elementRef: ElementRef,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
     this.isSaving = false;
@@ -42,8 +53,53 @@ export class SpeakerUpdateComponent implements OnInit {
       actor: speaker.actor,
       speaker: speaker.speaker,
       level: speaker.level,
-      pdf: speaker.pdf
+      icon: speaker.icon,
+      iconContentType: speaker.iconContentType,
+      pdf: speaker.pdf,
+      pdfContentType: speaker.pdfContentType
     });
+  }
+
+  byteSize(field) {
+    return this.dataUtils.byteSize(field);
+  }
+
+  openFile(contentType, field) {
+    return this.dataUtils.openFile(contentType, field);
+  }
+
+  setFileData(event, field: string, isImage) {
+    return new Promise((resolve, reject) => {
+      if (event && event.target && event.target.files && event.target.files[0]) {
+        const file = event.target.files[0];
+        if (isImage && !/^image\//.test(file.type)) {
+          reject(`File was expected to be an image but was found to be ${file.type}`);
+        } else {
+          const filedContentType: string = field + 'ContentType';
+          this.dataUtils.toBase64(file, base64Data => {
+            this.editForm.patchValue({
+              [field]: base64Data,
+              [filedContentType]: file.type
+            });
+          });
+        }
+      } else {
+        reject(`Base64 data was not set as file could not be extracted from passed parameter: ${event}`);
+      }
+    }).then(
+      () => console.log('blob added'), // sucess
+      this.onError
+    );
+  }
+
+  clearInputImage(field: string, fieldContentType: string, idInput: string) {
+    this.editForm.patchValue({
+      [field]: null,
+      [fieldContentType]: null
+    });
+    if (this.elementRef && idInput && this.elementRef.nativeElement.querySelector('#' + idInput)) {
+      this.elementRef.nativeElement.querySelector('#' + idInput).value = null;
+    }
   }
 
   previousState() {
@@ -69,6 +125,9 @@ export class SpeakerUpdateComponent implements OnInit {
       actor: this.editForm.get(['actor']).value,
       speaker: this.editForm.get(['speaker']).value,
       level: this.editForm.get(['level']).value,
+      iconContentType: this.editForm.get(['iconContentType']).value,
+      icon: this.editForm.get(['icon']).value,
+      pdfContentType: this.editForm.get(['pdfContentType']).value,
       pdf: this.editForm.get(['pdf']).value
     };
     return entity;
@@ -85,5 +144,8 @@ export class SpeakerUpdateComponent implements OnInit {
 
   protected onSaveError() {
     this.isSaving = false;
+  }
+  protected onError(errorMessage: string) {
+    this.jhiAlertService.error(errorMessage, null, null);
   }
 }

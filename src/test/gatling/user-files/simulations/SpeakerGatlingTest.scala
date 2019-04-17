@@ -77,7 +77,8 @@ class SpeakerGatlingTest extends Simulation {
                 , "actor":"SAMPLE_TEXT"
                 , "speaker":"SAMPLE_TEXT"
                 , "level":"FIRST"
-                , "pdf":"SAMPLE_TEXT"
+                , "icon":null
+                , "pdf":null
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_speaker_url"))).exitHereIfFailed

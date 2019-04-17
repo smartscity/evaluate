@@ -38,9 +38,39 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.speaker.icon" for="field_icon">Icon</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('iconContentType').value + ';base64,' + editForm.get('icon').value" style="max-height: 100px;" *ngIf="editForm.get('icon').value" alt="speaker image"/>
+                        <div *ngIf="editForm.get('icon').value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('iconContentType').value}}, {{byteSize(editForm.get('icon').value)}}</span>
+                            <button type="button" (click)="clearInputImage('icon', 'iconContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_icon" (change)="setFileData($event, 'icon', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="icon" id="field_icon"
+                           formControlName="icon"/>
+                    <input type="hidden" class="form-control" name="iconContentType" id="field_iconContentType"
+                           formControlName="iconContentType" />
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="evaluateApp.speaker.pdf" for="field_pdf">Pdf</label>
-                    <input type="text" class="form-control" name="pdf" id="field_pdf"
+                    <div>
+                        <div *ngIf="editForm.get('pdf').value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('pdfContentType').value, editForm.get('pdf').value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{editForm.get('pdfContentType').value}}, {{byteSize(editForm.get('pdf').value)}}</span>
+                            <button type="button" (click)="editForm.patchValue({pdf: null});editForm.patchValue({pdfContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_pdf" (change)="setFileData($event, 'pdf', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="pdf" id="field_pdf"
                            formControlName="pdf"/>
+                    <input type="hidden" class="form-control" name="pdfContentType" id="field_pdfContentType"
+                           formControlName="pdfContentType" />
                 </div>
 
             </div>

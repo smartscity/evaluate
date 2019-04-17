@@ -23,7 +23,7 @@ describe('Service Tests', () => {
       service = injector.get(SpeakerService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Speaker(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', Level.FIRST, 'AAAAAAA');
+      elemDefault = new Speaker(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', Level.FIRST, 'image/png', 'AAAAAAA', 'image/png', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -64,6 +64,7 @@ describe('Service Tests', () => {
             actor: 'BBBBBB',
             speaker: 'BBBBBB',
             level: 'BBBBBB',
+            icon: 'BBBBBB',
             pdf: 'BBBBBB'
           },
           elemDefault
@@ -87,6 +88,7 @@ describe('Service Tests', () => {
             actor: 'BBBBBB',
             speaker: 'BBBBBB',
             level: 'BBBBBB',
+            icon: 'BBBBBB',
             pdf: 'BBBBBB'
           },
           elemDefault

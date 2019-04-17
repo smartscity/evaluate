@@ -25,9 +25,21 @@
                 <dd>
                     <span jhiTranslate="{{'evaluateApp.Level.' + speaker.level}}">{{speaker.level}}</span>
                 </dd>
+                <dt><span jhiTranslate="evaluateApp.speaker.icon">Icon</span></dt>
+                <dd>
+                    <div *ngIf="speaker.icon">
+                        <a (click)="openFile(speaker.iconContentType, speaker.icon)">
+                            <img [src]="'data:' + speaker.iconContentType + ';base64,' + speaker.icon" style="max-width: 100%;" alt="speaker image"/>
+                        </a>
+                        {{speaker.iconContentType}}, {{byteSize(speaker.icon)}}
+                    </div>
+                </dd>
                 <dt><span jhiTranslate="evaluateApp.speaker.pdf">Pdf</span></dt>
                 <dd>
-                    <span>{{speaker.pdf}}</span>
+                    <div *ngIf="speaker.pdf">
+                        <a (click)="openFile(speaker.pdfContentType, speaker.pdf)" jhiTranslate="entity.action.open">open</a>
+                        {{speaker.pdfContentType}}, {{byteSize(speaker.pdf)}}
+                    </div>
                 </dd>
             </dl>
 

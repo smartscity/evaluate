@@ -11,7 +11,10 @@ export interface ISpeaker {
   actor?: string;
   speaker?: string;
   level?: Level;
-  pdf?: string;
+  iconContentType?: string;
+  icon?: any;
+  pdfContentType?: string;
+  pdf?: any;
 }
 
 export class Speaker implements ISpeaker {
@@ -22,6 +25,9 @@ export class Speaker implements ISpeaker {
     public actor?: string,
     public speaker?: string,
     public level?: Level,
-    public pdf?: string
+    public iconContentType?: string,
+    public icon?: any,
+    public pdfContentType?: string,
+    public pdf?: any
   ) {}
 }

@@ -15,6 +15,18 @@ import { RouterModule } from '@angular/router';
       {
         path: 'evaluation',
         loadChildren: './evaluation/evaluation.module#EvaluateEvaluationModule'
+      },
+      {
+        path: 'speaker',
+        loadChildren: './speaker/speaker.module#EvaluateSpeakerModule'
+      },
+      {
+        path: 'speaker',
+        loadChildren: './speaker/speaker.module#EvaluateSpeakerModule'
+      },
+      {
+        path: 'speaker',
+        loadChildren: './speaker/speaker.module#EvaluateSpeakerModule'
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

@@ -51,8 +51,19 @@ public class Speaker implements Serializable {
     @Column(name = "jhi_level")
     private Level level;
 
+    @Lob
+    @Column(name = "icon")
+    private byte[] icon;
+
+    @Column(name = "icon_content_type")
+    private String iconContentType;
+
+    @Lob
     @Column(name = "pdf")
-    private String pdf;
+    private byte[] pdf;
+
+    @Column(name = "pdf_content_type")
+    private String pdfContentType;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -128,17 +139,56 @@ public class Speaker implements Serializable {
         this.level = level;
     }
 
-    public String getPdf() {
+    public byte[] getIcon() {
+        return icon;
+    }
+
+    public Speaker icon(byte[] icon) {
+        this.icon = icon;
+        return this;
+    }
+
+    public void setIcon(byte[] icon) {
+        this.icon = icon;
+    }
+
+    public String getIconContentType() {
+        return iconContentType;
+    }
+
+    public Speaker iconContentType(String iconContentType) {
+        this.iconContentType = iconContentType;
+        return this;
+    }
+
+    public void setIconContentType(String iconContentType) {
+        this.iconContentType = iconContentType;
+    }
+
+    public byte[] getPdf() {
         return pdf;
     }
 
-    public Speaker pdf(String pdf) {
+    public Speaker pdf(byte[] pdf) {
         this.pdf = pdf;
         return this;
     }
 
-    public void setPdf(String pdf) {
+    public void setPdf(byte[] pdf) {
         this.pdf = pdf;
+    }
+
+    public String getPdfContentType() {
+        return pdfContentType;
+    }
+
+    public Speaker pdfContentType(String pdfContentType) {
+        this.pdfContentType = pdfContentType;
+        return this;
+    }
+
+    public void setPdfContentType(String pdfContentType) {
+        this.pdfContentType = pdfContentType;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -167,7 +217,10 @@ public class Speaker implements Serializable {
             ", actor='" + getActor() + "'" +
             ", speaker='" + getSpeaker() + "'" +
             ", level='" + getLevel() + "'" +
+            ", icon='" + getIcon() + "'" +
+            ", iconContentType='" + getIconContentType() + "'" +
             ", pdf='" + getPdf() + "'" +
+            ", pdfContentType='" + getPdfContentType() + "'" +
             "}";
     }
 }

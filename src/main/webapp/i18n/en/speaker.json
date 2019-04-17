@@ -20,6 +20,7 @@
       "actor": "Actor",
       "speaker": "Speaker",
       "level": "Level",
+      "icon": "Icon",
       "pdf": "Pdf",
       "help": {
         "orgName": "主要完成单位",

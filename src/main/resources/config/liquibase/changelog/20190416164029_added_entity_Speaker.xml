@@ -42,7 +42,17 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="pdf" type="varchar(255)">
+            <column name="icon" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="icon_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="pdf" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="pdf_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -71,7 +81,10 @@
             <column name="actor" type="string"/>
             <column name="speaker" type="string"/>
             <column name="jhi_level" type="string"/>
+            <column name="icon" type="string"/>
+            <column name="icon_content_type" type="string"/>
             <column name="pdf" type="string"/>
+            <column name="pdf_content_type" type="string"/>
         </loadData>
     </changeSet>
 
