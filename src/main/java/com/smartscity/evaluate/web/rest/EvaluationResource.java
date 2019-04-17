@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -53,7 +54,7 @@ public class EvaluationResource {
         if (evaluation.getId() != null) {
             throw new BadRequestAlertException("A new evaluation cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        if(!evaluation.getUser().getLogin().equals(SecurityUtils.getCurrentUserLogin().orElse(""))){
+        if(!ObjectUtils.isEmpty(evaluation.getUser()) &&  !evaluation.getUser().getLogin().equals(SecurityUtils.getCurrentUserLogin().orElse(""))){
             return new ResponseEntity<>("error.http.403", HttpStatus.FORBIDDEN);
         }
         Evaluation result = evaluationService.save(evaluation);
