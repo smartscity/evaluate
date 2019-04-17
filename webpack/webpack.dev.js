@@ -22,7 +22,8 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
             context: [
                 '/'
             ],
-            target: `http${options.tls ? 's' : ''}://localhost:8080`,
+            target: `http${options.tls ? 's' : ''}://localhost:8888`,
+            // target: 'http://evaluate.smartscity.com',
             secure: false,
             changeOrigin: options.tls
         }],
