@@ -13,12 +13,12 @@ import { RouterModule } from '@angular/router';
         loadChildren: './evaluation/evaluation.module#EvaluateEvaluationModule'
       },
       {
-        path: 'evaluation',
-        loadChildren: './evaluation/evaluation.module#EvaluateEvaluationModule'
+        path: 'prize',
+        loadChildren: './prize/prize.module#EvaluatePrizeModule'
       },
       {
-        path: 'speaker',
-        loadChildren: './speaker/speaker.module#EvaluateSpeakerModule'
+        path: 'evaluationExample',
+        loadChildren: './evaluationExample/example.module#EvaluateExampleModule'
       },
       {
         path: 'speaker',

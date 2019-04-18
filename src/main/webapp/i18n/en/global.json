@@ -9,6 +9,7 @@
         "main": "Entities",
         "speaker": "Speaker",
         "evaluation": "Evaluation",
+        "evaluationExample": "evaluationExample",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

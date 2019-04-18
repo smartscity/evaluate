@@ -9,6 +9,8 @@
         "main": "数据",
         "speaker": "Speaker",
         "evaluation": "Evaluation",
+        "prize": "奖项管理",
+        "evaluationExample": "评价管理",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
