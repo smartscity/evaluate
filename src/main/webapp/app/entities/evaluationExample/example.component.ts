@@ -19,6 +19,8 @@ export class ExampleComponent implements OnInit, OnDestroy {
   taskOptions: any[];
   taskShow: boolean;
   taskTitel: string;
+  taskIndex: number;
+  taskSourceScore: number;
   discoveryOptions: any[];
   discoveryShow: boolean;
   discoveryTitel: string;
@@ -67,6 +69,90 @@ export class ExampleComponent implements OnInit, OnDestroy {
         actor: '陈立典',
         speak: '44',
         level: '一等奖',
+        pdf: '66',
+        taskSource: '',
+        taskSourceScore: '',
+        discoveryAndInnovation: '',
+        discoveryAndInnovationScore: '',
+        advancedLevel: '',
+        advancedLevelScore: '',
+        applicationAndPromotion: '',
+        applicationAndPromotionScore: '',
+        paper: '',
+        paperScore: '',
+        reply: '',
+        replyScore: ''
+      },
+      {
+        id: 3,
+        title: '脊柱脊髓损伤治疗、康复及修复的系统研究',
+        orgName: '中国康复研究中心，中国人民解放军陆军总医院',
+        actor: '洪毅、孙天胜、白金柱',
+        speak: '44',
+        level: '二等奖',
+        pdf: '66',
+        taskSource: '',
+        taskSourceScore: '',
+        discoveryAndInnovation: '',
+        discoveryAndInnovationScore: '',
+        advancedLevel: '',
+        advancedLevelScore: '',
+        applicationAndPromotion: '',
+        applicationAndPromotionScore: '',
+        paper: '',
+        paperScore: '',
+        reply: '',
+        replyScore: ''
+      },
+      {
+        id: 4,
+        title: '颈椎病中医康复基础与临床研究',
+        orgName: '中国康复研究中心，中国人民解放军陆军总医院',
+        actor: '洪毅、孙天胜、白金柱',
+        speak: '44',
+        level: '二等奖',
+        pdf: '66',
+        taskSource: '',
+        taskSourceScore: '',
+        discoveryAndInnovation: '',
+        discoveryAndInnovationScore: '',
+        advancedLevel: '',
+        advancedLevelScore: '',
+        applicationAndPromotion: '',
+        applicationAndPromotionScore: '',
+        paper: '',
+        paperScore: '',
+        reply: '',
+        replyScore: ''
+      },
+      {
+        id: 5,
+        title: '人体平衡评定及训练系统',
+        orgName: '河南优德医疗设备股份有限公司',
+        actor: '陈立春',
+        speak: '44',
+        level: '三等奖',
+        pdf: '66',
+        taskSource: '',
+        taskSourceScore: '',
+        discoveryAndInnovation: '',
+        discoveryAndInnovationScore: '',
+        advancedLevel: '',
+        advancedLevelScore: '',
+        applicationAndPromotion: '',
+        applicationAndPromotionScore: '',
+        paper: '',
+        paperScore: '',
+        reply: '',
+        replyScore: ''
+      },
+      {
+        id: 6,
+        title: '小儿脑瘫手术的围麻醉期管理与康复',
+        orgName: '四川省八一康复中心',
+        actor: '赵泽宇、何霞',
+        speak: '44',
+        level: '三等奖',
         pdf: '66',
         taskSource: '',
         taskSourceScore: '',
@@ -133,25 +219,44 @@ export class ExampleComponent implements OnInit, OnDestroy {
   trackId(index: number, item: ISpeaker) {
     return item.id;
   }
-  taskMain(data) {
+  taskMain(data, i) {
     if (data == 1) {
       this.taskShow = false;
+      this.taskIndex = i;
+      for (let j = 0; j < this.speakers.length; j++) {
+        if (j == i) {
+          this.speakers[i].taskSourceScore = 4;
+        }
+      }
       this.taskTitel = '分值应填4-5分';
     } else if (data == 6 || data == 7 || data == 8) {
       this.taskShow = false;
+      this.taskIndex = i;
+      for (let j = 0; j < this.speakers.length; j++) {
+        if (j == i) {
+          this.speakers[i].taskSourceScore = 6;
+        }
+      }
       this.taskTitel = '分值应填1分';
     } else {
       this.taskShow = false;
+      this.taskIndex = i;
+      for (let j = 0; j < this.speakers.length; j++) {
+        if (j == i) {
+          this.speakers[i].taskSourceScore = 2;
+        }
+      }
       this.taskTitel = '分值应填2-3分';
     }
   }
-  taskScoreMain(type, data) {
+  taskScoreMain(type, data, i) {
     if (type == 1) {
       if (data == 4 || data == 5) {
         this.taskShow = true;
         this.totalNumber = parseInt(data);
       } else {
         this.taskShow = false;
+        this.taskIndex = i;
         this.taskTitel = '分值应填4-5分';
       }
     } else if (type == 6 || type == 7 || type == 8) {
@@ -160,6 +265,7 @@ export class ExampleComponent implements OnInit, OnDestroy {
         this.totalNumber = parseInt(data);
       } else {
         this.taskShow = false;
+        this.taskIndex = i;
         this.taskTitel = '分值应填1分';
       }
     } else {
@@ -168,20 +274,39 @@ export class ExampleComponent implements OnInit, OnDestroy {
         this.totalNumber = parseInt(data);
       } else {
         this.taskShow = false;
+        this.taskIndex = i;
         this.taskTitel = '分值应填2-3分';
       }
     }
   }
 
-  discoveryMain(data) {
+  discoveryMain(data, i) {
     if (data == 1) {
       this.discoveryShow = false;
+      this.taskIndex = i;
+      for (let j = 0; j < this.speakers.length; j++) {
+        if (j == i) {
+          this.speakers[i].discoveryAndInnovationScore = 21;
+        }
+      }
       this.discoveryTitel = '分值应填21-30分';
     } else if (data == 2) {
       this.discoveryShow = false;
+      this.taskIndex = i;
+      for (let j = 0; j < this.speakers.length; j++) {
+        if (j == i) {
+          this.speakers[i].discoveryAndInnovationScore = 11;
+        }
+      }
       this.discoveryTitel = '分值应填11-20分';
     } else {
       this.discoveryShow = false;
+      this.taskIndex = i;
+      for (let j = 0; j < this.speakers.length; j++) {
+        if (j == i) {
+          this.speakers[i].discoveryAndInnovationScore = 8;
+        }
+      }
       this.discoveryTitel = '分值应填10分以下';
     }
   }
@@ -190,15 +315,33 @@ export class ExampleComponent implements OnInit, OnDestroy {
     this.totalNumber += parseInt(data);
   }
 
-  levelMain(data) {
+  levelMain(data, i) {
     if (data == 1) {
       this.levelShow = false;
+      this.taskIndex = i;
+      for (let j = 0; j < this.speakers.length; j++) {
+        if (j == i) {
+          this.speakers[i].advancedLevelScore = 21;
+        }
+      }
       this.levelTitel = '分值应填21-30分';
     } else if (data == 2) {
       this.levelShow = false;
+      this.taskIndex = i;
+      for (let j = 0; j < this.speakers.length; j++) {
+        if (j == i) {
+          this.speakers[i].advancedLevelScore = 11;
+        }
+      }
       this.levelTitel = '分值应填11-20分';
     } else {
       this.levelShow = false;
+      this.taskIndex = i;
+      for (let j = 0; j < this.speakers.length; j++) {
+        if (j == i) {
+          this.speakers[i].advancedLevelScore = 8;
+        }
+      }
       this.levelTitel = '分值应填10分以下';
     }
   }
@@ -207,15 +350,33 @@ export class ExampleComponent implements OnInit, OnDestroy {
     this.totalNumber += parseInt(data);
   }
 
-  applicationOptionsMain(data) {
+  applicationOptionsMain(data, i) {
     if (data == 1) {
       this.applicationShow = false;
+      this.taskIndex = i;
+      for (let j = 0; j < this.speakers.length; j++) {
+        if (j == i) {
+          this.speakers[i].applicationAndPromotionScore = 11;
+        }
+      }
       this.applicationTitel = '分值应填11-15分';
     } else if (data == 2) {
       this.applicationShow = false;
+      this.taskIndex = i;
+      for (let j = 0; j < this.speakers.length; j++) {
+        if (j == i) {
+          this.speakers[i].applicationAndPromotionScore = 8;
+        }
+      }
       this.applicationTitel = '分值应填6-10分';
     } else {
       this.applicationShow = false;
+      this.taskIndex = i;
+      for (let j = 0; j < this.speakers.length; j++) {
+        if (j == i) {
+          this.speakers[i].applicationAndPromotionScore = 5;
+        }
+      }
       this.applicationTitel = '分值应填5分或以下';
     }
   }

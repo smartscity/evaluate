@@ -9,21 +9,21 @@
             <thead>
             <tr>
             <th style="width:60px;">序号</th>
-            <th style="width:120px;">标题</th>
+            <th style="width:140px;">标题</th>
             <th style="width:160px;">主要完成单位</th>
-            <th style="width:140px;">主要完成人</th>
+            <th style="width:110px;">主要完成人</th>
             <!-- <th style="width:80px;">演讲者</th> -->
             <th style="width:80px;">级别</th>
-            <th style="width:220px;">任务来源</th>
+            <th style="width:180px;">任务来源</th>
             <th style="width:120px;">分值</th>
-            <th style="width:220px;">主要发现和创新点</th>
+            <th style="width:200px;">主要发现和创新点</th>
             <th style="width:140px;">分值</th>
-            <th style="width:180px;">先进程度</th>
+            <th style="width:140px;">先进程度</th>
             <th style="width:140px;">分值</th>
-            <th style="width:230px;">应用与推广及其效益</th>
+            <th style="width:210px;">应用与推广及其效益</th>
             <th style="width:140px;">分值</th>
             <th style="width:220px;">论文、著作、知识产权分值</th>
-            <th style="width:120px;">答辩分值</th>
+            <th style="width:100px;">答辩分值</th>
             <th style="width:100px;">总分</th>
             <th style="width:160px;">创建时间</th>
             <th style="width:160px;">更新时间</th>
@@ -33,16 +33,16 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let speaker of speakers ;trackBy: trackId">
+            <tr *ngFor="let speaker of speakers ;trackBy: trackId;let i = index;">
                 <td>{{speaker.id}}</td>
-                <td><a>{{speaker.title}}</a></td>
-                <td>{{speaker.orgName}}</td>
-                <td>{{speaker.actor}}</td>
+                <td [title]="speaker.title" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><a style="color:cornflowerblue">{{speaker.title}}</a></td>
+                <td [title]="speaker.orgName" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{{speaker.orgName}}</td>
+                <td [title]="speaker.actor" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{{speaker.actor}}</td>
                 <!-- <td>{{speaker.speak}}</td> -->
                 <td >{{speaker.level}}</td>
                 <!-- 任务来源 -->
                 <td>
-                    <select class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.taskSource" (change)="taskMain(speaker.taskSource)">
+                    <select class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.taskSource" (change)="taskMain(speaker.taskSource,i)">
                         <option *ngFor="let item of taskOptions" [value]="item.value" [label]="item.label">{{item.label}}</option>
                         </select>
                         <div *ngIf="!speaker.taskSource">
@@ -51,14 +51,15 @@
                     </form>
                 </td>
                 <td>
-                    <input type="text" class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.taskSourceScore" (change)="taskScoreMain(speaker.taskSource,speaker.taskSourceScore)">
-                    <div *ngIf="!taskShow">
-                        <small class="form-text text-danger" >{{taskTitel}}</small>
+                    <input type="text" class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.taskSourceScore" (change)="taskScoreMain(speaker.taskSource,speaker.taskSourceScore,i)">
+                    <div *ngIf="!taskShow && taskIndex==i" >
+                        <!--*ngIf="j==i"-->
+                        <small class="form-text text-danger"  >{{taskTitel}}</small>
                     </div>
                 </td>
                 <!-- 主要发现和创新点 -->
                 <td>
-                    <select class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.discoveryAndInnovation" (change)="discoveryMain(speaker.discoveryAndInnovation)">
+                    <select class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.discoveryAndInnovation" (change)="discoveryMain(speaker.discoveryAndInnovation,i)">
                         <option *ngFor="let item of discoveryOptions" [value]="item.value" [label]="item.label">{{item.label}}</option>
                         </select>
                         <div *ngIf="!speaker.discoveryAndInnovation">
@@ -68,14 +69,14 @@
                 </td>
                 <td>
                         <!-- (change)="discoveryScoreMain(speaker.discoveryAndInnovation,speaker.discoveryAndInnovationScore)" -->
-                    <input type="text" class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.discoveryAndInnovationScore" (change)="discoveryScoreMain(speaker.discoveryAndInnovation,speaker.discoveryAndInnovationScore)">
-                    <div *ngIf="!discoveryShow">
+                    <input type="text" class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.discoveryAndInnovationScore" (change)="discoveryScoreMain(speaker.discoveryAndInnovation,speaker.discoveryAndInnovationScore,i)">
+                    <div *ngIf="!discoveryShow && taskIndex==i">
                         <small class="form-text text-danger" >{{discoveryTitel}}</small>
                     </div>
                 </td>
                 <!-- 先进程度 -->
                 <td>
-                    <select class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.advancedLevel" (change)="levelMain(speaker.advancedLevel)">
+                    <select class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.advancedLevel" (change)="levelMain(speaker.advancedLevel,i)">
                         <option *ngFor="let item of levelOptions" [value]="item.value" [label]="item.label">{{item.label}}</option>
                         </select>
                         <div *ngIf="!speaker.advancedLevel">
@@ -85,14 +86,14 @@
                 </td>
                 <td>
                         <!--  -->
-                    <input type="text" class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.advancedLevelScore" (change)="levelScoreMain(speaker.advancedLevel,speaker.advancedLevelScore)">
-                    <div *ngIf="!levelShow">
+                    <input type="text" class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.advancedLevelScore" (change)="levelScoreMain(speaker.advancedLevel,speaker.advancedLevelScore,i)">
+                    <div *ngIf="!levelShow && taskIndex==i">
                         <small class="form-text text-danger" >{{levelTitel}}</small>
                     </div>
                 </td>
                 <!-- 应用与推广及其效益 -->
                 <td>
-                    <select class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.applicationAndPromotion" (change)="applicationOptionsMain(speaker.applicationAndPromotion)">
+                    <select class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.applicationAndPromotion" (change)="applicationOptionsMain(speaker.applicationAndPromotion,i)">
                         <option *ngFor="let item of applicationOptions" [value]="item.value" [label]="item.label">{{item.label}}</option>
                         </select>
                         <div *ngIf="!speaker.applicationAndPromotion">
@@ -101,8 +102,8 @@
                     </form>
                 </td>
                 <td>
-                    <input type="text" class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.applicationAndPromotionScore" (change)="applicationScoreMain(speaker.applicationAndPromotionScore)">
-                    <div *ngIf="!applicationShow">
+                    <input type="text" class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.applicationAndPromotionScore" (change)="applicationScoreMain(speaker.applicationAndPromotionScore,i)">
+                    <div *ngIf="!applicationShow && taskIndex==i">
                         <small class="form-text text-danger" >{{applicationTitel}}</small>
                     </div>
                 </td>
