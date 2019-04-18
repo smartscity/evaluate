@@ -1,19 +1,19 @@
 {
   "home": {
-    "title": "Welcome, Java Hipster!",
-    "subtitle": "This is your homepage",
+    "title": "欢迎, 来到 必赢科技 专家评审系统!",
+    "subtitle": "这里是首页",
     "logged": {
-      "message": "You are logged in as user \"{{username}}\"."
+      "message": "您目前是以 \"{{username}}\" 账号登录."
     },
-    "question": "If you have any question on JHipster:",
+    "question": "如果您有任何有关 【专家评审系统】 的问题, 可以查阅下列资源:",
     "link": {
-      "homepage": "JHipster homepage",
-      "stackoverflow": "JHipster on Stack Overflow",
-      "bugtracker": "JHipster bug tracker",
-      "chat": "JHipster public chat room",
-      "follow": "follow @java_hipster on Twitter"
+      "homepage": "必赢科技首页",
+      "stackoverflow": "问题讨论 的讨论",
+      "bugtracker": "系统 的缺陷追踪",
+      "chat": "交流",
+      "follow": "在 发送EMAIL 联络 我们 lyl2008dsg@163.com"
     },
-    "like": "If you like JHipster, don't forget to give us a star on",
+    "like": "如果您喜欢此系统  , 请联系我们",
     "github": "GitHub"
   }
 }
