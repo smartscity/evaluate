@@ -41,11 +41,32 @@ export class ExampleComponent implements OnInit, OnDestroy {
     this.speakers = [
       {
         id: 1,
-        title: 'Superman',
-        orgName: 'Yoda',
-        actor: '33',
+        title: '中国脑性瘫痪康复指南(2015)',
+        orgName: '中国康复医学会儿童康复专业委员会',
+        actor: '李晓捷，唐久来',
         speak: '44',
-        level: '55',
+        level: '一等奖',
+        pdf: '66',
+        taskSource: '',
+        taskSourceScore: '',
+        discoveryAndInnovation: '',
+        discoveryAndInnovationScore: '',
+        advancedLevel: '',
+        advancedLevelScore: '',
+        applicationAndPromotion: '',
+        applicationAndPromotionScore: '',
+        paper: '',
+        paperScore: '',
+        reply: '',
+        replyScore: ''
+      },
+      {
+        id: 2,
+        title: '脑卒中后认知障碍康复评价及关健技术研究',
+        orgName: '福建中医学大学',
+        actor: '陈立典',
+        speak: '44',
+        level: '一等奖',
         pdf: '66',
         taskSource: '',
         taskSourceScore: '',
@@ -106,9 +127,9 @@ export class ExampleComponent implements OnInit, OnDestroy {
     // this.registerChangeInSpeakers();
   }
 
-  // ngOnDestroy() {
-  //   this.eventManager.destroy(this.eventSubscriber);
-  // }
+  ngOnDestroy() {
+    //   this.eventManager.destroy(this.eventSubscriber);
+  }
   trackId(index: number, item: ISpeaker) {
     return item.id;
   }
