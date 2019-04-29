@@ -1,0 +1,127 @@
+{
+    "name": "Evaluation",
+    "fields": [
+        {
+            "fieldName": "speakerId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "orgName",
+            "javadoc": "主要完成单位",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "actor",
+            "javadoc": "主要完成人",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "speaker",
+            "javadoc": "演讲者",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "level",
+            "javadoc": "一等奖、二等奖、三等奖",
+            "fieldType": "Level",
+            "fieldValues": "FIRST,SECOND,THIRD"
+        },
+        {
+            "fieldName": "taskSource",
+            "javadoc": "任务来源: 国家计划（4-5分）、部委计划、省（自治区、市）计划（2-3分）、中国人民解放军计划（2-3分）、基金资助（2-3分）、国际合作、其他企事业单位委托(1)、自选(1)、其他(1)。",
+            "fieldType": "TaskSource",
+            "fieldValues": "NATIONAL_PLAN,BUWEI_PLAN,SHENGSHI_PLAN,JUNWEI_PLAN,FUND_SUPPORT,GLOBAL_COOPERATION,OTHER_ORG,OPTIONAL,OTHER"
+        },
+        {
+            "fieldName": "taskSourceScore",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "discoveryAndInnovation",
+            "javadoc": "主要发现和创新点: 重大发现和显著创新（21-30分）、重要发现和明显创新（11-20分）、新发现和一般创新（10分或以下）",
+            "fieldType": "DiscoveryAndInnovation",
+            "fieldValues": "HIGH,MIDDLE,GENERAL"
+        },
+        {
+            "fieldName": "discoveryAndInnovationScore",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "advancedLevel",
+            "javadoc": "先进程度: 领先水平（21-30分）、先进水平（11-20分）、一般水平（10分或以下）",
+            "fieldType": "AdvancedLevel",
+            "fieldValues": "LEADING,ADVANCED,GENERAL"
+        },
+        {
+            "fieldName": "advancedLevelScore",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "applicationAndPromotion",
+            "javadoc": "应用与推广及其效益: 应用推广及效益显著（11-15分）、应用推广及效益明显（6-10分）、应用推广及效益一般（5分或以下）",
+            "fieldType": "ApplicationAndPromotion",
+            "fieldValues": "EXCELLENCE,OBVIOUS,GENERAL"
+        },
+        {
+            "fieldName": "applicationAndPromotionScore",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "paperScore",
+            "javadoc": "论文直接给分即可: 根据论文、著作和知识产权的学术水平、质量和数量的综合情况给分（5-10分）",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "replyScore",
+            "javadoc": "答辩直接给分即可: 现场答辩重点突出、简明扼要、准确无误，PPT制作美观清晰（5-10分）",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "totalScore",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "avgScore",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "createTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updateTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "evaluator",
+            "javadoc": "评价者",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "remark",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "evaluation",
+            "relationshipName": "user",
+            "otherEntityField": "login"
+        }
+    ],
+    "changelogDate": "20190416164030",
+    "entityTableName": "evaluation",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

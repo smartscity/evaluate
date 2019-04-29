@@ -1,0 +1,37 @@
+{
+  "evaluateApp": {
+    "speaker": {
+      "home": {
+        "title": "Speakers",
+        "createLabel": "Create a new Speaker",
+        "createOrEditLabel": "Create or edit a Speaker"
+      },
+      "LevelFilter": {
+        "FIRST": "一等奖",
+        "SECOND": "二等奖",
+        "THIRD": "三等奖"
+      },
+      "created": "A new Speaker is created with identifier {{ param }}",
+      "updated": "A Speaker is updated with identifier {{ param }}",
+      "deleted": "A Speaker is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Speaker {{ id }}?"
+      },
+      "detail": {
+        "title": "Speaker"
+      },
+      "title": "Title",
+      "orgName": "Org Name",
+      "actor": "Actor",
+      "speaker": "Speaker",
+      "level": "Level",
+      "icon": "Icon",
+      "pdf": "Pdf",
+      "help": {
+        "orgName": "主要完成单位",
+        "actor": "主要完成人",
+        "speaker": "演讲者"
+      }
+    }
+  }
+}

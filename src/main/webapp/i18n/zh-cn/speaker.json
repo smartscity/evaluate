@@ -1,0 +1,37 @@
+{
+  "evaluateApp": {
+    "speaker": {
+      "home": {
+        "title": "演讲人列表",
+        "createLabel": "录入演讲人信息",
+        "createOrEditLabel": "创建或编辑 演讲者"
+      },
+      "LevelFilter": {
+        "FIRST": "一等奖",
+        "SECOND": "二等奖",
+        "THIRD": "三等奖"
+      },
+      "created": "演讲人 {{ param }} 录入成功",
+      "updated": "演讲人 {{ param }} 更新成功",
+      "deleted": "演讲人 {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 演讲人 {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "演讲人列表"
+      },
+      "title": "主题",
+      "orgName": "主要完成单位",
+      "actor": "主要完成人",
+      "speaker": "演讲人",
+      "level": "奖项等级",
+      "icon": "Icon",
+      "pdf": "Pdf",
+      "help": {
+        "orgName": "主要完成单位",
+        "actor": "主要完成人",
+        "speaker": "演讲者"
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "evaluateApp": {
+    "DiscoveryAndInnovation": {
+      "null": "",
+      "HIGH": "HIGH",
+      "MIDDLE": "MIDDLE",
+      "GENERAL": "GENERAL"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="speaker">
+            <h2><span jhiTranslate="evaluateApp.speaker.detail.title">Speaker</span> {{speaker.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="evaluateApp.speaker.title">Title</span></dt>
+                <dd>
+                    <span>{{speaker.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.speaker.orgName" [ngbTooltip]="'speaker.help.orgName' | translate">Org Name</span></dt>
+                <dd>
+                    <span>{{speaker.orgName}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.speaker.actor" [ngbTooltip]="'speaker.help.actor' | translate">Actor</span></dt>
+                <dd>
+                    <span>{{speaker.actor}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.speaker.speaker" [ngbTooltip]="'speaker.help.speaker' | translate">Speaker</span></dt>
+                <dd>
+                    <span>{{speaker.speaker}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.speaker.level">Level</span></dt>
+                <dd>
+                    <span :jhiTranslate="{{'evaluateApp.speaker.LevelFilter.' + speaker.level}}">{{speaker.level}}</span>
+                </dd>
+                <!--<dt><span jhiTranslate="evaluateApp.speaker.icon">Icon</span></dt>-->
+                <!--<dd>-->
+                    <!--<div *ngIf="speaker.icon">-->
+                        <!--<a (click)="openFile(speaker.iconContentType, speaker.icon)">-->
+                            <!--<img [src]="'data:' + speaker.iconContentType + ';base64,' + speaker.icon" style="max-width: 100%;" alt="speaker image"/>-->
+                        <!--</a>-->
+                        <!--{{speaker.iconContentType}}, {{byteSize(speaker.icon)}}-->
+                    <!--</div>-->
+                <!--</dd>-->
+                <dt><span jhiTranslate="evaluateApp.speaker.pdf">Pdf</span></dt>
+                <dd>
+                    <div *ngIf="speaker.pdf">
+                        <a (click)="openFile(speaker.pdfContentType, speaker.pdf)" jhiTranslate="entity.action.open">open</a>
+                        {{speaker.pdfContentType}}, {{byteSize(speaker.pdf)}}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/speaker', speaker.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

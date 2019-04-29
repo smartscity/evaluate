@@ -1,0 +1,16 @@
+{
+  "evaluateApp": {
+    "TaskSource": {
+      "null": "",
+      "NATIONAL_PLAN": "NATIONAL_PLAN",
+      "BUWEI_PLAN": "BUWEI_PLAN",
+      "SHENGSHI_PLAN": "SHENGSHI_PLAN",
+      "JUNWEI_PLAN": "JUNWEI_PLAN",
+      "FUND_SUPPORT": "FUND_SUPPORT",
+      "GLOBAL_COOPERATION": "GLOBAL_COOPERATION",
+      "OTHER_ORG": "OTHER_ORG",
+      "OPTIONAL": "OPTIONAL",
+      "OTHER": "OTHER"
+    }
+  }
+}

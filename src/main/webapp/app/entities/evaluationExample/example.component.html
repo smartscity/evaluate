@@ -1,0 +1,98 @@
+<div>
+    <h2 id="page-heading">
+        <span>评价管理</span>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="speakers">
+        <table class="table table-striped" style="text-align: center;table-layout: fixed;">
+            <thead>
+            <tr>
+                <th style="width:60px;">序号</th>
+                <th style="width:140px;">标题</th>
+                <th style="width:160px;">主要完成单位</th>
+                <!-- <th style="width:80px;">演讲者</th> -->
+                <th style="width:80px;">级别</th>
+                <th style="width:160px;">任务来源</th>
+                <th style="width:80px;">分值</th>
+                <th style="width:180px;">主要发现和创新点</th>
+                <th style="width:80px;">分值</th>
+                <th style="width:140px;">先进程度</th>
+                <th style="width:80px;">分值</th>
+                <th style="width:180px;">应用与推广及其效益</th>
+                <th style="width:80px;">分值</th>
+                <th style="width:200px;">论文、著作、知识产权分值</th>
+                <th style="width:80px;">答辩分值</th>
+                <th style="width:80px;">总分</th>
+                <!--<th style="width:160px;">评价者</th>-->
+                <!--<th style="width:160px;">备注</th>-->
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let speaker of speakers ;trackBy: trackId;let i = index;">
+                <td>{{speaker.id}}</td>
+                <td nz-tooltip [nzTitle]="speaker.title" nzPlacement="topCenter" nzTrigger="hover" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><a style="color:cornflowerblue">{{speaker.title}}</a></td>
+                <td nz-tooltip [nzTitle]="speaker.orgName" nzPlacement="topCenter" nzTrigger="hover" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{{speaker.orgName}}</td>
+                <td >{{speaker.level}}</td>
+                <!-- 任务来源 -->
+                <td>
+                    <select class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.taskSource"
+                            (change)="changeTip('taskSource',speaker.taskSource,i)">
+                        <option *ngFor="let item of taskOptions" [value]="item.value" [label]="item.label">
+                            {{item.label}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <nz-input-number [(ngModel)]="speaker.taskSourceScore" [nzMin]="aboutTips[i].taskSource.min" [nzMax]="aboutTips[i].taskSource.max" [nzStep]="1" nz-tooltip [nzTitle]="aboutTips[i].taskSource.tip" nzPlacement="topCenter" nzTrigger="hover" (nzBlur)="getTotal(i)"></nz-input-number>
+                </td>
+                <!-- 主要发现和创新点 -->
+                <td>
+                    <select class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.discoveryAndInnovation" (change)="changeTip('discoveryAndInnovation',speaker.discoveryAndInnovation,i)">
+                        <option *ngFor="let item of discoveryOptions" [value]="item.value" [label]="item.label">
+                            {{item.label}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <nz-input-number [(ngModel)]="speaker.discoveryAndInnovationScore" [nzMin]="aboutTips[i].discoveryAndInnovation.min" [nzMax]="aboutTips[i].discoveryAndInnovation.max" [nzStep]="1" nz-tooltip [nzTitle]="aboutTips[i].discoveryAndInnovation.tip" nzPlacement="topCenter" nzTrigger="hover" (nzBlur)="getTotal(i)"></nz-input-number>
+                </td>
+                <!-- 先进程度 -->
+                <td>
+                    <select class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.advancedLevel"
+                            (change)="changeTip('advancedLevel',speaker.advancedLevel,i)">
+                        <option *ngFor="let item of levelOptions" [value]="item.value" [label]="item.label">
+                            {{item.label}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <nz-input-number [(ngModel)]="speaker.advancedLevelScore" [nzMin]="aboutTips[i].advancedLevel.min" [nzMax]="aboutTips[i].advancedLevel.max" [nzStep]="1" nz-tooltip [nzTitle]="aboutTips[i].advancedLevel.tip" nzPlacement="topCenter" nzTrigger="hover" (nzBlur)="getTotal(i)"></nz-input-number>
+                </td>
+                <!-- 应用与推广及其效益 -->
+                <td>
+                    <select class="form-control" id='txt_name_{{speaker.id}}' [(ngModel)]="speaker.applicationAndPromotion" (change)="changeTip('applicationAndPromotion',speaker.applicationAndPromotion,i)">
+                        <option *ngFor="let item of applicationOptions" [value]="item.value" [label]="item.label">
+                            {{item.label}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <nz-input-number [(ngModel)]="speaker.applicationAndPromotionScore" [nzMin]="aboutTips[i].applicationAndPromotion.min" [nzMax]="aboutTips[i].applicationAndPromotion.max" [nzStep]="1" nz-tooltip [nzTitle]="aboutTips[i].applicationAndPromotion.tip" nzPlacement="topCenter" nzTrigger="hover" (nzBlur)="getTotal(i)"></nz-input-number>
+                </td>
+                <!-- 论文、著作、知识产权 -->
+                <td>
+                    <nz-input-number [(ngModel)]="speaker.paperScore" [nzMin]="aboutTips[i].paper.min" [nzMax]="aboutTips[i].paper.max" [nzStep]="1" nz-tooltip [nzTitle]="aboutTips[i].paper.tip" nzPlacement="topCenter" nzTrigger="hover"></nz-input-number>
+                </td>
+                <!-- 答辩 -->
+                <td>
+                    <nz-input-number [(ngModel)]="speaker.replyScore" [nzMin]="aboutTips[i].reply.min" [nzMax]="aboutTips[i].reply.max" [nzStep]="1" nz-tooltip [nzTitle]="aboutTips[i].reply.tip" nzPlacement="topCenter" nzTrigger="hover" (nzBlur)="getTotal(i)"></nz-input-number>
+                </td>
+                <td> {{speaker.total}}</td>
+                <!--<td></td>-->
+                <!--<td></td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+entity Speaker {
+	id Integer
+	title String
+    /**
+    * 主要完成单位
+    */
+    orgName String
+    /**
+    * 主要完成人
+    */
+    actor String
+    /**
+    * 演讲者
+    */
+    speaker String
+    level Level
+    icon ImageBlob
+    pdf AnyBlob
+}
+
+entity Evaluation {
+	id Integer
+    speakerId Integer
+	title String
+    /**
+    * 主要完成单位
+    */
+    orgName String
+    /**
+    * 主要完成人
+    */
+    actor String
+    /**
+    * 演讲者
+    */
+    speaker String
+    /**
+    * 一等奖、二等奖、三等奖
+    */
+    level Level
+    /**
+    * 任务来源: 国家计划（4-5分）、部委计划、省（自治区、市）计划（2-3分）、中国人民解放军计划（2-3分）、基金资助（2-3分）、国际合作、其他企事业单位委托(1)、自选(1)、其他(1)。
+    */
+    taskSource TaskSource
+    taskSourceScore Integer
+    /**
+    * 主要发现和创新点: 重大发现和显著创新（21-30分）、重要发现和明显创新（11-20分）、新发现和一般创新（10分或以下）
+    */
+    discoveryAndInnovation DiscoveryAndInnovation
+	discoveryAndInnovationScore Integer
+	/**
+    * 先进程度: 领先水平（21-30分）、先进水平（11-20分）、一般水平（10分或以下）
+    */
+    advancedLevel AdvancedLevel
+    advancedLevelScore Integer
+    /**
+    * 应用与推广及其效益: 应用推广及效益显著（11-15分）、应用推广及效益明显（6-10分）、应用推广及效益一般（5分或以下）
+    */
+    applicationAndPromotion ApplicationAndPromotion
+    applicationAndPromotionScore Integer
+    /**
+    * 论文直接给分即可: 根据论文、著作和知识产权的学术水平、质量和数量的综合情况给分（5-10分）
+    */
+    paperScore Integer
+    /**
+    * 答辩直接给分即可: 现场答辩重点突出、简明扼要、准确无误，PPT制作美观清晰（5-10分）
+    */
+    replyScore Integer
+    totalScore Integer
+    avgScore Double
+    createTime Instant
+    updateTime Instant
+    /**
+    * 评价者
+    */
+    evaluator String
+    // 备注
+    remark String
+}
+
+enum Level {
+    FIRST, SECOND, THIRD
+}
+
+enum TaskSource {
+    NATIONAL_PLAN, BUWEI_PLAN, SHENGSHI_PLAN, JUNWEI_PLAN, FUND_SUPPORT, GLOBAL_COOPERATION, OTHER_ORG, OPTIONAL, OTHER
+}
+
+enum DiscoveryAndInnovation {
+    HIGH, MIDDLE, GENERAL
+}
+
+enum AdvancedLevel {
+    LEADING, ADVANCED, GENERAL
+}
+
+enum ApplicationAndPromotion {
+    EXCELLENCE, OBVIOUS, GENERAL
+}
+
+relationship ManyToOne {
+    Evaluation{user(login)} to User,
+}
+
+// Set pagination options
+// paginate JobHistory, Employee with infinite-scroll
+// paginate Job with pagination
+
+
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceClass
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

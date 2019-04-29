@@ -1,0 +1,49 @@
+{
+    "name": "Speaker",
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "orgName",
+            "javadoc": "主要完成单位",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "actor",
+            "javadoc": "主要完成人",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "speaker",
+            "javadoc": "演讲者",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "level",
+            "fieldType": "Level",
+            "fieldValues": "FIRST,SECOND,THIRD"
+        },
+        {
+            "fieldName": "icon",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "pdf",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190416164029",
+    "entityTableName": "speaker",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

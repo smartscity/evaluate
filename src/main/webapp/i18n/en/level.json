@@ -1,0 +1,10 @@
+{
+  "evaluateApp": {
+    "Level": {
+      "null": "",
+      "FIRST": "FIRST",
+      "SECOND": "SECOND",
+      "THIRD": "THIRD"
+    }
+  }
+}

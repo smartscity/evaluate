@@ -1,0 +1,56 @@
+{
+  "evaluateApp": {
+    "evaluation": {
+      "home": {
+        "title": "Evaluations",
+        "createLabel": "创建新 Evaluation",
+        "createOrEditLabel": "创建或编辑 Evaluation"
+      },
+      "created": "Evaluation {{ param }} 创建成功",
+      "updated": "Evaluation {{ param }} 更新成功",
+      "deleted": "Evaluation {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Evaluation {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Evaluation"
+      },
+      "speakerId": "Speaker Id",
+      "title": "Title",
+      "orgName": "Org Name",
+      "actor": "Actor",
+      "speaker": "Speaker",
+      "level": "Level",
+      "taskSource": "Task Source",
+      "taskSourceScore": "Task Source Score",
+      "discoveryAndInnovation": "Discovery And Innovation",
+      "discoveryAndInnovationScore": "Discovery And Innovation Score",
+      "advancedLevel": "Advanced Level",
+      "advancedLevelScore": "Advanced Level Score",
+      "applicationAndPromotion": "Application And Promotion",
+      "applicationAndPromotionScore": "Application And Promotion Score",
+      "paperScore": "Paper Score",
+      "replyScore": "Reply Score",
+      "totalScore": "Total Score",
+      "avgScore": "Avg Score",
+      "createTime": "Create Time",
+      "updateTime": "Update Time",
+      "evaluator": "Evaluator",
+      "remark": "Remark",
+      "user": "User",
+      "help": {
+        "orgName": "主要完成单位",
+        "actor": "主要完成人",
+        "speaker": "演讲者",
+        "level": "一等奖、二等奖、三等奖",
+        "taskSource": "任务来源: 国家计划（4-5分）、部委计划、省（自治区、市）计划（2-3分）、中国人民解放军计划（2-3分）、基金资助（2-3分）、国际合作、其他企事业单位委托(1)、自选(1)、其他(1)。",
+        "discoveryAndInnovation": "主要发现和创新点: 重大发现和显著创新（21-30分）、重要发现和明显创新（11-20分）、新发现和一般创新（10分或以下）",
+        "advancedLevel": "先进程度: 领先水平（21-30分）、先进水平（11-20分）、一般水平（10分或以下）",
+        "applicationAndPromotion": "应用与推广及其效益: 应用推广及效益显著（11-15分）、应用推广及效益明显（6-10分）、应用推广及效益一般（5分或以下）",
+        "paperScore": "论文直接给分即可: 根据论文、著作和知识产权的学术水平、质量和数量的综合情况给分（5-10分）",
+        "replyScore": "答辩直接给分即可: 现场答辩重点突出、简明扼要、准确无误，PPT制作美观清晰（5-10分）",
+        "evaluator": "评价者"
+      }
+    }
+  }
+}
