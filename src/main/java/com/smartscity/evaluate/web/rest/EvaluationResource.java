@@ -95,6 +95,24 @@ public class EvaluationResource {
         return evaluationService.findAll();
     }
 
+    @GetMapping("/evaluations1")
+    public List<Evaluation> getAllEvaluations1() {
+        log.debug("REST request to get all Evaluations");
+        return evaluationService.findAll();
+    }
+
+    @GetMapping("/evaluations2")
+    public List<Evaluation> getAllEvaluations2() {
+        log.debug("REST request to get all Evaluations");
+        return evaluationService.findAll();
+    }
+
+    @GetMapping("/evaluations3")
+    public List<Evaluation> getAllEvaluations3() {
+        log.debug("REST request to get all Evaluations");
+        return evaluationService.findAll();
+    }
+
     /**
      * {@code GET  /evaluations/:id} : get the "id" evaluation.
      *
