@@ -2,8 +2,8 @@
   "evaluateApp": {
     "speaker": {
       "home": {
-        "title": "演讲人列表",
-        "createLabel": "录入演讲人信息",
+        "title": "列表",
+        "createLabel": "信息录入",
         "createOrEditLabel": "创建或编辑 演讲者"
       },
       "LevelFilter": {

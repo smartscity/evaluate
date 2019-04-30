@@ -1,6 +1,8 @@
 package com.smartscity.evaluate.service;
 
 import com.smartscity.evaluate.domain.Evaluation;
+import com.smartscity.evaluate.domain.Speaker;
+import com.smartscity.evaluate.domain.enumeration.Level;
 import com.smartscity.evaluate.repository.EvaluationRepository;
 import com.smartscity.evaluate.repository.UserRepository;
 import com.smartscity.evaluate.security.SecurityUtils;
@@ -11,8 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * Service Implementation for managing {@link Evaluation}.
@@ -25,6 +26,9 @@ public class EvaluationService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    SpeakerService speakerService;
 
     private final EvaluationRepository evaluationRepository;
 
@@ -44,21 +48,97 @@ public class EvaluationService {
         return evaluationRepository.save(evaluation);
     }
 
+
     /**
+     * 1、掐头 去尾
+     * 2、计算平均分
+     * @param level
+     * @return
+     */
+    @Transactional(readOnly = true)
+    public List<Evaluation> findByLevel(Level level) {
+
+
+        long   MINID = 0l;
+        double MIN = 0.0d;
+        long   MAXID = 0l;
+        double MAX = 0.0d;
+
+        List<Evaluation> evaluations = evaluationRepository.findByLevel(level);
+        Map<Long,Evaluation> map = toConvertEval(evaluations);
+        for(Evaluation evaluation:evaluations){
+//            if(evaluation)
+        }
+
+
+        return evaluations;
+    }
+
+
+
+    /**
+     *
+     * 1、获取所有 演讲者信息
+     * 2、获取所有 当前专家评价数据
+     * 3、合并
+     * 4、输出
      * Get all the evaluations.
      *
      * @return the list of entities.
      */
-    @Transactional(readOnly = true)
     public List<Evaluation> findAll() {
+
+        List<Speaker> speakers = speakerService.findAll();
+
         log.debug("Request to get all Evaluations");
-        if (SecurityUtils.getCurrentUserLogin().get().equals("admin")) {
-            return evaluationRepository.findAll();
-        }else {
-            return evaluationRepository.findByUserIsCurrentUser();
-        }
+//        if (SecurityUtils.getCurrentUserLogin().get().equals("admin")) {
+//            return evaluationRepository.findAll();
+//        }else {
+            List<Evaluation> evaluations = evaluationRepository.findByUserIsCurrentUser();
+//        }
+
+        return merge(speakers, evaluations);
     }
 
+    private List<Evaluation> merge(List<Speaker> speakers, List<Evaluation> evaluations) {
+        HashMap<Long, Evaluation> map = toConvert(speakers);
+
+        for(Evaluation evaluation:evaluations){
+            if(map.containsKey(evaluation.getSpeakerId())){
+                map.put(evaluation.getSpeakerId(), evaluation);
+            }
+        }
+
+        List<Evaluation> array = new ArrayList<>();
+        for (Map.Entry<Long, Evaluation> entry : map.entrySet()) {
+            array.add(entry.getValue());
+        }
+        return array;
+    }
+
+    private HashMap<Long, Evaluation> toConvertEval(List<Evaluation> evaluations) {
+        HashMap<Long, Evaluation> map = new HashMap<>();
+        for(Evaluation evaluation : evaluations){
+            map.put(evaluation.getId(), evaluation);
+        }
+        return map;
+    }
+    private HashMap<Long, Evaluation> toConvert(List<Speaker> speakers) {
+        HashMap<Long, Evaluation> map = new HashMap<>();
+        for(Speaker speaker : speakers){
+            Evaluation evaluation = new Evaluation();
+            evaluation.setTitle(        speaker.getTitle());
+            evaluation.setOrgName(      speaker.getOrgName());
+            evaluation.setActor(        speaker.getActor());
+            evaluation.setSpeaker(      speaker.getSpeaker());
+            evaluation.setLevel(        speaker.getLevel());
+            evaluation.setSpeakerId(    speaker.getId());
+
+
+            map.put(speaker.getId(), evaluation);
+        }
+        return map;
+    }
 
     /**
      * Get one evaluation by id.

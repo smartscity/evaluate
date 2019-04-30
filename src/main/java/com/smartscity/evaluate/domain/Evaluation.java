@@ -34,7 +34,7 @@ public class Evaluation implements Serializable {
     private Long id;
 
     @Column(name = "speaker_id")
-    private Integer speakerId;
+    private Long speakerId;
 
     @Column(name = "title")
     private String title;
@@ -161,16 +161,16 @@ public class Evaluation implements Serializable {
         this.id = id;
     }
 
-    public Integer getSpeakerId() {
+    public Long getSpeakerId() {
         return speakerId;
     }
 
-    public Evaluation speakerId(Integer speakerId) {
+    public Evaluation speakerId(Long speakerId) {
         this.speakerId = speakerId;
         return this;
     }
 
-    public void setSpeakerId(Integer speakerId) {
+    public void setSpeakerId(Long speakerId) {
         this.speakerId = speakerId;
     }
 
