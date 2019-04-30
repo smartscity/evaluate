@@ -4,24 +4,24 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@a
 import { UserRouteAccessService } from 'app/core';
 import { Observable, of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { Speaker } from 'app/shared/model/speaker.model';
-import { SpeakerService } from './example.service';
+import { EvaluationExampleService } from './example.service';
 import { ExampleComponent } from './example.component';
-import { ISpeaker } from 'app/shared/model/speaker.model';
+import {Evaluation, IEvaluation} from 'app/shared/model/evaluation.model';
+import {EvaluationService} from 'app/entities/evaluation/evaluation.service';
 
 @Injectable({ providedIn: 'root' })
-export class SpeakerResolve implements Resolve<ISpeaker> {
-  constructor(private service: SpeakerService) {}
+export class EvaluationResolve implements Resolve<IEvaluation> {
+  constructor(private service: EvaluationExampleService) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ISpeaker> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IEvaluation> {
     const id = route.params['id'] ? route.params['id'] : null;
     if (id) {
       return this.service.find(id).pipe(
-        filter((response: HttpResponse<Speaker>) => response.ok),
-        map((speaker: HttpResponse<Speaker>) => speaker.body)
+        filter((response: HttpResponse<Evaluation>) => response.ok),
+        map((evaluation: HttpResponse<Evaluation>) => evaluation.body)
       );
     }
-    return of(new Speaker());
+    return of(new Evaluation());
   }
 }
 

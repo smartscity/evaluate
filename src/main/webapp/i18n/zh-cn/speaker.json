@@ -9,7 +9,8 @@
       "LevelFilter": {
         "FIRST": "一等奖",
         "SECOND": "二等奖",
-        "THIRD": "三等奖"
+        "THIRD": "三等奖",
+        "null":" "
       },
       "created": "演讲人 {{ param }} 录入成功",
       "updated": "演讲人 {{ param }} 更新成功",
