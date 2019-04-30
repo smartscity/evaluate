@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import java.util.*;
 
@@ -45,6 +46,16 @@ public class EvaluationService {
     public Evaluation save(Evaluation evaluation) {
         log.debug("Request to save Evaluation : {}", evaluation);
         evaluation.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get());
+
+
+        int taskSource  = ObjectUtils.isEmpty(evaluation.getTaskSourceScore())               ? 0 : evaluation.getTaskSourceScore();
+        int dais        = ObjectUtils.isEmpty(evaluation.getDiscoveryAndInnovationScore())   ? 0 : evaluation.getDiscoveryAndInnovationScore();
+        int als         = ObjectUtils.isEmpty(evaluation.getAdvancedLevelScore())            ? 0 : evaluation.getAdvancedLevelScore();
+        int aaps        = ObjectUtils.isEmpty(evaluation.getApplicationAndPromotionScore())  ? 0 : evaluation.getApplicationAndPromotionScore();
+        int ps          = ObjectUtils.isEmpty(evaluation.getPaperScore())                    ? 0 : evaluation.getPaperScore();
+        int rs          = ObjectUtils.isEmpty(evaluation.getReplyScore())                    ? 0 : evaluation.getReplyScore();
+
+        evaluation.setTotalScore(   taskSource  + dais + als + aaps + ps + rs     );
         return evaluationRepository.save(evaluation);
     }
 
