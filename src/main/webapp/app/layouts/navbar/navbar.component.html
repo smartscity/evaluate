@@ -1,7 +1,7 @@
 <nav class="navbar navbar-primary navbar-expand-md bg-primary">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
         <span class="logo-img"></span>
-        <span jhiTranslate="global.title" class="navbar-title">Evaluate</span> <span class="navbar-version">{{version}}</span>
+        <span jhiTranslate="global.title" class="navbar-title">必赢科技</span> <span class="navbar-version">{{version}}</span>
     </a>
     <a class="navbar-toggler d-lg-none" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
         <fa-icon icon="bars"></fa-icon>
@@ -98,7 +98,7 @@
                             <span jhiTranslate="global.menu.admin.logs">Logs</span>
                         </a>
                     </li>
-                    <li *ngIf="swaggerEnabled">
+                    <li >
                         <a class="dropdown-item" routerLink="admin/docs" routerLinkActive="active" (click)="collapseNavbar()">
                             <fa-icon icon="book" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.admin.apidocs">API</span>
