@@ -75,9 +75,9 @@ public class EvaluationResource {
     @PutMapping("/evaluations")
     public ResponseEntity<Evaluation> updateEvaluation(@RequestBody Evaluation evaluation) throws URISyntaxException {
         log.debug("REST request to update Evaluation : {}", evaluation);
-        if (evaluation.getId() == null) {
-            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
-        }
+//        if (evaluation.getId() == null) {
+//            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+//        }
         Evaluation result = evaluationService.save(evaluation);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, evaluation.getId().toString()))

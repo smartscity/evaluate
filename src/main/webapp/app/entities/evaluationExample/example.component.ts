@@ -42,7 +42,11 @@ export class ExampleComponent implements OnInit, OnDestroy {
       { label: '重要发现和明显创新', value: 'MIDDLE' },
       { label: '新发现和一般创新', value: 'GENERAL' }
     ];
-    this.levelOptions = [{ label: '领先水平', value: 'LEADING' }, { label: '先进水平', value: 'ADVANCED', { label: '一般水平', value: 'GENERAL' }];
+    this.levelOptions = [
+      { label: '领先水平', value: 'LEADING' },
+      { label: '先进水平', value: 'ADVANCED' },
+      { label: '一般水平', value: 'GENERAL' }
+    ];
     this.applicationOptions = [
       { label: '应用推广及效益显著', value: 'EXCELLENCE' },
       { label: '应用推广及效益明显', value: 'OBVIOUS' },
@@ -51,48 +55,54 @@ export class ExampleComponent implements OnInit, OnDestroy {
   }
 
   loadAll() {
-    this.evaluationService.query()
-      .pipe(filter((res: HttpResponse<IEvaluation[]>) => res.ok), map((res: HttpResponse<IEvaluation[]>) => res.body)
-      ).subscribe((res: IEvaluation[]) => {
-        this.evaluations = res;
-        this.aboutTips = [];
-        for (let j = 0; j < this.evaluations.length; j++) {
-          const tempObj = {
-            id: j,
-            taskSource: {
-              tip: '请选择任务来源',
-              min: 0,
-              max: 0
-            },
-            discoveryAndInnovation: {
-              tip: '请选择主要发现和创新点',
-              min: 0,
-              max: 0
-            },
-            advancedLevel: {
-              tip: '请选择先进程度',
-              min: 0,
-              max: 0
-            },
-            applicationAndPromotion: {
-              tip: '请选择应用与推广及其效益',
-              min: 0,
-              max: 0
-            },
-            paper: {
-              tip: '分值应在5-10分',
-              min: 5,
-              max: 10
-            },
-            reply: {
-              tip: '分值应在5-10分',
-              min: 5,
-              max: 10
-            }
-          };
-          this.aboutTips.push(tempObj);
-        }
-        }, (res: HttpErrorResponse) => this.onError(res.message)
+    this.evaluationService
+      .query()
+      .pipe(
+        filter((res: HttpResponse<IEvaluation[]>) => res.ok),
+        map((res: HttpResponse<IEvaluation[]>) => res.body)
+      )
+      .subscribe(
+        (res: IEvaluation[]) => {
+          this.evaluations = res;
+          this.aboutTips = [];
+          for (let j = 0; j < this.evaluations.length; j++) {
+            const tempObj = {
+              id: j,
+              taskSource: {
+                tip: '请选择任务来源',
+                min: 0,
+                max: 0
+              },
+              discoveryAndInnovation: {
+                tip: '请选择主要发现和创新点',
+                min: 0,
+                max: 0
+              },
+              advancedLevel: {
+                tip: '请选择先进程度',
+                min: 0,
+                max: 0
+              },
+              applicationAndPromotion: {
+                tip: '请选择应用与推广及其效益',
+                min: 0,
+                max: 0
+              },
+              paper: {
+                tip: '分值应在5-10分',
+                min: 5,
+                max: 10
+              },
+              reply: {
+                tip: '分值应在5-10分',
+                min: 5,
+                max: 10
+              }
+            };
+            this.aboutTips.push(tempObj);
+          }
+        },
+        (res: HttpErrorResponse) => this.onError(res.message)
       );
   }
 
@@ -105,7 +115,7 @@ export class ExampleComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-      this.eventManager.destroy(this.eventSubscriber);
+    this.eventManager.destroy(this.eventSubscriber);
   }
   trackId(index: number, item: IEvaluation) {
     return item.id;
@@ -118,24 +128,24 @@ export class ExampleComponent implements OnInit, OnDestroy {
   changeTip(type, val, index) {
     const typeMap = {
       taskSource: {
-        'NATIONAL_PLAN': { min: 4, max: 5, tip: '分值应在4-5分之间' },
-        'BUWEI_PLAN': { min: 2, max: 3, tip: '分值应在2-3分之间' },
-        'OTHER_ORG': { min: 1, max: 1, tip: '分值应为1分' }
+        NATIONAL_PLAN: { min: 4, max: 5, tip: '分值应在4-5分之间' },
+        BUWEI_PLAN: { min: 2, max: 3, tip: '分值应在2-3分之间' },
+        OTHER_ORG: { min: 1, max: 1, tip: '分值应为1分' }
       },
       discoveryAndInnovation: {
-        'HIGH': { min: 21, max: 30, tip: '分值应在21-30分之间' },
-        'MIDDLE': { min: 11, max: 20, tip: '分值应在11-20分之间' },
-        'GENERAL': { min: 0, max: 10, tip: '分值应在10分以下' }
+        HIGH: { min: 21, max: 30, tip: '分值应在21-30分之间' },
+        MIDDLE: { min: 11, max: 20, tip: '分值应在11-20分之间' },
+        GENERAL: { min: 0, max: 10, tip: '分值应在10分以下' }
       },
       advancedLevel: {
-        'LEADING': { min: 21, max: 30, tip: '分值应在21-30分之间' },
-        'ADVANCED': { min: 11, max: 20, tip: '分值应在11-20分之间' },
-        'GENERAL': { min: 0, max: 10, tip: '分值应在10分以下' }
+        LEADING: { min: 21, max: 30, tip: '分值应在21-30分之间' },
+        ADVANCED: { min: 11, max: 20, tip: '分值应在11-20分之间' },
+        GENERAL: { min: 0, max: 10, tip: '分值应在10分以下' }
       },
       applicationAndPromotion: {
-        'EXCELLENCE': { min: 11, max: 15, tip: '分值应在11-15分之间' },
-        'OBVIOUS': { min: 6, max: 10, tip: '分值应在6-10分之间' },
-        'GENERAL': { min: 0, max: 5, tip: '分值应在5分以下' }
+        EXCELLENCE: { min: 11, max: 15, tip: '分值应在11-15分之间' },
+        OBVIOUS: { min: 6, max: 10, tip: '分值应在6-10分之间' },
+        GENERAL: { min: 0, max: 5, tip: '分值应在5分以下' }
       }
     };
     this.evaluations[index][type + 'Score'] = 0;
@@ -144,17 +154,19 @@ export class ExampleComponent implements OnInit, OnDestroy {
     this.aboutTips[index][type].max = typeMap[type][val].max;
   }
   getTotal(i) {
-      let score1=this.evaluations[i].taskSourceScore||0,
-        score2=this.evaluations[i].discoveryAndInnovationcore||0,
-      score3=this.evaluations[i].applicationAndPromotionScore||0,
-      score4=this.evaluations[i].advancedLevelScore||0,
-      score5=this.evaluations[i].paperScore||0,
-      score6=this.evaluations[i].replyScore||0;
-      this.evaluations[i].totalScore = score1  + score2 + score3 + score4 + score5 + score6;
-      this.evaluationService.update(this.evaluations[i]).subscribe((res: HttpResponse<IEvaluation>) => {
+    let score1 = this.evaluations[i].taskSourceScore || 0,
+      score2 = this.evaluations[i].discoveryAndInnovationScore || 0,
+      score3 = this.evaluations[i].applicationAndPromotionScore || 0,
+      score4 = this.evaluations[i].advancedLevelScore || 0,
+      score5 = this.evaluations[i].paperScore || 0,
+      score6 = this.evaluations[i].replyScore || 0;
+    this.evaluations[i].totalScore = score1 + score2 + score3 + score4 + score5 + score6;
+    this.evaluationService.update(this.evaluations[i]).subscribe(
+      (res: HttpResponse<IEvaluation>) => {
         // this.evaluations[i]=res;
-        this.aboutTips[i]=this.aboutTips[i];
-      }, (res: HttpErrorResponse) => this.onError(res.message);
+        this.aboutTips[i] = this.aboutTips[i];
+      },
+      (res: HttpErrorResponse) => this.onError(res.message)
     );
   }
   registerChangeInEvaluations() {
