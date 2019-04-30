@@ -11,7 +11,7 @@ import { SpeakerService } from './prize.service';
 @Component({
   selector: 'jhi-speaker',
   templateUrl: './prize.component.html',
-  styleUrls:  ['./prize.component.scss']
+  styleUrls: ['./prize.component.scss']
 })
 export class PrizeComponent implements OnInit, OnDestroy {
   prizes: any[];
@@ -39,7 +39,7 @@ export class PrizeComponent implements OnInit, OnDestroy {
         (res: HttpErrorResponse) => this.onError(res.message)
       );
   }
-  dealData(){
+  dealData() {
     this.prizes = [
       {
         id: 1,
@@ -126,7 +126,7 @@ export class PrizeComponent implements OnInit, OnDestroy {
         replyScore: ''
       },
       {
-        id:5,
+        id: 5,
         title: '人体平衡评定及训练系统',
         orgName: '河南优德医疗设备股份有限公司',
         actor: '陈立春',
@@ -315,19 +315,19 @@ export class PrizeComponent implements OnInit, OnDestroy {
         replyScore: ''
       }
     ];
-    const tempObj=[];
-    for(let i=0;i<this.prizes.length;i++){
-      let num=i%10;
-      if(num===i){
-        tempObj[num]=[];
+    const tempObj = [];
+    for (let i = 0; i < this.prizes.length; i++) {
+      let num = i % 10;
+      if (num === i) {
+        tempObj[num] = [];
       }
       // debugger
-      this.prizes[i].$index=i;
+      this.prizes[i].$index = i;
       tempObj[num].push(this.prizes[i]);
     }
-    this.prizes=tempObj;
-    console.log(tempObj)
-  },
+    this.prizes = tempObj;
+    console.log(tempObj);
+  }
   ngOnInit() {
     this.dealData();
     // this.loadAll();
