@@ -37,7 +37,7 @@
                         <tr *ngFor="let prizeArr of prizes;">
                             <!--<a [routerLink]="['/speaker', speaker.id, 'view' ]">1</a>-->
                             <div>
-                                <div *ngFor="let prize of prizeArr;trackBy:$index">
+                                <div *ngFor="let prize of prizeArr ;trackBy: trackId;let i = index;">
                                     <td>{{prize.$index}}</td>
                                     <td>{{prize.title}}</td>
                                     <td>{{prize.orgName}}</td>
