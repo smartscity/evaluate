@@ -21,7 +21,7 @@ public interface EvaluationRepository extends JpaRepository<Evaluation, Long> {
     List<Evaluation> findByUserIsCurrentUser();
 
 
-    @Query(value = "SELECT  title, org_name, actor, FORMAT(sum(total_score) / (SELECT count(*) from jhi_user where login not in ('system', 'user', 'anonymoususer')), 2) as score FROM evaluation WHERE jhi_level = 'FIRST'  GROUP BY speaker_id, title, org_name, actor ORDER BY score desc" , nativeQuery = true)
+    @Query(value = "SELECT  title, org_name, actor, FORMAT(sum(total_score) / (SELECT count(*) from jhi_user where login not in ('system', 'user', 'anonymoususer', 'admin')), 2) as score FROM evaluation WHERE jhi_level = 'FIRST'  GROUP BY speaker_id, title, org_name, actor ORDER BY score desc" , nativeQuery = true)
     List<Map<String, String>> findByLevel(@Param("level") Level level);
 
     @Query(value = "SELECT * FROM evaluation WHERE speaker_id =:speakerId and user_id =:userId" , nativeQuery = true)
