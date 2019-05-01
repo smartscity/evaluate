@@ -1,0 +1,10 @@
+{
+  "evaluateApp": {
+    "Review": {
+      "null": "",
+      "UNDO": "UNDO",
+      "APPROVAL": "APPROVAL",
+      "REFUSE": "REFUSE"
+    }
+  }
+}
