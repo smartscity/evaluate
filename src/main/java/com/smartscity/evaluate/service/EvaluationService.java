@@ -2,6 +2,7 @@ package com.smartscity.evaluate.service;
 
 import com.smartscity.evaluate.domain.Evaluation;
 import com.smartscity.evaluate.domain.Speaker;
+import com.smartscity.evaluate.domain.User;
 import com.smartscity.evaluate.domain.enumeration.Level;
 import com.smartscity.evaluate.repository.EvaluationRepository;
 import com.smartscity.evaluate.repository.UserRepository;
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
@@ -44,8 +46,16 @@ public class EvaluationService {
      * @return the persisted entity.
      */
     public Evaluation save(Evaluation evaluation) {
+
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get();
+
+        Evaluation db = evaluationRepository.findBySpeakerIdAnduAndUser(user.getId(), evaluation.getSpeakerId());
+        if(!ObjectUtils.isEmpty(db)) {
+            evaluation = merge(evaluation, db);
+        }
+
         log.debug("Request to save Evaluation : {}", evaluation);
-        evaluation.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get());
+        evaluation.setUser(user);
 
 
         int taskSource  = ObjectUtils.isEmpty(evaluation.getTaskSourceScore())               ? 0 : evaluation.getTaskSourceScore();
@@ -59,6 +69,21 @@ public class EvaluationService {
         return evaluationRepository.save(evaluation);
     }
 
+    private Evaluation merge(Evaluation evaluation, Evaluation db) {
+        evaluation.setId(   db.getId());
+        return evaluation;
+    }
+
+    private Evaluation exists(User user, long speakerid) {
+        User u = new User();
+        u.setId(    user.getId());
+        Evaluation evaluation = new Evaluation();
+        evaluation.setSpeakerId(    speakerid);
+        evaluation.setUser(         u);
+        Example<Evaluation> example =Example.of(evaluation);
+        return evaluationRepository.findOne(example).get();
+    }
+
 
     /**
      * 1、掐头 去尾
@@ -67,21 +92,8 @@ public class EvaluationService {
      * @return
      */
     @Transactional(readOnly = true)
-    public List<Evaluation> findByLevel(Level level) {
-
-
-        long   MINID = 0l;
-        double MIN = 0.0d;
-        long   MAXID = 0l;
-        double MAX = 0.0d;
-
-        List<Evaluation> evaluations = evaluationRepository.findByLevel(level);
-        Map<Long,Evaluation> map = toConvertEval(evaluations);
-        for(Evaluation evaluation:evaluations){
-//            if(evaluation)
-        }
-
-
+    public List<Map<String, String>> findByLevel(Level level) {
+        List<Map<String, String>> evaluations = evaluationRepository.findByLevel(level);
         return evaluations;
     }
 

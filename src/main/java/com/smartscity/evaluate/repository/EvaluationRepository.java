@@ -3,9 +3,12 @@ package com.smartscity.evaluate.repository;
 import com.smartscity.evaluate.domain.Evaluation;
 import com.smartscity.evaluate.domain.enumeration.Level;
 import org.springframework.data.jpa.repository.*;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Spring Data  repository for the Evaluation entity.
@@ -18,7 +21,13 @@ public interface EvaluationRepository extends JpaRepository<Evaluation, Long> {
     List<Evaluation> findByUserIsCurrentUser();
 
 
-    List<Evaluation> findByLevel(Level level);
+    @Query(value = "SELECT  title, org_name, actor, FORMAT(sum(total_score) / (SELECT count(*) from jhi_user where login not in ('system', 'user', 'anonymoususer')), 2) as score FROM evaluation WHERE jhi_level = 'FIRST'  GROUP BY speaker_id, title, org_name, actor ORDER BY score desc" , nativeQuery = true)
+    List<Map<String, String>> findByLevel(@Param("level") Level level);
+
+    @Query(value = "SELECT * FROM evaluation WHERE speaker_id =:speakerId and user_id =:userId" , nativeQuery = true)
+    Evaluation findBySpeakerIdAnduAndUser(@Param("userId") Long userId, @Param("speakerId") Long speakerId);
+
+
 
 
 

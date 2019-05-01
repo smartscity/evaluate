@@ -127,19 +127,19 @@
         var $this = $("#news");
         var token = localStorage.getItem('jhi-authenticationtoken') || sessionStorage.getItem('jhi-authenticationtoken');
         console.log(token)
-        var dataJson = {},url="http://evaluate.smartscity.com";
+        var dataJson = {},url="http://127.0.0.1:8888";
         function getData() {
             $.ajax({
                 type: "GET",
-                url: url+"/api/evaluations",
+                url: url+"/api/evaluations1",
                 data: dataJson,
                 contentType: "application/json;charset=UTF-8",
                 beforeSend: function(xhr) { 
 			       	xhr.setRequestHeader("Authorization", 'Bearer ' + token);  
 			   	},
                 success: function (data) {
-                    // $scope.$appy();
-                    debugger
+                    $scope.$appy(data);
+                    // debugger
                 },
                 error: function () {
                     console.log('请求失败，请重试')

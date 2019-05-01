@@ -7,7 +7,7 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "数据",
-        "speaker": "演讲信息录入",
+        "speaker": "信息录入",
         "evaluation": "Evaluation",
         "prize": "奖项管理",
         "evaluationExample": "专家评审",

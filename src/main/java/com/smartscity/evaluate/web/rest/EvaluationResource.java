@@ -1,6 +1,7 @@
 package com.smartscity.evaluate.web.rest;
 
 import com.smartscity.evaluate.domain.Evaluation;
+import com.smartscity.evaluate.domain.enumeration.Level;
 import com.smartscity.evaluate.security.SecurityUtils;
 import com.smartscity.evaluate.service.EvaluationService;
 import com.smartscity.evaluate.web.rest.errors.BadRequestAlertException;
@@ -19,6 +20,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -96,21 +98,21 @@ public class EvaluationResource {
     }
 
     @GetMapping("/evaluations1")
-    public List<Evaluation> getAllEvaluations1() {
+    public List<Map<String, String>> getAllEvaluations1() {
         log.debug("REST request to get all Evaluations");
-        return evaluationService.findAll();
+        return evaluationService.findByLevel(Level.FIRST);
     }
 
     @GetMapping("/evaluations2")
-    public List<Evaluation> getAllEvaluations2() {
+    public List<Map<String, String>> getAllEvaluations2() {
         log.debug("REST request to get all Evaluations");
-        return evaluationService.findAll();
+        return evaluationService.findByLevel(Level.SECOND);
     }
 
     @GetMapping("/evaluations3")
-    public List<Evaluation> getAllEvaluations3() {
+    public List<Map<String, String>> getAllEvaluations3() {
         log.debug("REST request to get all Evaluations");
-        return evaluationService.findAll();
+        return evaluationService.findByLevel(Level.THIRD);
     }
 
     /**
