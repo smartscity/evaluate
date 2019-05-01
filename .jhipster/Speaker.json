@@ -26,14 +26,26 @@
             "fieldValues": "FIRST,SECOND,THIRD"
         },
         {
-            "fieldName": "icon",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "image"
-        },
-        {
             "fieldName": "pdf",
+            "javadoc": "上传附件",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "path",
+            "javadoc": "附件地址",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "review",
+            "fieldType": "Review",
+            "fieldValues": "UNDO,APPROVAL,REFUSE"
+        },
+        {
+            "fieldName": "remark",
+            "javadoc": "审核备注",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
         }
     ],
     "relationships": [],

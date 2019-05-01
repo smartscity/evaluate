@@ -42,17 +42,22 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="icon" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="icon_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="pdf" type="longblob">
+            <column name="pdf" type="longblob" remarks="上传附件">
                 <constraints nullable="true" />
             </column>
             <column name="pdf_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="path" type="varchar(255)" remarks="附件地址">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="review" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="remark" type="clob" remarks="审核备注">
                 <constraints nullable="true" />
             </column>
 
@@ -81,10 +86,11 @@
             <column name="actor" type="string"/>
             <column name="speaker" type="string"/>
             <column name="jhi_level" type="string"/>
-            <column name="icon" type="string"/>
-            <column name="icon_content_type" type="string"/>
             <column name="pdf" type="string"/>
             <column name="pdf_content_type" type="string"/>
+            <column name="path" type="string"/>
+            <column name="review" type="string"/>
+            <column name="remark" type="string"/>
         </loadData>
     </changeSet>
 

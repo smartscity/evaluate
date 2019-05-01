@@ -4,6 +4,12 @@ export const enum Level {
   THIRD = 'THIRD'
 }
 
+export const enum Review {
+  UNDO = 'UNDO',
+  APPROVAL = 'APPROVAL',
+  REFUSE = 'REFUSE'
+}
+
 export interface ISpeaker {
   id?: number;
   title?: string;
@@ -11,10 +17,11 @@ export interface ISpeaker {
   actor?: string;
   speaker?: string;
   level?: Level;
-  iconContentType?: string;
-  icon?: any;
   pdfContentType?: string;
   pdf?: any;
+  path?: string;
+  review?: Review;
+  remark?: any;
 }
 
 export class Speaker implements ISpeaker {
@@ -25,9 +32,10 @@ export class Speaker implements ISpeaker {
     public actor?: string,
     public speaker?: string,
     public level?: Level,
-    public iconContentType?: string,
-    public icon?: any,
     public pdfContentType?: string,
-    public pdf?: any
+    public pdf?: any,
+    public path?: string,
+    public review?: Review,
+    public remark?: any
   ) {}
 }

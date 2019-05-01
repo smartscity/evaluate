@@ -22,10 +22,11 @@ export class SpeakerUpdateComponent implements OnInit {
     actor: [],
     speaker: [],
     level: [],
-    icon: [],
-    iconContentType: [],
     pdf: [],
-    pdfContentType: []
+    pdfContentType: [],
+    path: [],
+    review: [],
+    remark: []
   });
 
   constructor(
@@ -53,10 +54,11 @@ export class SpeakerUpdateComponent implements OnInit {
       actor: speaker.actor,
       speaker: speaker.speaker,
       level: speaker.level,
-      icon: speaker.icon,
-      iconContentType: speaker.iconContentType,
       pdf: speaker.pdf,
-      pdfContentType: speaker.pdfContentType
+      pdfContentType: speaker.pdfContentType,
+      path: speaker.path,
+      review: speaker.review,
+      remark: speaker.remark
     });
   }
 
@@ -65,6 +67,8 @@ export class SpeakerUpdateComponent implements OnInit {
   }
 
   openFile(contentType, field) {
+    alert(field);
+    alert(field.path);
     return this.dataUtils.openFile(contentType, field);
   }
 
@@ -125,10 +129,11 @@ export class SpeakerUpdateComponent implements OnInit {
       actor: this.editForm.get(['actor']).value,
       speaker: this.editForm.get(['speaker']).value,
       level: this.editForm.get(['level']).value,
-      iconContentType: this.editForm.get(['iconContentType']).value,
-      icon: this.editForm.get(['icon']).value,
       pdfContentType: this.editForm.get(['pdfContentType']).value,
-      pdf: this.editForm.get(['pdf']).value
+      pdf: this.editForm.get(['pdf']).value,
+      path: this.editForm.get(['path']).value,
+      review: this.editForm.get(['review']).value,
+      remark: this.editForm.get(['remark']).value
     };
     return entity;
   }

@@ -99,6 +99,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
             .authorizeRequests()
             .antMatchers("/api/register").permitAll()
             .antMatchers("/api/evaluations1").permitAll()
+            .antMatchers("/api/download/**").permitAll()
             .antMatchers("/api/evaluations2").permitAll()
             .antMatchers("/api/evaluations3").permitAll()
             .antMatchers("/api/activate").permitAll()

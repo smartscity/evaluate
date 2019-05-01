@@ -5,7 +5,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 import { SpeakerService } from 'app/entities/speaker/speaker.service';
-import { ISpeaker, Speaker, Level } from 'app/shared/model/speaker.model';
+import { ISpeaker, Speaker, Level, Review } from 'app/shared/model/speaker.model';
 
 describe('Service Tests', () => {
   describe('Speaker Service', () => {
@@ -23,7 +23,19 @@ describe('Service Tests', () => {
       service = injector.get(SpeakerService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Speaker(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', Level.FIRST, 'image/png', 'AAAAAAA', 'image/png', 'AAAAAAA');
+      elemDefault = new Speaker(
+        0,
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
+        Level.FIRST,
+        'image/png',
+        'AAAAAAA',
+        'AAAAAAA',
+        Review.UNDO,
+        'AAAAAAA'
+      );
     });
 
     describe('Service methods', () => {
@@ -64,8 +76,10 @@ describe('Service Tests', () => {
             actor: 'BBBBBB',
             speaker: 'BBBBBB',
             level: 'BBBBBB',
-            icon: 'BBBBBB',
-            pdf: 'BBBBBB'
+            pdf: 'BBBBBB',
+            path: 'BBBBBB',
+            review: 'BBBBBB',
+            remark: 'BBBBBB'
           },
           elemDefault
         );
@@ -88,8 +102,10 @@ describe('Service Tests', () => {
             actor: 'BBBBBB',
             speaker: 'BBBBBB',
             level: 'BBBBBB',
-            icon: 'BBBBBB',
-            pdf: 'BBBBBB'
+            pdf: 'BBBBBB',
+            path: 'BBBBBB',
+            review: 'BBBBBB',
+            remark: 'BBBBBB'
           },
           elemDefault
         );

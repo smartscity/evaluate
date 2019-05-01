@@ -7,6 +7,7 @@ import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 import { ISpeaker } from 'app/shared/model/speaker.model';
 import { AccountService } from 'app/core';
 import { SpeakerService } from './speaker.service';
+import { SERVER_API_URL } from 'app/app.constants';
 
 @Component({
   selector: 'jhi-speaker',
@@ -61,7 +62,8 @@ export class SpeakerComponent implements OnInit, OnDestroy {
   }
 
   openFile(contentType, field) {
-    return this.dataUtils.openFile(contentType, field);
+    window.open(SERVER_API_URL + '/api/download/' + field);
+    // return this.dataUtils.openFile(contentType, field);
   }
 
   registerChangeInSpeakers() {

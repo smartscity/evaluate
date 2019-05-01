@@ -34,6 +34,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.smartscity.evaluate.domain.enumeration.Level;
+import com.smartscity.evaluate.domain.enumeration.Review;
 /**
  * Integration tests for the {@Link SpeakerResource} REST controller.
  */
@@ -56,15 +57,19 @@ public class SpeakerResourceIT {
     private static final Level DEFAULT_LEVEL = Level.FIRST;
     private static final Level UPDATED_LEVEL = Level.SECOND;
 
-    private static final byte[] DEFAULT_ICON = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_ICON = TestUtil.createByteArray(1, "1");
-    private static final String DEFAULT_ICON_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_ICON_CONTENT_TYPE = "image/png";
-
     private static final byte[] DEFAULT_PDF = TestUtil.createByteArray(1, "0");
     private static final byte[] UPDATED_PDF = TestUtil.createByteArray(1, "1");
     private static final String DEFAULT_PDF_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_PDF_CONTENT_TYPE = "image/png";
+
+    private static final String DEFAULT_PATH = "AAAAAAAAAA";
+    private static final String UPDATED_PATH = "BBBBBBBBBB";
+
+    private static final Review DEFAULT_REVIEW = Review.UNDO;
+    private static final Review UPDATED_REVIEW = Review.APPROVAL;
+
+    private static final String DEFAULT_REMARK = "AAAAAAAAAA";
+    private static final String UPDATED_REMARK = "BBBBBBBBBB";
 
     @Autowired
     private SpeakerRepository speakerRepository;
@@ -116,10 +121,11 @@ public class SpeakerResourceIT {
             .actor(DEFAULT_ACTOR)
             .speaker(DEFAULT_SPEAKER)
             .level(DEFAULT_LEVEL)
-            .icon(DEFAULT_ICON)
-            .iconContentType(DEFAULT_ICON_CONTENT_TYPE)
             .pdf(DEFAULT_PDF)
-            .pdfContentType(DEFAULT_PDF_CONTENT_TYPE);
+            .pdfContentType(DEFAULT_PDF_CONTENT_TYPE)
+            .path(DEFAULT_PATH)
+            .review(DEFAULT_REVIEW)
+            .remark(DEFAULT_REMARK);
         return speaker;
     }
 
@@ -148,10 +154,11 @@ public class SpeakerResourceIT {
         assertThat(testSpeaker.getActor()).isEqualTo(DEFAULT_ACTOR);
         assertThat(testSpeaker.getSpeaker()).isEqualTo(DEFAULT_SPEAKER);
         assertThat(testSpeaker.getLevel()).isEqualTo(DEFAULT_LEVEL);
-        assertThat(testSpeaker.getIcon()).isEqualTo(DEFAULT_ICON);
-        assertThat(testSpeaker.getIconContentType()).isEqualTo(DEFAULT_ICON_CONTENT_TYPE);
         assertThat(testSpeaker.getPdf()).isEqualTo(DEFAULT_PDF);
         assertThat(testSpeaker.getPdfContentType()).isEqualTo(DEFAULT_PDF_CONTENT_TYPE);
+        assertThat(testSpeaker.getPath()).isEqualTo(DEFAULT_PATH);
+        assertThat(testSpeaker.getReview()).isEqualTo(DEFAULT_REVIEW);
+        assertThat(testSpeaker.getRemark()).isEqualTo(DEFAULT_REMARK);
     }
 
     @Test
@@ -190,10 +197,11 @@ public class SpeakerResourceIT {
             .andExpect(jsonPath("$.[*].actor").value(hasItem(DEFAULT_ACTOR.toString())))
             .andExpect(jsonPath("$.[*].speaker").value(hasItem(DEFAULT_SPEAKER.toString())))
             .andExpect(jsonPath("$.[*].level").value(hasItem(DEFAULT_LEVEL.toString())))
-            .andExpect(jsonPath("$.[*].iconContentType").value(hasItem(DEFAULT_ICON_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].icon").value(hasItem(Base64Utils.encodeToString(DEFAULT_ICON))))
             .andExpect(jsonPath("$.[*].pdfContentType").value(hasItem(DEFAULT_PDF_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].pdf").value(hasItem(Base64Utils.encodeToString(DEFAULT_PDF))));
+            .andExpect(jsonPath("$.[*].pdf").value(hasItem(Base64Utils.encodeToString(DEFAULT_PDF))))
+            .andExpect(jsonPath("$.[*].path").value(hasItem(DEFAULT_PATH.toString())))
+            .andExpect(jsonPath("$.[*].review").value(hasItem(DEFAULT_REVIEW.toString())))
+            .andExpect(jsonPath("$.[*].remark").value(hasItem(DEFAULT_REMARK.toString())));
     }
     
     @Test
@@ -212,10 +220,11 @@ public class SpeakerResourceIT {
             .andExpect(jsonPath("$.actor").value(DEFAULT_ACTOR.toString()))
             .andExpect(jsonPath("$.speaker").value(DEFAULT_SPEAKER.toString()))
             .andExpect(jsonPath("$.level").value(DEFAULT_LEVEL.toString()))
-            .andExpect(jsonPath("$.iconContentType").value(DEFAULT_ICON_CONTENT_TYPE))
-            .andExpect(jsonPath("$.icon").value(Base64Utils.encodeToString(DEFAULT_ICON)))
             .andExpect(jsonPath("$.pdfContentType").value(DEFAULT_PDF_CONTENT_TYPE))
-            .andExpect(jsonPath("$.pdf").value(Base64Utils.encodeToString(DEFAULT_PDF)));
+            .andExpect(jsonPath("$.pdf").value(Base64Utils.encodeToString(DEFAULT_PDF)))
+            .andExpect(jsonPath("$.path").value(DEFAULT_PATH.toString()))
+            .andExpect(jsonPath("$.review").value(DEFAULT_REVIEW.toString()))
+            .andExpect(jsonPath("$.remark").value(DEFAULT_REMARK.toString()));
     }
 
     @Test
@@ -244,10 +253,11 @@ public class SpeakerResourceIT {
             .actor(UPDATED_ACTOR)
             .speaker(UPDATED_SPEAKER)
             .level(UPDATED_LEVEL)
-            .icon(UPDATED_ICON)
-            .iconContentType(UPDATED_ICON_CONTENT_TYPE)
             .pdf(UPDATED_PDF)
-            .pdfContentType(UPDATED_PDF_CONTENT_TYPE);
+            .pdfContentType(UPDATED_PDF_CONTENT_TYPE)
+            .path(UPDATED_PATH)
+            .review(UPDATED_REVIEW)
+            .remark(UPDATED_REMARK);
 
         restSpeakerMockMvc.perform(put("/api/speakers")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -263,10 +273,11 @@ public class SpeakerResourceIT {
         assertThat(testSpeaker.getActor()).isEqualTo(UPDATED_ACTOR);
         assertThat(testSpeaker.getSpeaker()).isEqualTo(UPDATED_SPEAKER);
         assertThat(testSpeaker.getLevel()).isEqualTo(UPDATED_LEVEL);
-        assertThat(testSpeaker.getIcon()).isEqualTo(UPDATED_ICON);
-        assertThat(testSpeaker.getIconContentType()).isEqualTo(UPDATED_ICON_CONTENT_TYPE);
         assertThat(testSpeaker.getPdf()).isEqualTo(UPDATED_PDF);
         assertThat(testSpeaker.getPdfContentType()).isEqualTo(UPDATED_PDF_CONTENT_TYPE);
+        assertThat(testSpeaker.getPath()).isEqualTo(UPDATED_PATH);
+        assertThat(testSpeaker.getReview()).isEqualTo(UPDATED_REVIEW);
+        assertThat(testSpeaker.getRemark()).isEqualTo(UPDATED_REMARK);
     }
 
     @Test

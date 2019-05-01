@@ -2,12 +2,18 @@ package com.smartscity.evaluate.service;
 
 import com.smartscity.evaluate.domain.Speaker;
 import com.smartscity.evaluate.repository.SpeakerRepository;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.DigestUtils;
+import org.springframework.util.ObjectUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +32,11 @@ public class SpeakerService {
         this.speakerRepository = speakerRepository;
     }
 
+    @Value("${smartscity.filepath:./data/}")
+    private String path;
+
+
+
     /**
      * Save a speaker.
      *
@@ -33,8 +44,32 @@ public class SpeakerService {
      * @return the persisted entity.
      */
     public Speaker save(Speaker speaker) {
+
+        if(!ObjectUtils.isEmpty(speaker.getPdf())) {
+            try {
+                String filename = DigestUtils.md5DigestAsHex(speaker.getPdf());
+                String filepath = path + filename + suffix(speaker.getPdfContentType());
+                FileUtils.writeByteArrayToFile(new File(filepath), speaker.getPdf());
+                speaker.setPath(filename + suffix(speaker.getPdfContentType()));
+
+                speaker.setPdf(null);
+            } catch (IOException e) {
+                log.error("上传文件异常 {} {}", e.getMessage(), e.getCause().getMessage());
+            }
+        }
         log.debug("Request to save Speaker : {}", speaker);
         return speakerRepository.save(speaker);
+    }
+
+    private String suffix(String contentType) {
+        switch (contentType){
+            case "application/pdf":
+                return ".pdf";
+            case "image/png":
+                return ".png";
+            default:
+                return "";
+        }
     }
 
     /**

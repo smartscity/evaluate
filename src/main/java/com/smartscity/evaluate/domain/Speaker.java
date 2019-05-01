@@ -10,6 +10,8 @@ import java.util.Objects;
 
 import com.smartscity.evaluate.domain.enumeration.Level;
 
+import com.smartscity.evaluate.domain.enumeration.Review;
+
 /**
  * A Speaker.
  */
@@ -51,19 +53,35 @@ public class Speaker implements Serializable {
     @Column(name = "jhi_level")
     private Level level;
 
-    @Lob
-    @Column(name = "icon")
-    private byte[] icon;
-
-    @Column(name = "icon_content_type")
-    private String iconContentType;
-
+    /**
+     * 上传附件
+     */
+    @ApiModelProperty(value = "上传附件")
     @Lob
     @Column(name = "pdf")
     private byte[] pdf;
 
     @Column(name = "pdf_content_type")
     private String pdfContentType;
+
+    /**
+     * 附件地址
+     */
+    @ApiModelProperty(value = "附件地址")
+    @Column(name = "path")
+    private String path;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "review")
+    private Review review;
+
+    /**
+     * 审核备注
+     */
+    @ApiModelProperty(value = "审核备注")
+    @Lob
+    @Column(name = "remark")
+    private String remark;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -139,32 +157,6 @@ public class Speaker implements Serializable {
         this.level = level;
     }
 
-    public byte[] getIcon() {
-        return icon;
-    }
-
-    public Speaker icon(byte[] icon) {
-        this.icon = icon;
-        return this;
-    }
-
-    public void setIcon(byte[] icon) {
-        this.icon = icon;
-    }
-
-    public String getIconContentType() {
-        return iconContentType;
-    }
-
-    public Speaker iconContentType(String iconContentType) {
-        this.iconContentType = iconContentType;
-        return this;
-    }
-
-    public void setIconContentType(String iconContentType) {
-        this.iconContentType = iconContentType;
-    }
-
     public byte[] getPdf() {
         return pdf;
     }
@@ -189,6 +181,45 @@ public class Speaker implements Serializable {
 
     public void setPdfContentType(String pdfContentType) {
         this.pdfContentType = pdfContentType;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public Speaker path(String path) {
+        this.path = path;
+        return this;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public Review getReview() {
+        return review;
+    }
+
+    public Speaker review(Review review) {
+        this.review = review;
+        return this;
+    }
+
+    public void setReview(Review review) {
+        this.review = review;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public Speaker remark(String remark) {
+        this.remark = remark;
+        return this;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -217,10 +248,11 @@ public class Speaker implements Serializable {
             ", actor='" + getActor() + "'" +
             ", speaker='" + getSpeaker() + "'" +
             ", level='" + getLevel() + "'" +
-            ", icon='" + getIcon() + "'" +
-            ", iconContentType='" + getIconContentType() + "'" +
             ", pdf='" + getPdf() + "'" +
             ", pdfContentType='" + getPdfContentType() + "'" +
+            ", path='" + getPath() + "'" +
+            ", review='" + getReview() + "'" +
+            ", remark='" + getRemark() + "'" +
             "}";
     }
 }

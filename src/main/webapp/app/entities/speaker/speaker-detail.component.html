@@ -25,21 +25,24 @@
                 <dd>
                     <span :jhiTranslate="{{'evaluateApp.speaker.LevelFilter.' + speaker.level}}">{{speaker.level}}</span>
                 </dd>
-                <!--<dt><span jhiTranslate="evaluateApp.speaker.icon">Icon</span></dt>-->
-                <!--<dd>-->
-                    <!--<div *ngIf="speaker.icon">-->
-                        <!--<a (click)="openFile(speaker.iconContentType, speaker.icon)">-->
-                            <!--<img [src]="'data:' + speaker.iconContentType + ';base64,' + speaker.icon" style="max-width: 100%;" alt="speaker image"/>-->
-                        <!--</a>-->
-                        <!--{{speaker.iconContentType}}, {{byteSize(speaker.icon)}}-->
-                    <!--</div>-->
-                <!--</dd>-->
-                <dt><span jhiTranslate="evaluateApp.speaker.pdf">Pdf</span></dt>
+                <dt><span jhiTranslate="evaluateApp.speaker.pdf" [ngbTooltip]="'evaluateApp.speaker.help.pdf' | translate">Pdf</span></dt>
                 <dd>
                     <div *ngIf="speaker.pdf">
                         <a (click)="openFile(speaker.pdfContentType, speaker.pdf)" jhiTranslate="entity.action.open">open</a>
                         {{speaker.pdfContentType}}, {{byteSize(speaker.pdf)}}
                     </div>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.speaker.path" [ngbTooltip]="'evaluateApp.speaker.help.path' | translate">Path</span></dt>
+                <dd>
+                    <span>{{speaker.path}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.speaker.review">Review</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'evaluateApp.Review.' + speaker.review}}">{{speaker.review}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.speaker.remark" [ngbTooltip]="'evaluateApp.speaker.help.remark' | translate">Remark</span></dt>
+                <dd>
+                    <span>{{speaker.remark}}</span>
                 </dd>
             </dl>
 

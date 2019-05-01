@@ -14,8 +14,19 @@ entity Speaker {
     */
     speaker String
     level Level
-    icon ImageBlob
+    /**
+    * 上传附件
+    */
     pdf AnyBlob
+    /**
+    * 附件地址
+    */
+    path String
+    review Review
+    /**
+    * 审核备注
+    */
+    remark TextBlob
 }
 
 entity Evaluation {
@@ -78,6 +89,9 @@ entity Evaluation {
     remark String
 }
 
+enum Review {
+    UNDO, APPROVAL, REFUSE
+}
 enum Level {
     FIRST, SECOND, THIRD
 }

@@ -14,35 +14,36 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <!--<th><span jhiTranslate="global.field.id">ID</span></th>-->
+            <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="evaluateApp.speaker.title">Title</span></th>
             <th><span jhiTranslate="evaluateApp.speaker.orgName">Org Name</span></th>
             <th><span jhiTranslate="evaluateApp.speaker.actor">Actor</span></th>
             <th><span jhiTranslate="evaluateApp.speaker.speaker">Speaker</span></th>
             <th width="100px"><span jhiTranslate="evaluateApp.speaker.level">Level</span></th>
-            <!--<th><span jhiTranslate="evaluateApp.speaker.icon">Icon</span></th>-->
             <th><span jhiTranslate="evaluateApp.speaker.pdf">Pdf</span></th>
+            <th><span jhiTranslate="evaluateApp.speaker.path">Path</span></th>
+            <th><span jhiTranslate="evaluateApp.speaker.review">Review</span></th>
+            <th><span jhiTranslate="evaluateApp.speaker.remark">Remark</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let speaker of speakers ;trackBy: trackId">
-                <!--<td><a [routerLink]="['/speaker', speaker.id, 'view' ]">{{speaker.id}}</a></td>-->
+                <td><a [routerLink]="['/speaker', speaker.id, 'view' ]">{{speaker.id}}</a></td>
                 <td>{{speaker.title}}</td>
                 <td>{{speaker.orgName}}</td>
                 <td>{{speaker.actor}}</td>
                 <td>{{speaker.speaker}}</td>
-                <td :jhiTranslate="{{'evaluateApp.speaker.LevelFilter.' + speaker.level}}">{{speaker.level}}</td>
-                <!--<td>-->
-                    <!--<a *ngIf="speaker.icon" (click)="openFile(speaker.iconContentType, speaker.icon)">-->
-                        <!--<img [src]="'data:' + speaker.iconContentType + ';base64,' + speaker.icon" style="max-height: 30px;" alt="speaker image"/>-->
-                    <!--</a>-->
-                    <!--<span *ngIf="speaker.icon">{{speaker.iconContentType}}, {{byteSize(speaker.icon)}}</span>-->
-                <!--</td>-->
+                <td jhiTranslate="{{'evaluateApp.speaker.LevelFilter.' + speaker.level}}">{{speaker.level}}</td>
+                <!--<td jhiTranslate="{{'evaluateApp.Level.' + speaker.level}}">{{speaker.level}}</td>-->
                 <td>
-                    <a *ngIf="speaker.pdf" (click)="openFile(speaker.pdfContentType, speaker.pdf)" jhiTranslate="entity.action.open">open</a>
-                    <!--<span *ngIf="speaker.pdf">{{speaker.pdfContentType}}, {{byteSize(speaker.pdf)}}</span>-->
+                    <a *ngIf="speaker.path" (click)="openFile(speaker.pdfContentType, speaker.path)" jhiTranslate="entity.action.open">open</a>
+                    <!--<span *ngIf="speaker.path">{{speaker.path}}</span>-->
                 </td>
+                <!--<td>{{speaker.path}}</td>-->
+                <!--<td jhiTranslate="{{'evaluateApp.Review.' + speaker.review}}">{{speaker.review}}</td>-->
+                <td jhiTranslate="{{'evaluateApp.speaker.ReviewFilter.' + speaker.review}}">{{speaker.review}}</td>
+                <td>{{speaker.remark}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

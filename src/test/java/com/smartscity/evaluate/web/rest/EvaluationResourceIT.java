@@ -46,8 +46,8 @@ import com.smartscity.evaluate.domain.enumeration.ApplicationAndPromotion;
 @SpringBootTest(classes = EvaluateApp.class)
 public class EvaluationResourceIT {
 
-    private static final Integer DEFAULT_SPEAKER_ID = 1;
-    private static final Integer UPDATED_SPEAKER_ID = 2;
+    private static final Long DEFAULT_SPEAKER_ID = 1l;
+    private static final Long UPDATED_SPEAKER_ID = 2l;
 
     private static final String DEFAULT_TITLE = "AAAAAAAAAA";
     private static final String UPDATED_TITLE = "BBBBBBBBBB";

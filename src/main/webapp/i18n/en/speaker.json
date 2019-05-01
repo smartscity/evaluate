@@ -10,8 +10,15 @@
         "FIRST": "一等奖",
         "SECOND": "二等奖",
         "THIRD": "三等奖",
-        "null":" "
+        "null": " "
       },
+      "ReviewFilter": {
+        "null": "",
+        "UNDO": "待处理",
+        "APPROVAL": "通过",
+        "REFUSE": "拒绝"
+      },
+
       "created": "A new Speaker is created with identifier {{ param }}",
       "updated": "A Speaker is updated with identifier {{ param }}",
       "deleted": "A Speaker is deleted with identifier {{ param }}",
@@ -26,12 +33,17 @@
       "actor": "Actor",
       "speaker": "Speaker",
       "level": "Level",
-      "icon": "Icon",
       "pdf": "Pdf",
+      "path": "Path",
+      "review": "Review",
+      "remark": "Remark",
       "help": {
         "orgName": "主要完成单位",
         "actor": "主要完成人",
-        "speaker": "演讲者"
+        "speaker": "演讲者",
+        "pdf": "上传附件",
+        "path": "附件地址",
+        "remark": "审核备注"
       }
     }
   }

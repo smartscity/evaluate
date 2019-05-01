@@ -4,13 +4,20 @@
       "home": {
         "title": "列表",
         "createLabel": "信息录入",
-        "createOrEditLabel": "创建或编辑 演讲者"
+        "createOrEditLabel": "信息录入/编辑"
       },
       "LevelFilter": {
         "FIRST": "一等奖",
         "SECOND": "二等奖",
         "THIRD": "三等奖",
-        "null":" "
+        "null": " "
+      },
+
+      "ReviewFilter": {
+        "null": "",
+        "UNDO": "待处理",
+        "APPROVAL": "通过",
+        "REFUSE": "拒绝"
       },
       "created": "演讲人 {{ param }} 录入成功",
       "updated": "演讲人 {{ param }} 更新成功",
@@ -24,14 +31,20 @@
       "title": "主题",
       "orgName": "主要完成单位",
       "actor": "主要完成人",
-      "speaker": "演讲人",
+      "speaker": "讲说人",
       "level": "奖项等级",
       "icon": "Icon",
-      "pdf": "Pdf",
+      "pdf": "文献",
+      "path": "路径",
+      "review": "状态",
+      "remark": "备注",
       "help": {
         "orgName": "主要完成单位",
         "actor": "主要完成人",
-        "speaker": "演讲者"
+        "speaker": "讲说人",
+        "pdf": "上传附件",
+        "path": "附件地址",
+        "remark": "审核备注"
       }
     }
   }
