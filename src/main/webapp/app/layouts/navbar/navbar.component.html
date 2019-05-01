@@ -17,7 +17,7 @@
                 <!--</a>-->
             <!--</li>-->
 
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li *jhiHasAnyAuthority="'ROLE_ADMIN'" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="/speaker" (click)="collapseNavbar()">
                     <span>
                         <fa-icon icon="asterisk"></fa-icon>
@@ -26,16 +26,16 @@
                 </a>
             </li>
 
-            <!--<li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">-->
-                <!--<a class="nav-link" routerLink="/prize" (click)="collapseNavbar()">-->
-                    <!--<span>-->
-                        <!--<fa-icon icon="flag"></fa-icon>-->
-                        <!--<span jhiTranslate="global.menu.entities.prize">prize</span>-->
-                    <!--</span>-->
-                <!--</a>-->
-            <!--</li>-->
+            <li *jhiHasAnyAuthority="'ROLE_ADMIN'" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link" routerLink="/prize" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="flag"></fa-icon>
+                        <span jhiTranslate="global.menu.entities.prize">prize</span>
+                    </span>
+                </a>
+            </li>
 
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li *jhiHasAnyAuthority="'ROLE_USER'" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="evaluationExample" (click)="collapseNavbar()">
                     <span>
                         <fa-icon icon="th-list"></fa-icon>
