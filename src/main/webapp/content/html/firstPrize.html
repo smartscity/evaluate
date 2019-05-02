@@ -83,7 +83,6 @@
 
         #news {
             width: 100%;
-            height: 75px;
             overflow: hidden;
         }
 
@@ -97,9 +96,33 @@
 
         .foot {
             text-align: center;
-            height: 50px;
-            line-height: 50px;
             color: #3c3636e8;
+        }
+
+        .td1{
+            width: 10%;
+            font-size: 24px;
+            color:#0066a7;
+            font-weight: bolder;
+        }
+        .td2{
+            width: 25%;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+        .td3{
+            width: 25%;
+            font-size: 16px;
+        }
+        .td4{
+            width: 25%;
+            font-size: 16px;
+        }
+        .td5{
+            width: 15%;
+            font-size: 24px;
+            color: #0066a7;
+            font-weight: bolder;
         }
     </style>
 </head>
@@ -126,46 +149,14 @@
         <div id="news" style="width:100%;">
             <table class="new-ul" style="padding:0;width: 100%;">
                 <tbody class="new-li tc" id="tbodyList" style="width: 100%;">
-                <!--<tr>
-                    <td style="width:10%;font-size: 24px;" class="font-col">1</td>
-                    <td style="width:25%;font-size: 20px;">脑卒</td>
-                    <td style="width:25%">33</td>
-                    <td style="width:25%">44</td>
-                    <td style="width:15%;font-size: 24px;" class="font-col">55</td>
-                </tr>
-                <tr>
-                    <td style="width:10%;font-size: 24px;" class="font-col">2</td>
-                    <td style="width:25%;font-size: 20px;">脑卒</td>
-                    <td style="width:25%">33</td>
-                    <td style="width:25%">44</td>
-                    <td style="width:15%;font-size: 24px;" class="font-col">55</td>
-                </tr>-->
+
                 </tbody>
             </table>
-            <!--<ul class="new-ul" style="padding:0;">
-                 <li class="new-li tc">
-                     <table style="width:100%;">
-                         <td style="width:10%;font-size: 24px;" class="font-col">1</td>
-                         <td style="width:25%;font-size: 20px;">脑卒</td>
-                         <td style="width:25%">33</td>
-                         <td style="width:25%">44</td>
-                         <td style="width:15%;font-size: 24px;" class="font-col">55</td>
-                     </table>
-                 </li>
-                <li class="new-li tc">
-                    <table style="width:100%;">
-                        <td style="width:10%;font-size: 24px;" class="font-col">2</td>
-                        <td style="width:25%;font-size: 20px;">脊髓</td>
-                        <td style="width:25%">ee</td>
-                        <td style="width:25%">rr</td>
-                        <td style="width:15%;font-size: 24px;" class="font-col">66</td>
-                    </table>
-                </li>
-            </ul>-->
+
         </div>
     </div>
     <div class="foot">
-        技术支持：必赢科技（北京）有限公司
+        <p>技术支持：必赢科技（北京）有限公司</p>
     </div>
 </div>
 </body>
@@ -180,6 +171,7 @@
     var dataJson = {}, url = "http://evaluate.smartscity.com";
 
     function getData() {
+
         $.ajax({
             type: 'GET',
             url: url + '/api/evaluations1',
@@ -192,11 +184,10 @@
             },
 
             success: function cb(data) {
-                $scope.$appy(data);
                 var s = '';
                 for (var i = 0; i < data.length; i++) {
-                    s += '<tr><td>' + data[i].id + '</td><td>' + data[i].title + '</td><td>' + data[i].org_name + '</td>'
-                        + '<td>' + data[i].actor + '</td><td>' + data[i].score + '</td></tr>';
+                    s += '<tr><td class="td1">' + (i+1) + '.</td><td class="td2">' + data[i].title + '</td><td class="td3">' + data[i].org_name + '</td>'
+                        + '<td class="td4">' + data[i].actor + '</td><td class="td5">' + data[i].score + '</td></tr>';
                 }
                 $('#tbodyList').append(s);
             },
