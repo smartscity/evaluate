@@ -9,7 +9,7 @@
         "main": "数据",
         "speaker": "信息录入",
         "evaluation": "Evaluation",
-        "prize": "奖项管理",
+        "prize": "奖项排名",
         "evaluationExample": "专家评审",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
@@ -135,5 +135,5 @@
     "idexists": "新建的 {{entityName}} 不能包含ID",
     "idnull": "Invalid ID"
   },
-  "footer": "这里是页脚"
+  "footer": "必赢科技（北京）有限公司 @ 2019"
 }
