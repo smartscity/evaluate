@@ -45,6 +45,7 @@ export interface IEvaluation {
   actor?: string;
   speaker?: string;
   level?: Level;
+  path?: string;
   taskSource?: TaskSource;
   taskSourceScore?: number;
   discoveryAndInnovation?: DiscoveryAndInnovation;
@@ -73,6 +74,7 @@ export class Evaluation implements IEvaluation {
     public actor?: string,
     public speaker?: string,
     public level?: Level,
+    public path?: string,
     public taskSource?: TaskSource,
     public taskSourceScore?: number,
     public discoveryAndInnovation?: DiscoveryAndInnovation,

@@ -29,6 +29,10 @@
                 <dd>
                     <span jhiTranslate="{{'evaluateApp.Level.' + evaluation.level}}">{{evaluation.level}}</span>
                 </dd>
+                <dt><span jhiTranslate="evaluateApp.evaluation.path" [ngbTooltip]="'evaluateApp.evaluation.help.path' | translate">Path</span></dt>
+                <dd>
+                    <span>{{evaluation.path}}</span>
+                </dd>
                 <dt><span jhiTranslate="evaluateApp.evaluation.taskSource" [ngbTooltip]="'evaluateApp.evaluation.help.taskSource' | translate">Task Source</span></dt>
                 <dd>
                     <span jhiTranslate="{{'evaluateApp.TaskSource.' + evaluation.taskSource}}">{{evaluation.taskSource}}</span>

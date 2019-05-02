@@ -31,7 +31,7 @@ entity Speaker {
 
 entity Evaluation {
 	id Integer
-    speakerId Integer
+    speakerId Long
 	title String
     /**
     * 主要完成单位
@@ -49,6 +49,10 @@ entity Evaluation {
     * 一等奖、二等奖、三等奖
     */
     level Level
+    /**
+    * 附件地址
+    */
+    path String
     /**
     * 任务来源: 国家计划（4-5分）、部委计划、省（自治区、市）计划（2-3分）、中国人民解放军计划（2-3分）、基金资助（2-3分）、国际合作、其他企事业单位委托(1)、自选(1)、其他(1)。
     */

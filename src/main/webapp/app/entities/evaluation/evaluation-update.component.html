@@ -43,6 +43,11 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.path" for="field_path" [ngbTooltip]="'evaluateApp.evaluation.help.path' | translate">Path</label>
+                    <input type="text" class="form-control" name="path" id="field_path"
+                           formControlName="path"/>
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="evaluateApp.evaluation.taskSource" for="field_taskSource" [ngbTooltip]="'evaluateApp.evaluation.help.taskSource' | translate">Task Source</label>
                     <select class="form-control" name="taskSource" formControlName="taskSource" id="field_taskSource">
                         <option value="NATIONAL_PLAN">{{'evaluateApp.TaskSource.NATIONAL_PLAN' | translate}}</option>

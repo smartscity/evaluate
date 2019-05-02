@@ -46,6 +46,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="path" type="varchar(255)" remarks="附件地址">
+                <constraints nullable="true" />
+            </column>
+
             <column name="task_source" type="varchar(255)" remarks="任务来源: 国家计划（4-5分）、部委计划、省（自治区、市）计划（2-3分）、中国人民解放军计划（2-3分）、基金资助（2-3分）、国际合作、其他企事业单位委托(1)、自选(1)、其他(1)。">
                 <constraints nullable="true" />
             </column>
@@ -142,6 +146,7 @@
             <column name="actor" type="string"/>
             <column name="speaker" type="string"/>
             <column name="jhi_level" type="string"/>
+            <column name="path" type="string"/>
             <column name="task_source" type="string"/>
             <column name="task_source_score" type="numeric"/>
             <column name="discovery_and_innovation" type="string"/>

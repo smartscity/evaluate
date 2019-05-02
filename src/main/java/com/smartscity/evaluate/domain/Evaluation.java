@@ -69,6 +69,13 @@ public class Evaluation implements Serializable {
     private Level level;
 
     /**
+     * 附件地址
+     */
+    @ApiModelProperty(value = "附件地址")
+    @Column(name = "path")
+    private String path;
+
+    /**
      * 任务来源: 国家计划（4-5分）、部委计划、省（自治区、市）计划（2-3分）、中国人民解放军计划（2-3分）、基金资助（2-3分）、国际合作、其他企事业单位委托(1)、自选(1)、其他(1)。
      */
     @ApiModelProperty(value = "任务来源: 国家计划（4-5分）、部委计划、省（自治区、市）计划（2-3分）、中国人民解放军计划（2-3分）、基金资助（2-3分）、国际合作、其他企事业单位委托(1)、自选(1)、其他(1)。")
@@ -237,6 +244,19 @@ public class Evaluation implements Serializable {
 
     public void setLevel(Level level) {
         this.level = level;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public Evaluation path(String path) {
+        this.path = path;
+        return this;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public TaskSource getTaskSource() {
@@ -487,6 +507,7 @@ public class Evaluation implements Serializable {
             ", actor='" + getActor() + "'" +
             ", speaker='" + getSpeaker() + "'" +
             ", level='" + getLevel() + "'" +
+            ", path='" + getPath() + "'" +
             ", taskSource='" + getTaskSource() + "'" +
             ", taskSourceScore=" + getTaskSourceScore() +
             ", discoveryAndInnovation='" + getDiscoveryAndInnovation() + "'" +

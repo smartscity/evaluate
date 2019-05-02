@@ -31,7 +31,15 @@
             <tbody>
             <tr *ngFor="let evaluation of evaluations ;trackBy: trackId;let i = index;">
                 <td>{{i + 1}}</td>
-                <td nz-tooltip [nzTitle]="evaluation.title" nzPlacement="topCenter" nzTrigger="hover" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><a style="color:cornflowerblue">{{evaluation.title}}</a></td>
+                <!--<td nz-tooltip [nzTitle]="evaluation.title" nzPlacement="topCenter" nzTrigger="hover" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><a style="color:cornflowerblue">{{evaluation.title}}</a></td>-->
+
+                <td nz-tooltip [nzTitle]="evaluation.title" nzPlacement="topCenter" nzTrigger="hover" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+                    <a style="color:cornflowerblue" (click)="openFile(evaluation.path)" >{{evaluation.title}}</a>
+                </td>
+                <!--<td>-->
+                    <!--<a *ngIf="speaker.path" (click)="openFile(speaker.path)" >{{evaluation.title}}</a>-->
+                <!--</td>-->
+
                 <td nz-tooltip [nzTitle]="evaluation.orgName" nzPlacement="topCenter" nzTrigger="hover" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{{evaluation.orgName}}</td>
                 <td :jhiTranslate="{{'evaluateApp.speaker.LevelFilter.' + evaluation.level}}">{{evaluation.level}}</td>
                 <!-- 任务来源 -->

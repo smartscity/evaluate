@@ -3,7 +3,7 @@
     "fields": [
         {
             "fieldName": "speakerId",
-            "fieldType": "Integer"
+            "fieldType": "Long"
         },
         {
             "fieldName": "title",
@@ -29,6 +29,11 @@
             "javadoc": "一等奖、二等奖、三等奖",
             "fieldType": "Level",
             "fieldValues": "FIRST,SECOND,THIRD"
+        },
+        {
+            "fieldName": "path",
+            "javadoc": "附件地址",
+            "fieldType": "String"
         },
         {
             "fieldName": "taskSource",

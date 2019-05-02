@@ -78,6 +78,7 @@ class EvaluationGatlingTest extends Simulation {
                 , "actor":"SAMPLE_TEXT"
                 , "speaker":"SAMPLE_TEXT"
                 , "level":"FIRST"
+                , "path":"SAMPLE_TEXT"
                 , "taskSource":"NATIONAL_PLAN"
                 , "taskSourceScore":"0"
                 , "discoveryAndInnovation":"HIGH"

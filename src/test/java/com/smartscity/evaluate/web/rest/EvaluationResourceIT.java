@@ -46,8 +46,8 @@ import com.smartscity.evaluate.domain.enumeration.ApplicationAndPromotion;
 @SpringBootTest(classes = EvaluateApp.class)
 public class EvaluationResourceIT {
 
-    private static final Long DEFAULT_SPEAKER_ID = 1l;
-    private static final Long UPDATED_SPEAKER_ID = 2l;
+    private static final Long DEFAULT_SPEAKER_ID = 1L;
+    private static final Long UPDATED_SPEAKER_ID = 2L;
 
     private static final String DEFAULT_TITLE = "AAAAAAAAAA";
     private static final String UPDATED_TITLE = "BBBBBBBBBB";
@@ -63,6 +63,9 @@ public class EvaluationResourceIT {
 
     private static final Level DEFAULT_LEVEL = Level.FIRST;
     private static final Level UPDATED_LEVEL = Level.SECOND;
+
+    private static final String DEFAULT_PATH = "AAAAAAAAAA";
+    private static final String UPDATED_PATH = "BBBBBBBBBB";
 
     private static final TaskSource DEFAULT_TASK_SOURCE = TaskSource.NATIONAL_PLAN;
     private static final TaskSource UPDATED_TASK_SOURCE = TaskSource.BUWEI_PLAN;
@@ -163,6 +166,7 @@ public class EvaluationResourceIT {
             .actor(DEFAULT_ACTOR)
             .speaker(DEFAULT_SPEAKER)
             .level(DEFAULT_LEVEL)
+            .path(DEFAULT_PATH)
             .taskSource(DEFAULT_TASK_SOURCE)
             .taskSourceScore(DEFAULT_TASK_SOURCE_SCORE)
             .discoveryAndInnovation(DEFAULT_DISCOVERY_AND_INNOVATION)
@@ -208,6 +212,7 @@ public class EvaluationResourceIT {
         assertThat(testEvaluation.getActor()).isEqualTo(DEFAULT_ACTOR);
         assertThat(testEvaluation.getSpeaker()).isEqualTo(DEFAULT_SPEAKER);
         assertThat(testEvaluation.getLevel()).isEqualTo(DEFAULT_LEVEL);
+        assertThat(testEvaluation.getPath()).isEqualTo(DEFAULT_PATH);
         assertThat(testEvaluation.getTaskSource()).isEqualTo(DEFAULT_TASK_SOURCE);
         assertThat(testEvaluation.getTaskSourceScore()).isEqualTo(DEFAULT_TASK_SOURCE_SCORE);
         assertThat(testEvaluation.getDiscoveryAndInnovation()).isEqualTo(DEFAULT_DISCOVERY_AND_INNOVATION);
@@ -257,12 +262,13 @@ public class EvaluationResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(evaluation.getId().intValue())))
-            .andExpect(jsonPath("$.[*].speakerId").value(hasItem(DEFAULT_SPEAKER_ID)))
+            .andExpect(jsonPath("$.[*].speakerId").value(hasItem(DEFAULT_SPEAKER_ID.intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].orgName").value(hasItem(DEFAULT_ORG_NAME.toString())))
             .andExpect(jsonPath("$.[*].actor").value(hasItem(DEFAULT_ACTOR.toString())))
             .andExpect(jsonPath("$.[*].speaker").value(hasItem(DEFAULT_SPEAKER.toString())))
             .andExpect(jsonPath("$.[*].level").value(hasItem(DEFAULT_LEVEL.toString())))
+            .andExpect(jsonPath("$.[*].path").value(hasItem(DEFAULT_PATH.toString())))
             .andExpect(jsonPath("$.[*].taskSource").value(hasItem(DEFAULT_TASK_SOURCE.toString())))
             .andExpect(jsonPath("$.[*].taskSourceScore").value(hasItem(DEFAULT_TASK_SOURCE_SCORE)))
             .andExpect(jsonPath("$.[*].discoveryAndInnovation").value(hasItem(DEFAULT_DISCOVERY_AND_INNOVATION.toString())))
@@ -292,12 +298,13 @@ public class EvaluationResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(evaluation.getId().intValue()))
-            .andExpect(jsonPath("$.speakerId").value(DEFAULT_SPEAKER_ID))
+            .andExpect(jsonPath("$.speakerId").value(DEFAULT_SPEAKER_ID.intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
             .andExpect(jsonPath("$.orgName").value(DEFAULT_ORG_NAME.toString()))
             .andExpect(jsonPath("$.actor").value(DEFAULT_ACTOR.toString()))
             .andExpect(jsonPath("$.speaker").value(DEFAULT_SPEAKER.toString()))
             .andExpect(jsonPath("$.level").value(DEFAULT_LEVEL.toString()))
+            .andExpect(jsonPath("$.path").value(DEFAULT_PATH.toString()))
             .andExpect(jsonPath("$.taskSource").value(DEFAULT_TASK_SOURCE.toString()))
             .andExpect(jsonPath("$.taskSourceScore").value(DEFAULT_TASK_SOURCE_SCORE))
             .andExpect(jsonPath("$.discoveryAndInnovation").value(DEFAULT_DISCOVERY_AND_INNOVATION.toString()))
@@ -343,6 +350,7 @@ public class EvaluationResourceIT {
             .actor(UPDATED_ACTOR)
             .speaker(UPDATED_SPEAKER)
             .level(UPDATED_LEVEL)
+            .path(UPDATED_PATH)
             .taskSource(UPDATED_TASK_SOURCE)
             .taskSourceScore(UPDATED_TASK_SOURCE_SCORE)
             .discoveryAndInnovation(UPDATED_DISCOVERY_AND_INNOVATION)
@@ -375,6 +383,7 @@ public class EvaluationResourceIT {
         assertThat(testEvaluation.getActor()).isEqualTo(UPDATED_ACTOR);
         assertThat(testEvaluation.getSpeaker()).isEqualTo(UPDATED_SPEAKER);
         assertThat(testEvaluation.getLevel()).isEqualTo(UPDATED_LEVEL);
+        assertThat(testEvaluation.getPath()).isEqualTo(UPDATED_PATH);
         assertThat(testEvaluation.getTaskSource()).isEqualTo(UPDATED_TASK_SOURCE);
         assertThat(testEvaluation.getTaskSourceScore()).isEqualTo(UPDATED_TASK_SOURCE_SCORE);
         assertThat(testEvaluation.getDiscoveryAndInnovation()).isEqualTo(UPDATED_DISCOVERY_AND_INNOVATION);

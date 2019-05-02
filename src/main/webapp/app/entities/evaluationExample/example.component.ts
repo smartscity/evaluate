@@ -7,6 +7,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { IEvaluation } from 'app/shared/model/evaluation.model';
 import { AccountService } from 'app/core';
 import { EvaluationExampleService } from './example.service';
+import { SERVER_API_URL } from 'app/app.constants';
 
 @Component({
   selector: 'jhi-evaluation',
@@ -70,40 +71,40 @@ export class ExampleComponent implements OnInit, OnDestroy {
               NATIONAL_PLAN: { min: 4, max: 5, tip: '分值应在4-5分之间' },
               BUWEI_PLAN: { min: 2, max: 3, tip: '分值应在2-3分之间' },
               OTHER_ORG: { min: 1, max: 1, tip: '分值应为1分' },
-              null:{ min: 0, max: 0, tip: '请选择任务来源' }
+              null: { min: 0, max: 0, tip: '请选择任务来源' }
             },
             discoveryAndInnovation: {
               HIGH: { min: 21, max: 30, tip: '分值应在21-30分之间' },
               MIDDLE: { min: 11, max: 20, tip: '分值应在11-20分之间' },
               GENERAL: { min: 0, max: 10, tip: '分值应在10分以下' },
-              null:{ min: 0, max: 0, tip: '请选择主要发现和创新点' }
+              null: { min: 0, max: 0, tip: '请选择主要发现和创新点' }
             },
             advancedLevel: {
               LEADING: { min: 21, max: 30, tip: '分值应在21-30分之间' },
               ADVANCED: { min: 11, max: 20, tip: '分值应在11-20分之间' },
               GENERAL: { min: 0, max: 10, tip: '分值应在10分以下' },
-              null:{ min: 0, max: 0, tip: '请选择先进程度' }
+              null: { min: 0, max: 0, tip: '请选择先进程度' }
             },
             applicationAndPromotion: {
               EXCELLENCE: { min: 11, max: 15, tip: '分值应在11-15分之间' },
               OBVIOUS: { min: 6, max: 10, tip: '分值应在6-10分之间' },
               GENERAL: { min: 0, max: 5, tip: '分值应在5分以下' },
-              null:{ min: 0, max: 0, tip: '请选择应用与推广及其效益' }
+              null: { min: 0, max: 0, tip: '请选择应用与推广及其效益' }
             }
           };
           for (let j = 0; j < this.evaluations.length; j++) {
-            let taskSourceTip =typeMap.taskSource[this.evaluations[j].taskSource].tip,
-            taskSourceMin =typeMap.taskSource[this.evaluations[j].taskSource].min,
-            taskSourceMax =typeMap.taskSource[this.evaluations[j].taskSource].max,
-              discoveryTip =typeMap.discoveryAndInnovation[this.evaluations[j].discoveryAndInnovation].tip,
-              discoveryMin =typeMap.discoveryAndInnovation[this.evaluations[j].discoveryAndInnovation].min,
-              discoveryMax =typeMap.discoveryAndInnovation[this.evaluations[j].discoveryAndInnovation].max,
-              advancedLevelTip =typeMap.advancedLevel[this.evaluations[j].advancedLevel].tip,
-              advancedLevelMin =typeMap.advancedLevel[this.evaluations[j].advancedLevel].min,
-              advancedLevelMax =typeMap.advancedLevel[this.evaluations[j].advancedLevel].max,
-              applicationTip =typeMap.applicationAndPromotion[this.evaluations[j].applicationAndPromotion].tip,
-              applicationMin =typeMap.applicationAndPromotion[this.evaluations[j].applicationAndPromotion].min,
-              applicationMax =typeMap.applicationAndPromotion[this.evaluations[j].applicationAndPromotion].max;
+            let taskSourceTip = typeMap.taskSource[this.evaluations[j].taskSource].tip,
+              taskSourceMin = typeMap.taskSource[this.evaluations[j].taskSource].min,
+              taskSourceMax = typeMap.taskSource[this.evaluations[j].taskSource].max,
+              discoveryTip = typeMap.discoveryAndInnovation[this.evaluations[j].discoveryAndInnovation].tip,
+              discoveryMin = typeMap.discoveryAndInnovation[this.evaluations[j].discoveryAndInnovation].min,
+              discoveryMax = typeMap.discoveryAndInnovation[this.evaluations[j].discoveryAndInnovation].max,
+              advancedLevelTip = typeMap.advancedLevel[this.evaluations[j].advancedLevel].tip,
+              advancedLevelMin = typeMap.advancedLevel[this.evaluations[j].advancedLevel].min,
+              advancedLevelMax = typeMap.advancedLevel[this.evaluations[j].advancedLevel].max,
+              applicationTip = typeMap.applicationAndPromotion[this.evaluations[j].applicationAndPromotion].tip,
+              applicationMin = typeMap.applicationAndPromotion[this.evaluations[j].applicationAndPromotion].min,
+              applicationMax = typeMap.applicationAndPromotion[this.evaluations[j].applicationAndPromotion].max;
             const tempObj = {
               id: j,
               taskSource: {
@@ -162,7 +163,7 @@ export class ExampleComponent implements OnInit, OnDestroy {
   registerChangeInEvaluationsExample() {
     this.eventSubscriber = this.eventManager.subscribe('evaluationListModification', response => this.loadAll());
   }
-  getTip(type, val, index){
+  getTip(type, val, index) {
     const typeMap = {
       taskSource: {
         NATIONAL_PLAN: { min: 4, max: 5, tip: '分值应在4-5分之间' },
@@ -211,6 +212,10 @@ export class ExampleComponent implements OnInit, OnDestroy {
   }
   registerChangeInEvaluations() {
     this.eventSubscriber = this.eventManager.subscribe('evaluationListModification', response => this.loadAll());
+  }
+  openFile(field) {
+    window.open(SERVER_API_URL + '/api/download/' + field);
+    // return this.dataUtils.openFile(contentType, field);
   }
 
   protected onError(errorMessage: string) {
