@@ -21,8 +21,11 @@ public interface EvaluationRepository extends JpaRepository<Evaluation, Long> {
     List<Evaluation> findByUserIsCurrentUser();
 
 
-    @Query(value = "SELECT  title, org_name, actor, FORMAT(sum(total_score) / (SELECT count(*) from jhi_user where login not in ('system', 'user', 'anonymoususer', 'admin')), 2) as score FROM evaluation WHERE jhi_level = 'FIRST'  GROUP BY speaker_id, title, org_name, actor ORDER BY score desc" , nativeQuery = true)
-    List<Map<String, String>> findByLevel(@Param("level") Level level);
+    @Query(value = "SELECT  title, org_name, actor, FORMAT(sum(total_score) / (SELECT count(*) from jhi_user where login not in ('system', 'user', 'anonymoususer', 'admin')), 2) as score FROM evaluation WHERE jhi_level =:level  GROUP BY speaker_id, title, org_name, actor ORDER BY score desc" , nativeQuery = true)
+    List<Map<String, String>> findByLevel(@Param("level") String level);
+
+    @Query(value = "SELECT  title, org_name, actor, FORMAT( sum( total_score ) - max(total_score) - min(total_score) / ((SELECT count(*) from jhi_user where login not in ('system', 'user', 'anonymoususer', 'admin')) - 2 ), 2) as score FROM evaluation WHERE jhi_level =:level  GROUP BY speaker_id, title, org_name, actor ORDER BY score desc" , nativeQuery = true)
+    List<Map<String, String>> findByLevelExceptMAXMIN(@Param("level") String level);
 
     @Query(value = "SELECT * FROM evaluation WHERE speaker_id =:speakerId and user_id =:userId" , nativeQuery = true)
     Evaluation findBySpeakerIdAnduAndUser(@Param("userId") Long userId, @Param("speakerId") Long speakerId);

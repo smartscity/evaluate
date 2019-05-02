@@ -92,8 +92,14 @@ public class EvaluationService {
      * @return
      */
     @Transactional(readOnly = true)
+    public List<Map<String, String>> findByLevelExceptMAXMIN(Level level) {
+        List<Map<String, String>> evaluations = evaluationRepository.findByLevelExceptMAXMIN(level.name().toUpperCase());
+        return evaluations;
+    }
+
+    @Transactional(readOnly = true)
     public List<Map<String, String>> findByLevel(Level level) {
-        List<Map<String, String>> evaluations = evaluationRepository.findByLevel(level);
+        List<Map<String, String>> evaluations = evaluationRepository.findByLevel(level.name().toUpperCase());
         return evaluations;
     }
 

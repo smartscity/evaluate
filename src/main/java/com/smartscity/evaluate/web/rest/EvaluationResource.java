@@ -115,6 +115,24 @@ public class EvaluationResource {
         return evaluationService.findByLevel(Level.THIRD);
     }
 
+    @GetMapping("/evaluations11")
+    public List<Map<String, String>> getAllEvaluations11() {
+        log.debug("REST request to get all Evaluations");
+        return evaluationService.findByLevelExceptMAXMIN(Level.FIRST);
+    }
+
+    @GetMapping("/evaluations22")
+    public List<Map<String, String>> getAllEvaluations22() {
+        log.debug("REST request to get all Evaluations");
+        return evaluationService.findByLevelExceptMAXMIN(Level.SECOND);
+    }
+
+    @GetMapping("/evaluations33")
+    public List<Map<String, String>> getAllEvaluations33() {
+        log.debug("REST request to get all Evaluations");
+        return evaluationService.findByLevelExceptMAXMIN(Level.THIRD);
+    }
+
     /**
      * {@code GET  /evaluations/:id} : get the "id" evaluation.
      *
