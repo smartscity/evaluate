@@ -1,6 +1,6 @@
 {
   "global": {
-    "title": "Evaluate",
+    "title": "专家评审系统",
     "browsehappy": "您目前使用<strong>过于老旧</strong>的浏览器, 建议您<a href=\"http://browsehappy.com/?locale=en\">升级浏览器</a>让您有更佳的上网体验.",
     "menu": {
       "home": "首页",
@@ -54,7 +54,7 @@
         "authenticated": {
           "prefix": "如果您要",
           "link": "登录",
-          "suffix": ", 您可以使用默认账号:<br/>- 管理员 (账号=\"admin\"和密码=\"admin\") <br/>- 普通用户 (账号=\"user\"和密码=\"user\")."
+          "suffix": ", 您可以使用默认账号:<br/>- 管理员 (账号=\"admin\"和密码=\"请联系管理员\") <br/>- 评审专家用户 (账号=\"zhuanjia1\"和密码=\"请联系管理员\")."
         },
         "register": {
           "noaccount": "您还没有账号",
