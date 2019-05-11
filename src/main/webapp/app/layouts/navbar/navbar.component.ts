@@ -52,6 +52,7 @@ export class NavbarComponent implements OnInit {
   }
 
   collapseNavbar() {
+    // debugger
     this.isNavbarCollapsed = true;
   }
 

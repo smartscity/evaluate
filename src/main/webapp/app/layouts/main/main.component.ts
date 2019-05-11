@@ -8,6 +8,7 @@ import { JhiLanguageHelper } from 'app/core';
   templateUrl: './main.component.html'
 })
 export class JhiMainComponent implements OnInit {
+  isShow: boolean;
   constructor(private jhiLanguageHelper: JhiLanguageHelper, private router: Router) {}
 
   private getPageTitle(routeSnapshot: ActivatedRouteSnapshot) {

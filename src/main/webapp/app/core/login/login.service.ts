@@ -13,7 +13,9 @@ export class LoginService {
     return new Promise((resolve, reject) => {
       this.authServerProvider.login(credentials).subscribe(
         data => {
+          // debugger
           this.accountService.identity(true).then(account => {
+            // debugger
             resolve(data);
           });
           return cb();
@@ -32,6 +34,7 @@ export class LoginService {
   }
 
   logout() {
+    // debugger
     this.authServerProvider.logout().subscribe(null, null, () => this.accountService.authenticate(null));
   }
 }
