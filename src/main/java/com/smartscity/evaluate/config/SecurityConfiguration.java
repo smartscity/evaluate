@@ -104,6 +104,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
             .antMatchers("/api/evaluations11").permitAll()
             .antMatchers("/api/evaluations22").permitAll()
             .antMatchers("/api/evaluations33").permitAll()
+            .antMatchers("/api/evaluations/export").permitAll()
             .antMatchers("/api/download/**").permitAll()
             .antMatchers("/api/evaluations2").permitAll()
             .antMatchers("/api/evaluations3").permitAll()

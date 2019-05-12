@@ -1,5 +1,6 @@
 package com.smartscity.evaluate.domain;
 
+import com.smartscity.evaluate.annotation.ExcelColumn;
 import com.smartscity.evaluate.config.Constants;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -42,12 +43,15 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "password_hash", length = 60, nullable = false)
     private String password;
 
+    @ExcelColumn(value = "名", col = 2)
     @Size(max = 50)
     @Column(name = "first_name", length = 50)
     private String firstName;
 
+
     @Size(max = 50)
     @Column(name = "last_name", length = 50)
+    @ExcelColumn(value = "姓", col = 1)
     private String lastName;
 
     @Email

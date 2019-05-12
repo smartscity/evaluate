@@ -8,6 +8,7 @@ import {
   EvaluationComponent,
   EvaluationDetailComponent,
   EvaluationUpdateComponent,
+  EvaluationExportComponent,
   EvaluationDeletePopupComponent,
   EvaluationDeleteDialogComponent,
   evaluationRoute,
@@ -22,10 +23,17 @@ const ENTITY_STATES = [...evaluationRoute, ...evaluationPopupRoute];
     EvaluationComponent,
     EvaluationDetailComponent,
     EvaluationUpdateComponent,
+    EvaluationExportComponent,
     EvaluationDeleteDialogComponent,
     EvaluationDeletePopupComponent
   ],
-  entryComponents: [EvaluationComponent, EvaluationUpdateComponent, EvaluationDeleteDialogComponent, EvaluationDeletePopupComponent],
+  entryComponents: [
+    EvaluationComponent,
+    EvaluationUpdateComponent,
+    EvaluationExportComponent,
+    EvaluationDeleteDialogComponent,
+    EvaluationDeletePopupComponent
+  ],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -11,6 +11,7 @@
         "evaluation": "Evaluation",
         "prize": "奖项排名",
         "evaluationExample": "专家评审",
+        "evaluationExample1": "评审记录",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -85,7 +86,7 @@
       }
     },
     "field": {
-      "id": "ID"
+      "id": "序号"
     },
     "ribbon": {
       "dev": "Development"

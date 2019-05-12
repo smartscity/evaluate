@@ -39,6 +39,11 @@ export class EvaluationComponent implements OnInit, OnDestroy {
       );
   }
 
+  export() {
+    this.evaluationService.export();
+    return;
+  }
+
   ngOnInit() {
     this.loadAll();
     this.accountService.identity().then(account => {

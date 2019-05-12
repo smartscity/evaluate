@@ -2,6 +2,7 @@ package com.smartscity.evaluate.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.smartscity.evaluate.annotation.ExcelColumn;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
@@ -36,6 +37,7 @@ public class Evaluation implements Serializable {
     @Column(name = "speaker_id")
     private Long speakerId;
 
+    @ExcelColumn(value = "标题", col = 3)
     @Column(name = "title")
     private String title;
 
@@ -157,6 +159,7 @@ public class Evaluation implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("evaluations")
+    @OrderBy("id ASC ")
     private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

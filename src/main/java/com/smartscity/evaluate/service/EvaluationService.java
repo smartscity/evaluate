@@ -1,8 +1,6 @@
 package com.smartscity.evaluate.service;
 
-import com.smartscity.evaluate.domain.Evaluation;
-import com.smartscity.evaluate.domain.Speaker;
-import com.smartscity.evaluate.domain.User;
+import com.smartscity.evaluate.domain.*;
 import com.smartscity.evaluate.domain.enumeration.Level;
 import com.smartscity.evaluate.repository.EvaluationRepository;
 import com.smartscity.evaluate.repository.UserRepository;
@@ -117,16 +115,55 @@ public class EvaluationService {
      */
     public List<Evaluation> findAll() {
 
-        List<Speaker> speakers = speakerService.findAll();
+
 
         log.debug("Request to get all Evaluations");
-//        if (SecurityUtils.getCurrentUserLogin().get().equals("admin")) {
-//            return evaluationRepository.findAll();
-//        }else {
+        if (SecurityUtils.getCurrentUserLogin().get().equals("admin")) {
+            return   evaluationRepository.findAll();
+        }else {
+            List<Speaker> speakers = speakerService.findAll();
             List<Evaluation> evaluations = evaluationRepository.findByUserIsCurrentUser();
-//        }
+            return merge(speakers, evaluations);
+        }
 
-        return merge(speakers, evaluations);
+
+    }
+
+    public List<EvaluationPlus> findAllMAP() {
+
+        List<Evaluation> all =  evaluationRepository.findAllByOrderByUserAscSpeakerIdAsc();
+        List<EvaluationPlus> results = new ArrayList<>();
+        for( Evaluation e : all){
+            EvaluationPlus plus = new EvaluationPlus();
+            plus.setUsername(           e.getUser().getLastName() + e.getUser().getFirstName());
+            plus.setLevel(              getLevel(e.getLevel()));
+            plus.setTitle(              e.getTitle());
+            plus.setOrgName(            e.getOrgName());
+            plus.setActor(              e.getActor());
+            plus.setSpeaker(            e.getSpeaker());
+            plus.setTaskSourceScore(    e.getTaskSourceScore());
+            plus.setDiscoveryAndInnovationScore(        e.getDiscoveryAndInnovationScore());
+            plus.setAdvancedLevelScore( e.getAdvancedLevelScore());
+            plus.setApplicationAndPromotionScore(       e.getApplicationAndPromotionScore());
+            plus.setPaperScore(         e.getPaperScore());
+            plus.setReplyScore(         e.getReplyScore());
+            plus.setTotalScore(         e.getTotalScore());
+            results.add(plus);
+        }
+        return results;
+    }
+
+    private String getLevel(Level level) {
+        switch (level){
+            case FIRST:
+                return "一等奖";
+            case SECOND:
+                return "二等奖";
+            case THIRD:
+                return "三等奖";
+            default:
+                return "未知";
+        }
     }
 
     private List<Evaluation> merge(List<Speaker> speakers, List<Evaluation> evaluations) {

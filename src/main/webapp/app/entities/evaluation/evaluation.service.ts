@@ -32,6 +32,16 @@ export class EvaluationService {
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
+  export(): Observable<EntityResponseType> {
+    var url = this.resourceUrl + '/export';
+    window.open(url, '_blank');
+    return;
+    // $scope.url = "";
+    // return this.http
+    //   .put<IEvaluation>(this.resourceUrl + '/export', null, { observe: 'response' })
+    //   .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
   find(id: number): Observable<EntityResponseType> {
     return this.http
       .get<IEvaluation>(`${this.resourceUrl}/${id}`, { observe: 'response' })

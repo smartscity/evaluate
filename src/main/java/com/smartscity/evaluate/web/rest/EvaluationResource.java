@@ -1,9 +1,11 @@
 package com.smartscity.evaluate.web.rest;
 
 import com.smartscity.evaluate.domain.Evaluation;
+import com.smartscity.evaluate.domain.EvaluationPlus;
 import com.smartscity.evaluate.domain.enumeration.Level;
 import com.smartscity.evaluate.security.SecurityUtils;
 import com.smartscity.evaluate.service.EvaluationService;
+import com.smartscity.evaluate.service.util.ExcelUtils;
 import com.smartscity.evaluate.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -15,7 +17,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -157,5 +162,19 @@ public class EvaluationResource {
         log.debug("REST request to delete Evaluation : {}", id);
         evaluationService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+
+
+//    @RequestMapping(value = "/evaluations/export", method = RequestMethod.GET)
+    @GetMapping("/evaluations/export")
+    public void exportExcel() {
+        HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+
+        List<EvaluationPlus> results = evaluationService.findAllMAP();
+
+        long t1 = System.currentTimeMillis();
+        ExcelUtils.writeExcel(response, results, EvaluationPlus.class);
+        long t2 = System.currentTimeMillis();
+        System.out.println(String.format("write over! cost:%sms", (t2 - t1)));
     }
 }

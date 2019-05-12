@@ -2,9 +2,10 @@
   "evaluateApp": {
     "evaluation": {
       "home": {
-        "title": "Evaluations",
-        "createLabel": "创建新 Evaluation",
-        "createOrEditLabel": "创建或编辑 Evaluation"
+        "title": "评审记录",
+        "createLabel": "创建新 评审记录",
+        "exportLabel": "导出",
+        "createOrEditLabel": "创建或编辑 评审记录"
       },
       "created": "Evaluation {{ param }} 创建成功",
       "updated": "Evaluation {{ param }} 更新成功",
@@ -13,30 +14,30 @@
         "question": "你确定要删除 Evaluation {{ id }} 吗？"
       },
       "detail": {
-        "title": "Evaluation"
+        "title": "评审记录"
       },
-      "speakerId": "Speaker Id",
-      "title": "Title",
-      "orgName": "Org Name",
+      "speakerId": "",
+      "title": "标题",
+      "orgName": "主要完成单位",
       "actor": "Actor",
       "speaker": "Speaker",
-      "level": "Level",
+      "level": "级别",
       "path": "Path",
-      "taskSource": "Task Source",
-      "taskSourceScore": "Task Source Score",
-      "discoveryAndInnovation": "Discovery And Innovation",
-      "discoveryAndInnovationScore": "Discovery And Innovation Score",
-      "advancedLevel": "Advanced Level",
-      "advancedLevelScore": "Advanced Level Score",
-      "applicationAndPromotion": "Application And Promotion",
-      "applicationAndPromotionScore": "Application And Promotion Score",
-      "paperScore": "Paper Score",
-      "replyScore": "Reply Score",
-      "totalScore": "Total Score",
+      "taskSource": "任务来源",
+      "taskSourceScore": "任务来源",
+      "discoveryAndInnovation": "主要发现和创新点",
+      "discoveryAndInnovationScore": "主要发现和创新点",
+      "advancedLevel": "先进程度",
+      "advancedLevelScore": "先进程度",
+      "applicationAndPromotion": "应用与推广及其效益",
+      "applicationAndPromotionScore": "应用与推广及其效益",
+      "paperScore": "论文、著作、知识产权分值",
+      "replyScore": "答辩分值",
+      "totalScore": "总分",
       "avgScore": "Avg Score",
-      "createTime": "Create Time",
-      "updateTime": "Update Time",
-      "evaluator": "Evaluator",
+      "createTime": "创建时间",
+      "updateTime": "修改时间",
+      "evaluator": "专家",
       "remark": "Remark",
       "user": "User",
       "help": {

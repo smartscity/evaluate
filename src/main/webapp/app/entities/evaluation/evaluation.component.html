@@ -1,12 +1,20 @@
 <div style="margin: 15px 20px;">
     <h2 id="page-heading">
         <span jhiTranslate="evaluateApp.evaluation.home.title">Evaluations</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-evaluation" [routerLink]="['/evaluation/new']">
+        <!--<button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-evaluation" [routerLink]="['/evaluation/new']">-->
+            <!--<fa-icon [icon]="'plus'"></fa-icon>-->
+            <!--<span  jhiTranslate="evaluateApp.evaluation.home.createLabel">-->
+            <!--Create new Evaluation-->
+            <!--</span>-->
+        <!--</button>-->
+
+        <button id="jh-export-entity" class="btn btn-primary float-right jh-create-entity create-evaluation" (click)="export()">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="evaluateApp.evaluation.home.createLabel">
+            <span  jhiTranslate="evaluateApp.evaluation.home.exportLabel">
             Create new Evaluation
             </span>
         </button>
+
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
@@ -15,29 +23,29 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="evaluateApp.evaluation.speakerId">Speaker Id</span></th>
+            <!--<th><span jhiTranslate="evaluateApp.evaluation.speakerId">Speaker Id</span></th>-->
             <th><span jhiTranslate="evaluateApp.evaluation.title">Title</span></th>
             <th><span jhiTranslate="evaluateApp.evaluation.orgName">Org Name</span></th>
-            <th><span jhiTranslate="evaluateApp.evaluation.actor">Actor</span></th>
-            <th><span jhiTranslate="evaluateApp.evaluation.speaker">Speaker</span></th>
+            <!--<th><span jhiTranslate="evaluateApp.evaluation.actor">Actor</span></th>-->
+            <!--<th><span jhiTranslate="evaluateApp.evaluation.speaker">Speaker</span></th>-->
             <th><span jhiTranslate="evaluateApp.evaluation.level">Level</span></th>
-            <th><span jhiTranslate="evaluateApp.evaluation.path">Path</span></th>
-            <th><span jhiTranslate="evaluateApp.evaluation.taskSource">Task Source</span></th>
+            <!--<th><span jhiTranslate="evaluateApp.evaluation.path">Path</span></th>-->
+            <!--<th><span jhiTranslate="evaluateApp.evaluation.taskSource">Task Source</span></th>-->
             <th><span jhiTranslate="evaluateApp.evaluation.taskSourceScore">Task Source Score</span></th>
-            <th><span jhiTranslate="evaluateApp.evaluation.discoveryAndInnovation">Discovery And Innovation</span></th>
+            <!--<th><span jhiTranslate="evaluateApp.evaluation.discoveryAndInnovation">Discovery And Innovation</span></th>-->
             <th><span jhiTranslate="evaluateApp.evaluation.discoveryAndInnovationScore">Discovery And Innovation Score</span></th>
-            <th><span jhiTranslate="evaluateApp.evaluation.advancedLevel">Advanced Level</span></th>
+            <!--<th><span jhiTranslate="evaluateApp.evaluation.advancedLevel">Advanced Level</span></th>-->
             <th><span jhiTranslate="evaluateApp.evaluation.advancedLevelScore">Advanced Level Score</span></th>
-            <th><span jhiTranslate="evaluateApp.evaluation.applicationAndPromotion">Application And Promotion</span></th>
+            <!--<th><span jhiTranslate="evaluateApp.evaluation.applicationAndPromotion">Application And Promotion</span></th>-->
             <th><span jhiTranslate="evaluateApp.evaluation.applicationAndPromotionScore">Application And Promotion Score</span></th>
             <th><span jhiTranslate="evaluateApp.evaluation.paperScore">Paper Score</span></th>
             <th><span jhiTranslate="evaluateApp.evaluation.replyScore">Reply Score</span></th>
             <th><span jhiTranslate="evaluateApp.evaluation.totalScore">Total Score</span></th>
             <th><span jhiTranslate="evaluateApp.evaluation.avgScore">Avg Score</span></th>
-            <th><span jhiTranslate="evaluateApp.evaluation.createTime">Create Time</span></th>
-            <th><span jhiTranslate="evaluateApp.evaluation.updateTime">Update Time</span></th>
+            <!--<th><span jhiTranslate="evaluateApp.evaluation.createTime">Create Time</span></th>-->
+            <!--<th><span jhiTranslate="evaluateApp.evaluation.updateTime">Update Time</span></th>-->
             <th><span jhiTranslate="evaluateApp.evaluation.evaluator">Evaluator</span></th>
-            <th><span jhiTranslate="evaluateApp.evaluation.remark">Remark</span></th>
+            <!--<th><span jhiTranslate="evaluateApp.evaluation.remark">Remark</span></th>-->
             <th><span jhiTranslate="evaluateApp.evaluation.user">User</span></th>
             <th></th>
             </tr>
@@ -45,28 +53,28 @@
             <tbody>
             <tr *ngFor="let evaluation of evaluations ;trackBy: trackId">
                 <td><a [routerLink]="['/evaluation', evaluation.id, 'view' ]">{{evaluation.id}}</a></td>
-                <td>{{evaluation.speakerId}}</td>
+                <!--<td>{{evaluation.speakerId}}</td>-->
                 <td>{{evaluation.title}}</td>
                 <td>{{evaluation.orgName}}</td>
-                <td>{{evaluation.actor}}</td>
-                <td>{{evaluation.speaker}}</td>
+                <!--<td>{{evaluation.actor}}</td>-->
+                <!--<td>{{evaluation.speaker}}</td>-->
                 <td jhiTranslate="{{'evaluateApp.Level.' + evaluation.level}}">{{evaluation.level}}</td>
-                <td>{{evaluation.path}}</td>
-                <td jhiTranslate="{{'evaluateApp.TaskSource.' + evaluation.taskSource}}">{{evaluation.taskSource}}</td>
+                <!--<td>{{evaluation.path}}</td>-->
+                <!--<td jhiTranslate="{{'evaluateApp.TaskSource.' + evaluation.taskSource}}">{{evaluation.taskSource}}</td>-->
                 <td>{{evaluation.taskSourceScore}}</td>
-                <td jhiTranslate="{{'evaluateApp.DiscoveryAndInnovation.' + evaluation.discoveryAndInnovation}}">{{evaluation.discoveryAndInnovation}}</td>
+                <!--<td jhiTranslate="{{'evaluateApp.DiscoveryAndInnovation.' + evaluation.discoveryAndInnovation}}">{{evaluation.discoveryAndInnovation}}</td>-->
                 <td>{{evaluation.discoveryAndInnovationScore}}</td>
-                <td jhiTranslate="{{'evaluateApp.AdvancedLevel.' + evaluation.advancedLevel}}">{{evaluation.advancedLevel}}</td>
+                <!--<td jhiTranslate="{{'evaluateApp.AdvancedLevel.' + evaluation.advancedLevel}}">{{evaluation.advancedLevel}}</td>-->
                 <td>{{evaluation.advancedLevelScore}}</td>
-                <td jhiTranslate="{{'evaluateApp.ApplicationAndPromotion.' + evaluation.applicationAndPromotion}}">{{evaluation.applicationAndPromotion}}</td>
+                <!--<td jhiTranslate="{{'evaluateApp.ApplicationAndPromotion.' + evaluation.applicationAndPromotion}}">{{evaluation.applicationAndPromotion}}</td>-->
                 <td>{{evaluation.applicationAndPromotionScore}}</td>
                 <td>{{evaluation.paperScore}}</td>
                 <td>{{evaluation.replyScore}}</td>
                 <td>{{evaluation.totalScore}}</td>
                 <td>{{evaluation.avgScore}}</td>
-                <td>{{evaluation.createTime | date:'medium'}}</td>
-                <td>{{evaluation.updateTime | date:'medium'}}</td>
-                <td>{{evaluation.evaluator}}</td>
+                <!--<td>{{evaluation.createTime | date:'medium'}}</td>-->
+                <!--<td>{{evaluation.updateTime | date:'medium'}}</td>-->
+                <!--<td>{{evaluation.evaluator}}</td>-->
                 <td>{{evaluation.remark}}</td>
                 <td>
                     {{evaluation.user?.login}}
@@ -79,20 +87,20 @@
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
-                        <button type="submit"
-                                [routerLink]="['/evaluation', evaluation.id, 'edit']"
-                                class="btn btn-primary btn-sm">
-                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', 'evaluation', { outlets: { popup: evaluation.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
-                            <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
+                        <!--<button type="submit"-->
+                                <!--[routerLink]="['/evaluation', evaluation.id, 'edit']"-->
+                                <!--class="btn btn-primary btn-sm">-->
+                            <!--<fa-icon [icon]="'pencil-alt'"></fa-icon>-->
+                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>-->
+                        <!--</button>-->
+                        <!--<button type="submit"-->
+                                <!--[routerLink]="['/', 'evaluation', { outlets: { popup: evaluation.id + '/delete'} }]"-->
+                                <!--replaceUrl="true"-->
+                                <!--queryParamsHandling="merge"-->
+                                <!--class="btn btn-danger btn-sm">-->
+                            <!--<fa-icon [icon]="'times'"></fa-icon>-->
+                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>-->
+                        <!--</button>-->
                     </div>
                 </td>
             </tr>
