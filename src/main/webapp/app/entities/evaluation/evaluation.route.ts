@@ -9,7 +9,6 @@ import { EvaluationService } from './evaluation.service';
 import { EvaluationComponent } from './evaluation.component';
 import { EvaluationDetailComponent } from './evaluation-detail.component';
 import { EvaluationUpdateComponent } from './evaluation-update.component';
-import { EvaluationExportComponent } from './evaluation-export.component';
 import { EvaluationDeletePopupComponent } from './evaluation-delete-dialog.component';
 import { IEvaluation } from 'app/shared/model/evaluation.model';
 
@@ -54,18 +53,6 @@ export const evaluationRoute: Routes = [
   {
     path: 'new',
     component: EvaluationUpdateComponent,
-    resolve: {
-      evaluation: EvaluationResolve
-    },
-    data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'evaluateApp.evaluation.home.title'
-    },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: 'export',
-    component: EvaluationExportComponent,
     resolve: {
       evaluation: EvaluationResolve
     },
