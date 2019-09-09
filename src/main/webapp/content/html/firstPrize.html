@@ -169,12 +169,13 @@
     var token = localStorage.getItem('jhi-authenticationtoken') || sessionStorage.getItem('jhi-authenticationtoken');
     console.log(token);
     var dataJson = {}, url = "http://evaluate.smartscity.com";
+    // var dataJson = {}, url = "http://localhost:8888";
 
     function getData() {
 
         $.ajax({
             type: 'GET',
-            url: url + '/api/evaluations1',
+            url: url + '/api/evaluations11',
             data: dataJson,
             // dataType: 'jsonp',
             dataType: 'json',

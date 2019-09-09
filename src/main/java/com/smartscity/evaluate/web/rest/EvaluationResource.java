@@ -102,36 +102,58 @@ public class EvaluationResource {
         return evaluationService.findAll();
     }
 
+    /**
+     * 所有人作为 除数，计算平均分
+     */
     @GetMapping("/evaluations1")
     public List<Map<String, String>> getAllEvaluations1() {
         log.debug("REST request to get all Evaluations");
         return evaluationService.findByLevel(Level.FIRST);
     }
 
+    /**
+     * 所有人作为 除数，计算平均分
+     */
     @GetMapping("/evaluations2")
     public List<Map<String, String>> getAllEvaluations2() {
         log.debug("REST request to get all Evaluations");
         return evaluationService.findByLevel(Level.SECOND);
     }
 
+    /**
+     * 所有人作为 除数，计算平均分
+     */
     @GetMapping("/evaluations3")
     public List<Map<String, String>> getAllEvaluations3() {
         log.debug("REST request to get all Evaluations");
         return evaluationService.findByLevel(Level.THIRD);
     }
 
+
+    /**
+     * 1、掐头 去尾、计算平均分
+     * 一等奖
+     */
     @GetMapping("/evaluations11")
     public List<Map<String, String>> getAllEvaluations11() {
         log.debug("REST request to get all Evaluations");
         return evaluationService.findByLevelExceptMAXMIN(Level.FIRST);
     }
 
+    /**
+     * 1、掐头 去尾、计算平均分
+     * 二等奖
+     */
     @GetMapping("/evaluations22")
     public List<Map<String, String>> getAllEvaluations22() {
         log.debug("REST request to get all Evaluations");
         return evaluationService.findByLevelExceptMAXMIN(Level.SECOND);
     }
 
+    /**
+     * 1、掐头 去尾、计算平均分
+     * 三等奖
+     */
     @GetMapping("/evaluations33")
     public List<Map<String, String>> getAllEvaluations33() {
         log.debug("REST request to get all Evaluations");
