@@ -214,7 +214,9 @@ export class ExampleComponent implements OnInit, OnDestroy {
     this.eventSubscriber = this.eventManager.subscribe('evaluationListModification', response => this.loadAll());
   }
   openFile(field) {
-    window.open(SERVER_API_URL + '/api/download/' + field);
+    // window.location.href=field;
+    window.open(field);
+    // window.open(SERVER_API_URL + '/api/download/' + field);
     // return this.dataUtils.openFile(contentType, field);
   }
 

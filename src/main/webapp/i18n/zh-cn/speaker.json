@@ -35,6 +35,7 @@
       "level": "奖项等级",
       "icon": "Icon",
       "pdf": "文献",
+      "localPath": "本地文件",
       "path": "路径",
       "review": "状态",
       "remark": "备注",
@@ -44,6 +45,7 @@
         "speaker": "讲说人",
         "pdf": "上传附件",
         "path": "附件地址",
+        "localPath": "本地文件",
         "remark": "审核备注"
       }
     }

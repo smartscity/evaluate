@@ -1,4 +1,4 @@
-<div class="row justify-content-center" style="margin: 15px 20px;">
+<div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <h2 id="jhi-speaker-heading" jhiTranslate="evaluateApp.speaker.home.createOrEditLabel">Create or edit a Speaker</h2>
@@ -55,17 +55,22 @@
                     <input type="hidden" class="form-control" name="pdfContentType" id="field_pdfContentType"
                            formControlName="pdfContentType" />
                 </div>
-                <!--<div class="form-group">-->
-                    <!--<label class="form-control-label" jhiTranslate="evaluateApp.speaker.path" for="field_path" [ngbTooltip]="'evaluateApp.speaker.help.path' | translate">Path</label>-->
-                    <!--<input type="text" class="form-control" name="path" id="field_path"-->
-                           <!--formControlName="path"/>-->
-                <!--</div>-->
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.speaker.path" for="field_path" [ngbTooltip]="'evaluateApp.speaker.help.path' | translate">Path</label>
+                    <input type="text" class="form-control" name="path" id="field_path"
+                           formControlName="path"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="evaluateApp.speaker.localPath" for="field_localPath" [ngbTooltip]="'evaluateApp.speaker.help.localPath' | translate">Local Path</label>
+                    <input type="text" class="form-control" name="localPath" id="field_localPath"
+                           formControlName="localPath"/>
+                </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="evaluateApp.speaker.review" for="field_review">Review</label>
                     <select class="form-control" name="review" formControlName="review" id="field_review">
-                        <option value="UNDO">{{'evaluateApp.speaker.ReviewFilter.UNDO' | translate}}</option>
-                        <option value="APPROVAL">{{'evaluateApp.speaker.ReviewFilter.APPROVAL' | translate}}</option>
-                        <option value="REFUSE">{{'evaluateApp.speaker.ReviewFilter.REFUSE' | translate}}</option>
+                        <option value="UNDO">{{'evaluateApp.Review.UNDO' | translate}}</option>
+                        <option value="APPROVAL">{{'evaluateApp.Review.APPROVAL' | translate}}</option>
+                        <option value="REFUSE">{{'evaluateApp.Review.REFUSE' | translate}}</option>
                     </select>
                 </div>
                 <div class="form-group">

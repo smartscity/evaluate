@@ -25,6 +25,7 @@ export class SpeakerUpdateComponent implements OnInit {
     pdf: [],
     pdfContentType: [],
     path: [],
+    localPath: [],
     review: [],
     remark: []
   });
@@ -57,6 +58,7 @@ export class SpeakerUpdateComponent implements OnInit {
       pdf: speaker.pdf,
       pdfContentType: speaker.pdfContentType,
       path: speaker.path,
+      localPath: speaker.localPath,
       review: speaker.review,
       remark: speaker.remark
     });
@@ -67,8 +69,6 @@ export class SpeakerUpdateComponent implements OnInit {
   }
 
   openFile(contentType, field) {
-    alert(field);
-    alert(field.path);
     return this.dataUtils.openFile(contentType, field);
   }
 
@@ -132,6 +132,7 @@ export class SpeakerUpdateComponent implements OnInit {
       pdfContentType: this.editForm.get(['pdfContentType']).value,
       pdf: this.editForm.get(['pdf']).value,
       path: this.editForm.get(['path']).value,
+      localPath: this.editForm.get(['localPath']).value,
       review: this.editForm.get(['review']).value,
       remark: this.editForm.get(['remark']).value
     };

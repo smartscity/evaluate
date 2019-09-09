@@ -2,7 +2,7 @@
   "evaluateApp": {
     "evaluation": {
       "home": {
-        "title": "评审记录",
+        "title": "导出评审",
         "createLabel": "创建新 评审记录",
         "exportLabel": "导出",
         "createOrEditLabel": "创建或编辑 评审记录"

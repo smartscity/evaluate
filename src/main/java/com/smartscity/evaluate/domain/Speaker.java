@@ -71,6 +71,13 @@ public class Speaker implements Serializable {
     @Column(name = "path")
     private String path;
 
+    /**
+     * 本地文件
+     */
+    @ApiModelProperty(value = "本地文件")
+    @Column(name = "local_path")
+    private String localPath;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "review")
     private Review review;
@@ -196,6 +203,19 @@ public class Speaker implements Serializable {
         this.path = path;
     }
 
+    public String getLocalPath() {
+        return localPath;
+    }
+
+    public Speaker localPath(String localPath) {
+        this.localPath = localPath;
+        return this;
+    }
+
+    public void setLocalPath(String localPath) {
+        this.localPath = localPath;
+    }
+
     public Review getReview() {
         return review;
     }
@@ -251,6 +271,7 @@ public class Speaker implements Serializable {
             ", pdf='" + getPdf() + "'" +
             ", pdfContentType='" + getPdfContentType() + "'" +
             ", path='" + getPath() + "'" +
+            ", localPath='" + getLocalPath() + "'" +
             ", review='" + getReview() + "'" +
             ", remark='" + getRemark() + "'" +
             "}";

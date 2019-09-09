@@ -22,6 +22,12 @@ entity Speaker {
     * 附件地址
     */
     path String
+
+    /**
+    * 本地文件
+    */
+    localPath String
+
     review Review
     /**
     * 审核备注

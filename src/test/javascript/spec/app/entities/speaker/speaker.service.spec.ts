@@ -33,6 +33,7 @@ describe('Service Tests', () => {
         'image/png',
         'AAAAAAA',
         'AAAAAAA',
+        'AAAAAAA',
         Review.UNDO,
         'AAAAAAA'
       );
@@ -78,6 +79,7 @@ describe('Service Tests', () => {
             level: 'BBBBBB',
             pdf: 'BBBBBB',
             path: 'BBBBBB',
+            localPath: 'BBBBBB',
             review: 'BBBBBB',
             remark: 'BBBBBB'
           },
@@ -104,6 +106,7 @@ describe('Service Tests', () => {
             level: 'BBBBBB',
             pdf: 'BBBBBB',
             path: 'BBBBBB',
+            localPath: 'BBBBBB',
             review: 'BBBBBB',
             remark: 'BBBBBB'
           },

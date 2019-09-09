@@ -53,6 +53,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="local_path" type="varchar(255)" remarks="本地文件">
+                <constraints nullable="true" />
+            </column>
+
             <column name="review" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -89,6 +93,7 @@
             <column name="pdf" type="string"/>
             <column name="pdf_content_type" type="string"/>
             <column name="path" type="string"/>
+            <column name="local_path" type="string"/>
             <column name="review" type="string"/>
             <column name="remark" type="string"/>
         </loadData>

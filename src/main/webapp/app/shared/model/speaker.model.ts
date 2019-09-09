@@ -20,6 +20,7 @@ export interface ISpeaker {
   pdfContentType?: string;
   pdf?: any;
   path?: string;
+  localPath?: string;
   review?: Review;
   remark?: any;
 }
@@ -35,6 +36,7 @@ export class Speaker implements ISpeaker {
     public pdfContentType?: string,
     public pdf?: any,
     public path?: string,
+    public localPath?: string,
     public review?: Review,
     public remark?: any
   ) {}

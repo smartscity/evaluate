@@ -37,6 +37,11 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "localPath",
+            "javadoc": "本地文件",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "review",
             "fieldType": "Review",
             "fieldValues": "UNDO,APPROVAL,REFUSE"

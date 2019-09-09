@@ -1,4 +1,4 @@
-<div class="row justify-content-center" style="margin: 15px 20px;">
+<div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="speaker">
             <h2><span jhiTranslate="evaluateApp.speaker.detail.title">Speaker</span> {{speaker.id}}</h2>
@@ -9,21 +9,22 @@
                 <dd>
                     <span>{{speaker.title}}</span>
                 </dd>
-                <dt><span jhiTranslate="evaluateApp.speaker.orgName" [ngbTooltip]="'speaker.help.orgName' | translate">Org Name</span></dt>
+                <dt><span jhiTranslate="evaluateApp.speaker.orgName" [ngbTooltip]="'evaluateApp.speaker.help.orgName' | translate">Org Name</span></dt>
                 <dd>
                     <span>{{speaker.orgName}}</span>
                 </dd>
-                <dt><span jhiTranslate="evaluateApp.speaker.actor" [ngbTooltip]="'speaker.help.actor' | translate">Actor</span></dt>
+                <dt><span jhiTranslate="evaluateApp.speaker.actor" [ngbTooltip]="'evaluateApp.speaker.help.actor' | translate">Actor</span></dt>
                 <dd>
                     <span>{{speaker.actor}}</span>
                 </dd>
-                <dt><span jhiTranslate="evaluateApp.speaker.speaker" [ngbTooltip]="'speaker.help.speaker' | translate">Speaker</span></dt>
+                <dt><span jhiTranslate="evaluateApp.speaker.speaker" [ngbTooltip]="'evaluateApp.speaker.help.speaker' | translate">Speaker</span></dt>
                 <dd>
                     <span>{{speaker.speaker}}</span>
                 </dd>
                 <dt><span jhiTranslate="evaluateApp.speaker.level">Level</span></dt>
                 <dd>
                     <span :jhiTranslate="{{'evaluateApp.speaker.LevelFilter.' + speaker.level}}">{{speaker.level}}</span>
+                    <!--<span jhiTranslate="{{'evaluateApp.Level.' + speaker.level}}">{{speaker.level}}</span>-->
                 </dd>
                 <dt><span jhiTranslate="evaluateApp.speaker.pdf" [ngbTooltip]="'evaluateApp.speaker.help.pdf' | translate">Pdf</span></dt>
                 <dd>
@@ -35,6 +36,10 @@
                 <dt><span jhiTranslate="evaluateApp.speaker.path" [ngbTooltip]="'evaluateApp.speaker.help.path' | translate">Path</span></dt>
                 <dd>
                     <span>{{speaker.path}}</span>
+                </dd>
+                <dt><span jhiTranslate="evaluateApp.speaker.localPath" [ngbTooltip]="'evaluateApp.speaker.help.localPath' | translate">Local Path</span></dt>
+                <dd>
+                    <span>{{speaker.localPath}}</span>
                 </dd>
                 <dt><span jhiTranslate="evaluateApp.speaker.review">Review</span></dt>
                 <dd>

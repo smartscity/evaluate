@@ -79,6 +79,7 @@ class SpeakerGatlingTest extends Simulation {
                 , "level":"FIRST"
                 , "pdf":null
                 , "path":"SAMPLE_TEXT"
+                , "localPath":"SAMPLE_TEXT"
                 , "review":"UNDO"
                 , "remark":null
                 }""")).asJson

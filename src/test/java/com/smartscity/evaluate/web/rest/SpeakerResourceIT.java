@@ -65,6 +65,9 @@ public class SpeakerResourceIT {
     private static final String DEFAULT_PATH = "AAAAAAAAAA";
     private static final String UPDATED_PATH = "BBBBBBBBBB";
 
+    private static final String DEFAULT_LOCAL_PATH = "AAAAAAAAAA";
+    private static final String UPDATED_LOCAL_PATH = "BBBBBBBBBB";
+
     private static final Review DEFAULT_REVIEW = Review.UNDO;
     private static final Review UPDATED_REVIEW = Review.APPROVAL;
 
@@ -124,6 +127,7 @@ public class SpeakerResourceIT {
             .pdf(DEFAULT_PDF)
             .pdfContentType(DEFAULT_PDF_CONTENT_TYPE)
             .path(DEFAULT_PATH)
+            .localPath(DEFAULT_LOCAL_PATH)
             .review(DEFAULT_REVIEW)
             .remark(DEFAULT_REMARK);
         return speaker;
@@ -157,6 +161,7 @@ public class SpeakerResourceIT {
         assertThat(testSpeaker.getPdf()).isEqualTo(DEFAULT_PDF);
         assertThat(testSpeaker.getPdfContentType()).isEqualTo(DEFAULT_PDF_CONTENT_TYPE);
         assertThat(testSpeaker.getPath()).isEqualTo(DEFAULT_PATH);
+        assertThat(testSpeaker.getLocalPath()).isEqualTo(DEFAULT_LOCAL_PATH);
         assertThat(testSpeaker.getReview()).isEqualTo(DEFAULT_REVIEW);
         assertThat(testSpeaker.getRemark()).isEqualTo(DEFAULT_REMARK);
     }
@@ -200,6 +205,7 @@ public class SpeakerResourceIT {
             .andExpect(jsonPath("$.[*].pdfContentType").value(hasItem(DEFAULT_PDF_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].pdf").value(hasItem(Base64Utils.encodeToString(DEFAULT_PDF))))
             .andExpect(jsonPath("$.[*].path").value(hasItem(DEFAULT_PATH.toString())))
+            .andExpect(jsonPath("$.[*].localPath").value(hasItem(DEFAULT_LOCAL_PATH.toString())))
             .andExpect(jsonPath("$.[*].review").value(hasItem(DEFAULT_REVIEW.toString())))
             .andExpect(jsonPath("$.[*].remark").value(hasItem(DEFAULT_REMARK.toString())));
     }
@@ -223,6 +229,7 @@ public class SpeakerResourceIT {
             .andExpect(jsonPath("$.pdfContentType").value(DEFAULT_PDF_CONTENT_TYPE))
             .andExpect(jsonPath("$.pdf").value(Base64Utils.encodeToString(DEFAULT_PDF)))
             .andExpect(jsonPath("$.path").value(DEFAULT_PATH.toString()))
+            .andExpect(jsonPath("$.localPath").value(DEFAULT_LOCAL_PATH.toString()))
             .andExpect(jsonPath("$.review").value(DEFAULT_REVIEW.toString()))
             .andExpect(jsonPath("$.remark").value(DEFAULT_REMARK.toString()));
     }
@@ -256,6 +263,7 @@ public class SpeakerResourceIT {
             .pdf(UPDATED_PDF)
             .pdfContentType(UPDATED_PDF_CONTENT_TYPE)
             .path(UPDATED_PATH)
+            .localPath(UPDATED_LOCAL_PATH)
             .review(UPDATED_REVIEW)
             .remark(UPDATED_REMARK);
 
@@ -276,6 +284,7 @@ public class SpeakerResourceIT {
         assertThat(testSpeaker.getPdf()).isEqualTo(UPDATED_PDF);
         assertThat(testSpeaker.getPdfContentType()).isEqualTo(UPDATED_PDF_CONTENT_TYPE);
         assertThat(testSpeaker.getPath()).isEqualTo(UPDATED_PATH);
+        assertThat(testSpeaker.getLocalPath()).isEqualTo(UPDATED_LOCAL_PATH);
         assertThat(testSpeaker.getReview()).isEqualTo(UPDATED_REVIEW);
         assertThat(testSpeaker.getRemark()).isEqualTo(UPDATED_REMARK);
     }
