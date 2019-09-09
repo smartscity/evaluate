@@ -199,9 +199,7 @@ public class EvaluationService {
             evaluation.setSpeaker(      speaker.getSpeaker());
             evaluation.setLevel(        speaker.getLevel());
             evaluation.setSpeakerId(    speaker.getId());
-
-            // 获取本地文件
-            evaluation.setPath(         speaker.getLocalPath());
+            evaluation.setPath(         speaker.getPath());
 
 
             map.put(speaker.getId(), evaluation);
