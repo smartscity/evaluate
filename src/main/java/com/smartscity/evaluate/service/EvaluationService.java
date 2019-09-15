@@ -179,6 +179,15 @@ public class EvaluationService {
         for (Map.Entry<Long, Evaluation> entry : map.entrySet()) {
             array.add(entry.getValue());
         }
+//        Collections.reverse(array);
+
+
+        Collections.sort(array,new Comparator<Evaluation>(){
+            public int compare(Evaluation before, Evaluation after) {
+                return before.getSpeakerId().compareTo(after.getSpeakerId());
+            }
+        });
+
         return array;
     }
 
@@ -191,7 +200,7 @@ public class EvaluationService {
     }
     private HashMap<Long, Evaluation> toConvert(List<Speaker> speakers) {
         HashMap<Long, Evaluation> map = new HashMap<>();
-        for(Speaker speaker : speakers){
+        for(Speaker speaker : speakers) {
             Evaluation evaluation = new Evaluation();
             evaluation.setTitle(        speaker.getTitle());
             evaluation.setOrgName(      speaker.getOrgName());
