@@ -111,7 +111,11 @@
                 </td>
                 <!-- 答辩 -->
                 <td>
-                    <nz-input-number [(ngModel)]="evaluation.replyScore" [nzMin]="aboutTips[i].reply.min" [nzMax]="aboutTips[i].reply.max" [nzStep]="1" nz-tooltip [nzTitle]="aboutTips[i].reply.tip" nzPlacement="topCenter" nzTrigger="hover" (nzBlur)="getTotal(i)"></nz-input-number>
+
+
+
+                    <nz-input-number [(ngModel)]="evaluation.replyScore" [nzMin]="aboutTips[i].reply.min" [nzMax]="aboutTips[i].reply.max" [nzStep]="1" nz-tooltip [nzTitle]="aboutTips[i].reply.tip" nzPlacement="topCenter" nzTrigger="hover" (nzBlur)="getTotal(i)" *ngIf="evaluation.level == 'FIRST'"></nz-input-number>
+                    <nz-input-number [(ngModel)]="evaluation.replyScore" [nzMin]="aboutTips[i].reply.min" [nzMax]="aboutTips[i].reply.max" [nzStep]="1" nz-tooltip [nzTitle]="aboutTips[i].reply.tip" nzPlacement="topCenter" nzTrigger="hover" (nzBlur)="getTotal(i)" *ngIf="evaluation.level == 'SECOND'"></nz-input-number>
                 </td>
                 <td> {{evaluation.totalScore}}</td>
                 <!--<td></td>-->
